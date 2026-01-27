@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
 
 const STOP_ID = "40_1121";
 const ROUTE_ID = "40_100479"
@@ -48,8 +47,4 @@ app.get("/api/arrivals", async (req, res) => {
         console.error("API fetch failed:", err);
         res.status(500).json({ error: "Failed to fetch arrivals" });
     }
-});
-
-app.listen(PORT, () => {
-    console.log("Server Online")
 });
