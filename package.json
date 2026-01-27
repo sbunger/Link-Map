@@ -2,7 +2,8 @@
   "name": "link-map",
   "version": "1.0.0",
   "description": "Link Light Rail stylized map using the OneBusAway API.",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +14,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/sbunger/Link-Map/issues"
   },
