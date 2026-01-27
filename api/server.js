@@ -1,48 +1,36 @@
 import express from "express";
-import OnebusawaySDK from 'onebusaway-sdk';
+import fetch from "node-fetch";
+
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
 
-const STOP_ID = "40_1121";
-const ROUTE_ID = "40_100479"
-
 const KEY = process.env.OBA_API_KEY;
+
+const STOP_ID_TEST = "40_1121";
+
 if (!KEY) {
     console.error("No API key!");
     process.exit(1);
 }
 
-const client = new OnebusawaySDK({
-    apiKey: KEY,
-});
-
 app.use(express.static("public"));
 
 app.get("/api/arrivals", async (req, res) => {
     try {
-        const route = await client.tripsForRoute.list(ROUTE_ID);
-        const trip = route.data.references.trips[0];
-                
-        const shapeId = trip.shapeId;
-        const shape = await client.shape.retrieve(shapeId);
-        //console.log(shape);
+        const arrivalsURL = `https://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/${STOP_ID_TEST}.json?key=${KEY}`;
+        const arrivalsResponse = await fetch(arrivalsURL);
+        const arrivalsData = await arrivalsResponse.json();
+        const arrivals = arrivalsData.data.entry.arrivalsAndDepartures;
 
-        const stop = await client.stop.retrieve(STOP_ID);
-        const arrivalsList = await client.arrivalAndDeparture.list(STOP_ID, 
-            {
-                minutesBefore: 10,
-                minutesAfter: 60,
-                maxArrivals: 10
-            }
-        );
+        const stopURL = `https://api.pugetsound.onebusaway.org/api/where/stop/${STOP_ID_TEST}.json?key=${KEY}`;
+        const stopsResponse = await fetch(stopURL);
+        const stopsData = await stopsResponse.json();
+        // console.log(stopsData);
+        const stopName = stopsData.data.entry.name;
 
-        const stopName = stop.data.entry.name;
-        const arrivals = arrivalsList.data.entry.arrivalsAndDepartures;
-        //console.log(arrivals);
-
-        res.json({ stopName, arrivals, shape });
+        res.json({ stopName, arrivals });
     } catch (err) {
         console.error("API fetch failed:", err);
         res.status(500).json({ error: "Failed to fetch arrivals" });
