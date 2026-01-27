@@ -48,3 +48,5 @@ app.get("/api/arrivals", async (req, res) => {
         res.status(500).json({ error: "Failed to fetch arrivals" });
     }
 });
+
+export default app;
