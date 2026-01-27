@@ -7,11 +7,18 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/@mapbox/polyline@1.1.1/src/polyline.js"></script>
+
         <title>Link Map</title>
         <link rel="stylesheet" href="style.css">
     </head>
         
     <body>
+        <div id="map"></div>
+
         <h1>Light Rail Arrivals</h1>
         <h2 id="stopName"></h2>
         <ul id="arrivals"></ul>
