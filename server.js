@@ -1,6 +1,7 @@
 import express from "express";
 import OnebusawaySDK from 'onebusaway-sdk';
 import dotenv from "dotenv";
+import { FetchError } from "node-fetch";
 dotenv.config();
 
 const app = express();
@@ -48,6 +49,42 @@ app.get("/api/arrivals", async (req, res) => {
         console.error("API fetch failed:", err);
         res.status(500).json({ error: "Failed to fetch arrivals" });
     }
+});
+
+app.get("/api/routes-nearby", async (req, res) => {
+    try {
+        const { lat, lon } = req.query;
+
+        const results = await client.routesForLocation.list({
+            lat,
+            lon,
+            radius: 2500
+        });
+
+        const routes = results.data.list;
+
+        const shapes = [];
+
+        for (const route of routes) {
+            const trips = await client.tripsForRoute.list(route.id);
+            const trip = trips.data.references.trips[0];
+            if (!trip) continue;
+
+            const shape = await client.shape.retrieve(trip.shapeId);
+
+            shapes.push({
+                routeId: route.id,
+                name: route.shortName,
+                shape: shape
+            })
+        }
+
+        res.json(shapes);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Failed to load nearby routes" });
+    }
+    
 });
 
 app.listen(PORT, () => {
