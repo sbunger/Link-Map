@@ -32,7 +32,6 @@ function initMap() {
 
     navigator.geolocation.getCurrentPosition(async (pos) => {
         userLocation = pos.coords;
-        updateMap();
         console.log(userLocation);
 
         map.setView([userLocation.latitude, userLocation.longitude], 13);
@@ -83,14 +82,17 @@ function highlightRoute(line) {
 }
 
 
-async function updateMap() {
+async function updateLines() {
     
 
     const res = await fetch(
-        `/api/routes-nearby?lat=${userLocation.latitude}&lon=${userLocation.longitude}`
+        `/api/routes-nearby`
     );
 
+    
+
     const routes = await res.json();
+    //console.log("Nearby routes response:", routes);
 
     routes.forEach(r => {
         const coords = polyline.decode(r.shape.data.entry.points);
@@ -112,6 +114,7 @@ async function updateMap() {
 window.onload = () => {
     initMap();
     loadArrivals();
+    updateLines();
 
     setInterval(loadArrivals, 30000);
 };
