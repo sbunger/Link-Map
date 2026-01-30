@@ -89,18 +89,28 @@ async function updateLines() {
         `/api/routes-nearby`
     );
 
-    
-
     const routes = await res.json();
-    //console.log("Nearby routes response:", routes);
 
-    routes.forEach(r => {
-        const coords = polyline.decode(r.shape.data.entry.points);
+    routeLines.forEach(line => map.removeLayer(line));
+    routeLines = [];
+
+    routes.forEach((routeShape) => {
+
+        routeShape.shape.sort(
+            (a, b) => a.shape_pt_sequence - b.shape_pt_sequence
+        );
+        
+        let coords = routeShape.shape.map(point => [
+            point.shape_pt_lat,
+            point.shape_pt_lon,
+        ]);
+
+        
 
         const line = L.polyline(coords, defaultLine)
-        .bindPopup(`${r.name}`)
-        .bindTooltip(`${r.name}`, { sticky: true })
-        .addTo(map);
+            .bindPopup(`${routeShape.name ? routeShape.name : "Unnamed Route"}`)
+            .bindTooltip(`${routeShape.name ? routeShape.name : "Unnamed Route"}`, { sticky: true })
+            .addTo(map);
 
         line.on("click", async (e) => {
             e.originalEvent.stopPropagation();

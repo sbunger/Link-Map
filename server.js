@@ -1,7 +1,24 @@
 import express from "express";
 import OnebusawaySDK from 'onebusaway-sdk';
 import dotenv from "dotenv";
-import { FetchError } from "node-fetch";
+
+import { importGtfs, openDb, getRoutes, getShapes, getTrips } from "gtfs";
+
+const config = {
+    sqlitePath: "data/gtfs/gtfs.sqlite",
+    agencies: [
+        {
+            agency_key: "local_agency",
+            path:"data/gtfs/",
+        },
+    ],
+};
+
+await importGtfs(config);
+
+await openDb(config);
+
+
 dotenv.config();
 
 const app = express();
@@ -47,38 +64,32 @@ app.get("/api/arrivals", async (req, res) => {
 
 app.get("/api/routes-nearby", async (req, res) => {
     try {
-        const agencies = [1, 40]
-
-        const routes = [];
-
-        for (const agency of agencies) {
-            const results = await client.routesForAgency.list(agency);
-
-            results.data.list.forEach(route => {
-                routes.push(route);
-            });
-        }
-
+        const routes = await getRoutes();
         const shapes = [];
 
         for (const route of routes) {
-            const trips = await client.tripsForRoute.list(route.id);
-            const tripsArray = Object.values(trips.data.references.trips);
+            const trips = await getTrips({ route_id: route.route_id })
 
-            // Find the first trip that has a valid shapeId
-            const tripWithShape = tripsArray.find(t => t.shapeId);
+            const shapeCounts = {};
+            for (const trip of trips) {
+                if (!trip.shape_id) continue;
+                shapeCounts[trip.shape_id] =
+                    (shapeCounts[trip.shape_id] || 0) + 1;
+            }
 
-            
-            console.log(tripWithShape);
-            if (!tripWithShape) continue;
+            const bestShapeId = Object.entries(shapeCounts).sort((a, b) => b[1] - a[1])[0]?.[0];
 
-            const shape = await client.shape.retrieve(tripWithShape.shapeId);
+
+            const shape = await getShapes({
+                shape_id: bestShapeId,
+            });
 
             shapes.push({
-                routeId: route.id,
-                name: route.shortName,
-                shape: shape
-            })
+                shape: shape,
+                name: route.route_short_name,
+                route_id: route.route_id,
+                route_color: route.route_color,
+            });
         }
 
         res.json(shapes);
