@@ -16,7 +16,7 @@ const config = {
 
 await importGtfs(config);
 
-await openDb(config);
+const db = await openDb(config);
 
 
 dotenv.config();
@@ -100,18 +100,32 @@ app.get("/api/routes-nearby", async (req, res) => {
     
 });
 
-app.get("api/nearby-stops", async (req, res) => {
+app.get("/api/stops-nearby", async (req, res) => {
     try {
-        const { lat, lon } = req.query;
+        const bbox = req.query.bbox;
+        console.log(bbox);
 
-        const results = await client.stopsForLocation.list({
-            lat,
-            lon,
-            radius: 2500
-        });
+        const [west, south, east, north] = bbox.split(",").map(Number);
 
-        
-        
+        const rows = db.prepare(`
+            SELECT
+                stop_id,
+                stop_name,
+                stop_lat,
+                stop_lon
+            FROM stops
+            WHERE stop_lat BETWEEN ? AND ?
+                AND stop_lon BETWEEN ? AND ?
+        `).all(south, north, west, east);
+
+        res.json(
+            rows.map(stop => ({
+                stop_id: stop.stop_id,
+                name: stop.stop_name,
+                lat: stop.stop_lat,
+                lon: stop.stop_lon,
+            }))
+        );
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Failed to load nearby stops" });

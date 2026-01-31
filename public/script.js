@@ -1,24 +1,31 @@
-let map;
+let map = L.map('map', {
+    center: [47.6, -122.33],
+    zoom: 13,
+    preferCanvas: true
+});
+
 let routeLine;
 let userLocation;
 let routeLines = [];
 let selectedRouteLine;
+let stopLayer = L.layerGroup().addTo(map);
+
+const warn = document.getElementById("warning")
 
 let defaultLine = {
     color: "#ff0000",
-    weight: 3,
+    weight: 4,
     opacity: 0.3
 }
 
 let selectedLine = {
     color: "#0008ff",
-    weight: 5,
+    weight: 5.5,
     opacity: 0.8
 }
 
-function initMap() {
-    map = L.map('map').setView([47.6, -122.33], 11);
 
+function initMap() {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; CARTO'
     }).addTo(map);
@@ -29,14 +36,6 @@ function initMap() {
             selectedRouteLine = null;
         }
     });
-
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-        userLocation = pos.coords;
-        console.log(userLocation);
-
-        map.setView([userLocation.latitude, userLocation.longitude], 13);
-    });
-
 }
 
 async function loadArrivals() {
@@ -84,7 +83,6 @@ function highlightRoute(line) {
 
 async function updateLines() {
     
-
     const res = await fetch(
         `/api/routes-nearby`
     );
@@ -105,8 +103,6 @@ async function updateLines() {
             point.shape_pt_lon,
         ]);
 
-        
-
         const line = L.polyline(coords, defaultLine)
             .bindPopup(`${routeShape.name ? routeShape.name : "Unnamed Route"}`)
             .bindTooltip(`${routeShape.name ? routeShape.name : "Unnamed Route"}`, { sticky: true })
@@ -121,10 +117,44 @@ async function updateLines() {
     });   
 }
 
+
+async function updateStops() {
+
+    const bounds = map.getBounds();
+
+    const res = await fetch(
+        `/api/stops-nearby?bbox=${bounds.toBBoxString()}`
+    );
+
+    stopLayer.clearLayers();
+
+    const stops = await res.json();
+
+    if (stops.length > 300) {
+        warn.style.display = "block";
+        return;
+    };
+
+    warn.style.display = "none";
+    
+    stops.forEach((stop) => {
+        const coords = [stop.lat, stop.lon];
+        const marker = L.marker(coords).addTo(map)
+            .bindTooltip(stop.name);
+
+        stopLayer.addLayer(marker);
+    });
+}
+
+
 window.onload = () => {
     initMap();
     loadArrivals();
+    updateStops();
+
     updateLines();
 
     setInterval(loadArrivals, 30000);
 };
+
+map.on("moveend", updateStops);
