@@ -18,14 +18,10 @@ await importGtfs(config);
 
 const db = await openDb(config);
 
-
 dotenv.config();
 
 const app = express();
 const PORT = 3000;
-
-const STOP_ID = "40_1121";
-const ROUTE_ID = "40_100479"
 
 const KEY = process.env.OBA_API_KEY;
 if (!KEY) {
@@ -41,21 +37,22 @@ app.use(express.static("public"));
 
 app.get("/api/arrivals", async (req, res) => {
     try {
-        const route = await client.tripsForRoute.list(ROUTE_ID);
+        const stopId = req.query.stop_id;
                 
-        const stop = await client.stop.retrieve(STOP_ID);
-        const arrivalsList = await client.arrivalAndDeparture.list(STOP_ID, 
+        const stop = await client.stop.retrieve(stopId);
+        const arrivalsList = await client.arrivalAndDeparture.list(stopId, 
             {
-                minutesBefore: 10,
+                minutesBefore: 5,
                 minutesAfter: 60,
-                maxArrivals: 10
+                maxArrivals: 5
             }
         );
 
         const stopName = stop.data.entry.name;
         const arrivals = arrivalsList.data.entry.arrivalsAndDepartures;
+        const direction = stop.data.entry.direction;
 
-        res.json({ stopName, arrivals });
+        res.json({ stopName, arrivals, direction });
     } catch (err) {
         console.error("API fetch failed:", err);
         res.status(500).json({ error: "Failed to fetch arrivals" });
@@ -103,7 +100,6 @@ app.get("/api/routes-nearby", async (req, res) => {
 app.get("/api/stops-nearby", async (req, res) => {
     try {
         const bbox = req.query.bbox;
-        console.log(bbox);
 
         const [west, south, east, north] = bbox.split(",").map(Number);
 
