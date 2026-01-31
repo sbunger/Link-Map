@@ -13,6 +13,8 @@ let selectedStop;
 let selectedRouteLine;
 let selectedStopMarker;
 
+let hoverTimeout;
+
 const warn = document.getElementById("warning")
 
 let defaultLine = {
@@ -20,6 +22,8 @@ let defaultLine = {
     weight: 4,
     opacity: .35
 }
+
+const hoverTooltip = L.tooltip({ sticky: true });
 
 const stopIcon = L.icon({
     iconUrl: '/images/stop-icon.png',
@@ -80,6 +84,7 @@ async function loadArrivals() {
 }
 
 
+
 async function updateLines() {
     
     const res = await fetch(
@@ -91,7 +96,7 @@ async function updateLines() {
     routeLines.forEach(line => map.removeLayer(line));
     routeLines = [];
 
-    routes.forEach((routeShape) => {
+    routes.forEach((routeShape, index) => {
 
         routeShape.shape.sort(
             (a, b) => a.shape_pt_sequence - b.shape_pt_sequence
@@ -103,9 +108,10 @@ async function updateLines() {
         ]);
 
         const line = L.polyline(coords, defaultLine)
-            .bindPopup(`${routeShape.name ? routeShape.name : "Unnamed Route"}`)
-            .bindTooltip(`${routeShape.name ? routeShape.name : "Unnamed Route"}`, { sticky: true })
             .addTo(map);
+
+        line.routeName = routeShape.name ?? "Unnamed Route"; 
+        line.latLngs = line.getLatLngs();
 
         routeLines.push(line);
     });   
@@ -170,3 +176,43 @@ window.onload = () => {
 };
 
 map.on("moveend", updateStops);
+
+function isNearLine(map, latlng, polyline, tolerance = 8) {
+    const point = map.latLngToLayerPoint(latlng);
+
+    for (let i = 0; i < polyline.latLngs.length - 1; i++) {
+        const p1 = map.latLngToLayerPoint(polyline.latLngs[i]);
+        const p2 = map.latLngToLayerPoint(polyline.latLngs[i + 1]);
+
+        if (L.LineUtil.pointToSegmentDistance(point, p1, p2) <= tolerance)
+            return true;
+    }
+
+    return false;
+}
+
+function isLineVisible(line, bounds) {
+    return line.latLngs.some(ll => bounds.contains(ll));
+}
+
+map.on('mousemove', e => {
+    hoverTooltip.setLatLng(e.latlng)
+    if (hoverTimeout) return; 
+
+    hoverTimeout = setTimeout(() => {
+        hoverTimeout = null;
+        const bounds = map.getBounds();
+
+        const hits = routeLines
+            .filter(line => isLineVisible(line, bounds))
+            .filter(line => isNearLine(map, e.latlng, line));
+
+        if (hits.length) {
+            hoverTooltip
+                .setContent(hits.map(l => l.routeName).join(', '))
+                .addTo(map);
+        } else {
+            map.removeLayer(hoverTooltip);
+        }
+    }, 100); 
+});
