@@ -11,6 +11,7 @@ let stopLayer = L.layerGroup().addTo(map);
 
 let selectedStop;
 let selectedRouteLine;
+let selectedStopMarker;
 
 const warn = document.getElementById("warning")
 
@@ -20,10 +21,16 @@ let defaultLine = {
     opacity: .35
 }
 
-const busIcon = L.icon({
-    iconUrl: '/images/bus-icon.png',
-    iconSize: [30, 30],
+const stopIcon = L.icon({
+    iconUrl: '/images/stop-icon.png',
+    iconSize: [20, 20],
 });
+
+const selectedStopIcon = L.icon({
+    iconUrl: '/images/selected-stop-icon.png',
+    iconSize: [25, 25],
+});
+
 
 function initMap() {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -41,7 +48,7 @@ async function loadArrivals() {
 
     info.style.display = "block";
 
-    const res = await fetch(`/api/arrivals?stop_id=${selectedStop}`);
+    const res = await fetch(`/api/arrivals?stop_id=1_${selectedStop}`);
     const data = await res.json();
 
     const { stopName, arrivals, direction } = data;
@@ -125,15 +132,27 @@ async function updateStops() {
     
     stops.forEach((stop) => {
         const coords = [stop.lat, stop.lon];
-        const marker = L.marker(coords, { icon: busIcon }).addTo(map)
+        const marker = L.marker(coords, { icon: stopIcon }).addTo(map)
             .bindTooltip(stop.name);
+        
+        if (selectedStop === stop.stop_id) {
+            marker.setIcon(selectedStopIcon);
+            selectedStopMarker = marker;
+        }
         
         marker.stopData = stop;
 
         stopLayer.addLayer(marker);
 
         marker.on('click', () => {
-            selectedStop = `1_${stop.stop_id}`
+            if (selectedStopMarker) {
+                selectedStopMarker.setIcon(stopIcon);
+            }
+
+            marker.setIcon(selectedStopIcon);
+            selectedStopMarker = marker;
+            selectedStop = stop.stop_id;
+
             loadArrivals();
         });
     });
