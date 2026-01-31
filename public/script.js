@@ -7,44 +7,46 @@ let map = L.map('map', {
 let routeLine;
 let userLocation;
 let routeLines = [];
-let selectedRouteLine;
 let stopLayer = L.layerGroup().addTo(map);
+
+let selectedStop;
+let selectedRouteLine;
 
 const warn = document.getElementById("warning")
 
 let defaultLine = {
-    color: "#ff0000",
+    color: "#6589ff",
     weight: 4,
-    opacity: 0.3
+    opacity: .35
 }
 
-let selectedLine = {
-    color: "#0008ff",
-    weight: 5.5,
-    opacity: 0.8
-}
-
+const busIcon = L.icon({
+    iconUrl: '/images/bus-icon.png',
+    iconSize: [30, 30],
+});
 
 function initMap() {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; CARTO'
     }).addTo(map);
-
-    map.on("click", () => {
-        if (selectedRouteLine) {
-            selectedRouteLine.setStyle(defaultLine);
-            selectedRouteLine = null;
-        }
-    });
 }
 
 async function loadArrivals() {
-    const res = await fetch("/api/arrivals");
+    const info = document.getElementById("data");
+
+    if (!selectedStop) {
+        info.style.display = "none";
+        return;
+    }
+
+    info.style.display = "block";
+
+    const res = await fetch(`/api/arrivals?stop_id=${selectedStop}`);
     const data = await res.json();
 
-    const { stopName, arrivals, shape } = data;
+    const { stopName, arrivals, direction } = data;
 
-    document.getElementById("stopName").textContent = `Stop: ${stopName}`;
+    document.getElementById("stopName").innerHTML = `${stopName} <span class="direction">(${direction} bound)</span>`;
 
     const list = document.getElementById("arrivals");
     list.innerHTML = "";
@@ -53,6 +55,7 @@ async function loadArrivals() {
         const li = document.createElement("li");
 
         const arrivalTime = a.predictedArrivalTime || a.scheduledArrivalTime;
+
 
         const minutes = Math.round((arrivalTime - Date.now()) / 60000)
 
@@ -67,17 +70,6 @@ async function loadArrivals() {
 
         list.appendChild(li);
     });
-}
-
-function highlightRoute(line) {
-    routeLines.forEach(l => {
-        l.setStyle(defaultLine);
-    });
-
-    line.setStyle(selectedLine);
-
-    line.bringToFront();
-    selectedRouteLine = line;
 }
 
 
@@ -108,15 +100,9 @@ async function updateLines() {
             .bindTooltip(`${routeShape.name ? routeShape.name : "Unnamed Route"}`, { sticky: true })
             .addTo(map);
 
-        line.on("click", async (e) => {
-            e.originalEvent.stopPropagation();
-            highlightRoute(line);
-        });
-
         routeLines.push(line);
     });   
 }
-
 
 async function updateStops() {
 
@@ -130,7 +116,7 @@ async function updateStops() {
 
     const stops = await res.json();
 
-    if (stops.length > 300) {
+    if (stops.length > 400) {
         warn.style.display = "block";
         return;
     };
@@ -139,10 +125,17 @@ async function updateStops() {
     
     stops.forEach((stop) => {
         const coords = [stop.lat, stop.lon];
-        const marker = L.marker(coords).addTo(map)
+        const marker = L.marker(coords, { icon: busIcon }).addTo(map)
             .bindTooltip(stop.name);
+        
+        marker.stopData = stop;
 
         stopLayer.addLayer(marker);
+
+        marker.on('click', () => {
+            selectedStop = `1_${stop.stop_id}`
+            loadArrivals();
+        });
     });
 }
 
