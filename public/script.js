@@ -18,21 +18,21 @@ let hoverTimeout;
 const warn = document.getElementById("warning")
 
 let defaultLine = {
-    color: "#6589ff",
+    color: "#6FADCA",
     weight: 4,
-    opacity: .35
+    opacity: .333
 }
 
 const hoverTooltip = L.tooltip({ sticky: true });
 
 const stopIcon = L.icon({
     iconUrl: '/images/stop-icon.png',
-    iconSize: [20, 20],
+    iconSize: [30, 30],
 });
 
 const selectedStopIcon = L.icon({
     iconUrl: '/images/selected-stop-icon.png',
-    iconSize: [25, 25],
+    iconSize: [40, 40],
 });
 
 
@@ -43,7 +43,11 @@ function initMap() {
 }
 
 async function loadArrivals() {
+
     const info = document.getElementById("data");
+    const list = document.getElementById("arrivals");
+    const name = document.getElementById("stopName");
+    const routesText = document.getElementById("routes");
 
     if (!selectedStop) {
         info.style.display = "none";
@@ -51,13 +55,14 @@ async function loadArrivals() {
     }
 
     info.style.display = "block";
+    routesText.textContent = "Retriving data...";
+    list.innerHTML = "";
+    name.innerHTML = "";
+    
 
     const res = await fetch(`/api/arrivals?stop_id=1_${selectedStop}`);
     const data = await res.json();
 
-    const list = document.getElementById("arrivals");
-    const name = document.getElementById("stopName");
-    const routesText = document.getElementById("routes");
 
     const { routes, stopName, arrivals, direction } = data;
     console.log(routes);
@@ -68,8 +73,6 @@ async function loadArrivals() {
         name.innerHTML = `${stopName} <span class="direction">(${direction} bound)</span>`;
     }
 
-
-    list.innerHTML = "";
 
     if (!stopName) {
         name.innerHTML = "";
@@ -101,11 +104,17 @@ async function loadArrivals() {
             li.textContent = `${a.routeShortName} arriving now.`
         }
 
+        if (arrivalTime == a.scheduledArrivalTime) {
+            li.innerHTML = `${li.textContent} <span class="scheduledArrival">(scheduled)</span>`
+        } else {
+            li.classList.add("confirmedArrival");
+        }
+
+
 
         list.appendChild(li);
     });
 
-    routesText.textContent = "";
     if (!routes[0].data.entry.shortName) return;
     const routesData = routes.map(item => item.data.entry.shortName);
     routesText.textContent = `Serving ${routesData.join(", ")}`;
@@ -157,7 +166,7 @@ async function updateStops() {
 
     const stops = await res.json();
 
-    if (stops.length > 400) {
+    if (stops.length > 750) {
         warn.style.display = "block";
         return;
     };
@@ -242,4 +251,16 @@ map.on('mousemove', e => {
             map.removeLayer(hoverTooltip);
         }
     }, 100); 
+});
+
+map.on('click', (e) => {
+    if (selectedStopMarker) {
+        selectedStopMarker.setIcon(stopIcon); // reset previous marker icon
+        selectedStopMarker = null;
+    }
+    selectedStop = null;
+
+    // Hide the arrivals info panel
+    const info = document.getElementById("data");
+    info.style.display = "none";
 });
