@@ -45,6 +45,7 @@ function initMap() {
 async function loadArrivals() {
 
     const info = document.getElementById("data");
+    const line = document.getElementById("solid");
     const list = document.getElementById("arrivals");
     const name = document.getElementById("stopName");
     const routesText = document.getElementById("routes");
@@ -58,6 +59,7 @@ async function loadArrivals() {
     routesText.textContent = "Retriving data...";
     list.innerHTML = "";
     name.innerHTML = "";
+    line.style.display = "none";
     
 
     const res = await fetch(`/api/arrivals?stop_id=1_${selectedStop}`);
@@ -84,6 +86,8 @@ async function loadArrivals() {
         list.appendChild(li);
         return;
     }
+
+    line.style.display = "block";
 
     shortArrivals = arrivals.slice(0, 9);
 
