@@ -34,6 +34,7 @@ const client = new OnebusawaySDK({
 });
 
 app.use(express.static("public"));
+app.head("/", (req, res) => res.status(200).end());
 
 app.get("/api/arrivals", async (req, res) => {
     try {
