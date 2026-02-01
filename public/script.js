@@ -55,14 +55,37 @@ async function loadArrivals() {
     const res = await fetch(`/api/arrivals?stop_id=1_${selectedStop}`);
     const data = await res.json();
 
-    const { stopName, arrivals, direction } = data;
-
-    document.getElementById("stopName").innerHTML = `${stopName} <span class="direction">(${direction} bound)</span>`;
-
     const list = document.getElementById("arrivals");
+    const name = document.getElementById("stopName");
+    const routesText = document.getElementById("routes");
+
+    const { routes, stopName, arrivals, direction } = data;
+    console.log(routes);
+
+    if (!direction) {
+        name.innerHTML = `${stopName}`;
+    } else {
+        name.innerHTML = `${stopName} <span class="direction">(${direction} bound)</span>`;
+    }
+
+
     list.innerHTML = "";
 
-    arrivals.forEach(a => {
+    if (!stopName) {
+        name.innerHTML = "";
+    }
+
+    if (!arrivals || arrivals.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "This route does not provide real-time data :("
+        list.appendChild(li);
+        return;
+    }
+
+    shortArrivals = arrivals.slice(0, 9);
+
+
+    shortArrivals.forEach(a => {
         const li = document.createElement("li");
 
         const arrivalTime = a.predictedArrivalTime || a.scheduledArrivalTime;
@@ -81,6 +104,11 @@ async function loadArrivals() {
 
         list.appendChild(li);
     });
+
+    routesText.textContent = "";
+    if (!routes[0].data.entry.shortName) return;
+    const routesData = routes.map(item => item.data.entry.shortName);
+    routesText.textContent = `Serving ${routesData.join(", ")}`;
 }
 
 
@@ -139,7 +167,6 @@ async function updateStops() {
     stops.forEach((stop) => {
         const coords = [stop.lat, stop.lon];
         const marker = L.marker(coords, { icon: stopIcon }).addTo(map)
-            .bindTooltip(stop.name);
         
         if (selectedStop === stop.stop_id) {
             marker.setIcon(selectedStopIcon);

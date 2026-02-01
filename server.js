@@ -42,17 +42,19 @@ app.get("/api/arrivals", async (req, res) => {
         const stop = await client.stop.retrieve(stopId);
         const arrivalsList = await client.arrivalAndDeparture.list(stopId, 
             {
-                minutesBefore: 5,
-                minutesAfter: 60,
-                maxArrivals: 5
+                minutesBefore: 0,
+                minutesAfter: 60
             }
         );
 
         const stopName = stop.data.entry.name;
         const arrivals = arrivalsList.data.entry.arrivalsAndDepartures;
         const direction = stop.data.entry.direction;
+        
+        const routes = await Promise.all(stop.data.entry.routeIds.map(route => client.route.retrieve(route))
+);
 
-        res.json({ stopName, arrivals, direction });
+        res.json({ routes, stopName, arrivals, direction });
     } catch (err) {
         console.error("API fetch failed:", err);
         res.status(500).json({ error: "Failed to fetch arrivals" });
