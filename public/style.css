@@ -4,42 +4,77 @@
     padding: 0;
 }
 
+
+
 #map {
     height: 100vh; 
     width: 100vw;
 }
 
-.info {
-    position: absolute;
-    z-index: 1000;
+.direction {
+    color: #b0b9bd;
 }
 
-.direction {
-    color: #b1b1b1;
+.scheduledArrival {
+    color: #b0b9bd;
+}
+
+.confirmedArrival:after {
+    content: "";   
+
+    
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+
+    background-image: url(images/live-arrival.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    margin-left: 0.2em;
 }
 
 #data {
     left: 80px;
     top: 80px;
-    background-color: #ffffff;
+}
+
+#att {
+    left: 80px;
+    bottom: 80px;
+}
+
+.info {
+    position: absolute;
+    z-index: 1000;
+    border-radius: 3px;
+    background: #ffffff2c;
+
+    outline: 3px solid #b0b9bd;
+
+    backdrop-filter: blur(20px);
 
     padding: 20px;
 }
 
+
 #warning {
-    text-align: center;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 20%;
-    bottom: 50px;
-    background-color: #ffffff;
-    padding: 20px;
+    right: 80px;
+    bottom: 80px;
 
     display: none;
+
+    background: #ffffff;
 }
 
 li {
     text-decoration: none;
     list-style-type: none;
+}
+
+hr.solid {
+  border: 1.5px solid #b0b9bd;
+  margin: 10px 0;
 }
