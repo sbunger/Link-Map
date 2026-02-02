@@ -39,12 +39,18 @@ let selectedStopIcon = L.icon({
     iconSize: [40, 40],
 });
 
+const savedTheme = localStorage.getItem("theme");
 
 
 function initMap() {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; CARTO'
     }).addTo(map);
+    if (savedTheme === "dark") {
+        
+    darkMode();
+        isDarkMode = true;
+    }
 }
 
 function switchMode() {
@@ -85,6 +91,12 @@ function lightMode() {
     document.querySelectorAll('.info').forEach(el => {
         el.classList.remove('dark');
     });
+
+    document.querySelectorAll(".leaflet-container").forEach(e => {
+        e.style.backgroundColor = "#b8bdbe";
+    });
+
+    localStorage.setItem("theme", "light");
 }
 
 function darkMode() {
@@ -106,6 +118,12 @@ function darkMode() {
     document.querySelectorAll('.info').forEach(el => {
         el.classList.add('dark');
     });
+    
+    document.querySelectorAll(".leaflet-container").forEach(e => {
+        e.style.backgroundColor = "#151515";
+    });
+
+    localStorage.setItem("theme", "dark");
 }
 
 async function loadArrivals() {
