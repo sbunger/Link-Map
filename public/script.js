@@ -1,7 +1,8 @@
 let map = L.map('map', {
     center: [47.6, -122.33],
     zoom: 13,
-    preferCanvas: true
+    preferCanvas: true,
+    zoomControl: false
 });
 
 let routeLine;

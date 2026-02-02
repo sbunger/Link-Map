@@ -114,3 +114,22 @@ li {
   border: 1.5px solid #b0b9bd;
   margin: 10px 0;
 }
+
+.leaflet-control-attribution {
+    background-color: #40515a6a !important;
+    color: white !important;
+    font-size: 12px;
+
+    right: 5px;
+    bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 3px;
+
+    text-decoration: none;
+    backdrop-filter: blur(7px);
+}
+
+.leaflet-control-attribution a {
+    color: white;  
+    font-weight: 500;
+}
