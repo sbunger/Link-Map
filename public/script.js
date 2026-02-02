@@ -13,9 +13,12 @@ let selectedStop;
 let selectedRouteLine;
 let selectedStopMarker;
 
+let isDarkMode = false;
+
 let hoverTimeout;
 
-const warn = document.getElementById("warning")
+const warn = document.getElementById("warning");
+const button = document.getElementById("modeSwap");
 
 let defaultLine = {
     color: "#6FADCA",
@@ -25,21 +28,83 @@ let defaultLine = {
 
 const hoverTooltip = L.tooltip({ sticky: true });
 
-const stopIcon = L.icon({
+let stopIcon = L.icon({
     iconUrl: '/images/stop-icon.png',
     iconSize: [30, 30],
 });
 
-const selectedStopIcon = L.icon({
+let selectedStopIcon = L.icon({
     iconUrl: '/images/selected-stop-icon.png',
     iconSize: [40, 40],
 });
+
 
 
 function initMap() {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; CARTO'
     }).addTo(map);
+}
+
+function switchMode() {
+
+    map.eachLayer(function(layer) {
+        if (layer instanceof L.TileLayer) {
+            map.removeLayer(layer);
+        }
+    });
+
+    if (isDarkMode) {
+        isDarkMode = false;
+        lightMode();
+    } else {
+        isDarkMode = true;
+        darkMode();
+    }
+    
+    updateStops()
+}
+
+function lightMode() {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; CARTO'
+    }).addTo(map);
+
+    button.querySelector('img').src = "/images/moon.png";
+
+    stopIcon = L.icon({
+        iconUrl: '/images/stop-icon.png',
+        iconSize: [30, 30],
+    });
+    selectedStopIcon = L.icon({
+        iconUrl: '/images/selected-stop-icon.png',
+        iconSize: [40, 40],
+    });
+
+    document.querySelectorAll('.info').forEach(el => {
+        el.classList.remove('dark');
+    });
+}
+
+function darkMode() {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; CARTO'
+    }).addTo(map);
+
+    button.querySelector('img').src = "/images/sun.png";
+
+    stopIcon = L.icon({
+        iconUrl: '/images/stop-icon-dark.png',
+        iconSize: [30, 30],
+    });
+    selectedStopIcon = L.icon({
+        iconUrl: '/images/selected-stop-icon-dark.png',
+        iconSize: [40, 40],
+    });
+
+    document.querySelectorAll('.info').forEach(el => {
+        el.classList.add('dark');
+    });
 }
 
 async function loadArrivals() {
@@ -56,7 +121,7 @@ async function loadArrivals() {
     }
 
     info.style.display = "block";
-    routesText.textContent = "Retriving data...";
+    routesText.innerHTML = "Retriving data...";
     list.innerHTML = "";
     name.innerHTML = "";
     line.style.display = "none";
@@ -82,7 +147,7 @@ async function loadArrivals() {
 
     if (!arrivals || arrivals.length === 0) {
         const li = document.createElement("li");
-        li.textContent = "This route does not provide real-time data :("
+        li.innerHTML = "This route does not provide real-time data :("
         list.appendChild(li);
         return;
     }
@@ -101,15 +166,15 @@ async function loadArrivals() {
         const minutes = Math.round((arrivalTime - Date.now()) / 60000)
 
         if (minutes < 0) {
-            li.textContent = `${a.routeShortName} arrived ${(minutes * -1)} minutes ago.`
+            li.innerHTML = `${a.routeShortName} arrived ${(minutes * -1)} minutes ago.`
         } else if (minutes > 0) {
-            li.textContent = `${a.routeShortName} arriving in ${minutes} minutes.`
+            li.innerHTML = `${a.routeShortName} arriving in ${minutes} minutes.`
         } else {
-            li.textContent = `${a.routeShortName} arriving now.`
+            li.innerHTML = `${a.routeShortName} arriving now.`
         }
 
         if (arrivalTime == a.scheduledArrivalTime) {
-            li.innerHTML = `${li.textContent} <span class="scheduledArrival">(scheduled)</span>`
+            li.innerHTML = `${li.innerHTML} <span class="scheduledArrival">(scheduled)</span>`
         } else {
             li.classList.add("confirmedArrival");
         }
@@ -119,9 +184,12 @@ async function loadArrivals() {
         list.appendChild(li);
     });
 
-    if (!routes[0].data.entry.shortName) return;
+    if (!routes[0].data.entry.shortName) {
+        routesText.innerHTML = "";
+        return;
+    };
     const routesData = routes.map(item => item.data.entry.shortName);
-    routesText.textContent = `Serving ${routesData.join(", ")}`;
+    routesText.innerHTML = `Serving ${routesData.join(", ")}`;
 }
 
 
@@ -211,6 +279,8 @@ window.onload = () => {
     updateStops();
 
     updateLines();
+
+    button.addEventListener("click", switchMode);
 
     setInterval(loadArrivals, 30000);
 };
