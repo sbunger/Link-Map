@@ -37,6 +37,8 @@ app.use(express.static("public"));
 app.head("/", (req, res) => res.status(200).end());
 
 app.get("/api/arrivals", async (req, res) => {
+    // using OBA
+    // update arrivals for a stop
     try {
         const stopId = req.query.stop_id;
                 
@@ -63,6 +65,8 @@ app.get("/api/arrivals", async (req, res) => {
 });
 
 app.get("/api/routes-nearby", async (req, res) => {
+    // using GTFS
+    // get all routes
     try {
         const routes = await getRoutes();
         const shapes = [];
@@ -101,8 +105,11 @@ app.get("/api/routes-nearby", async (req, res) => {
 });
 
 app.get("/api/stops-nearby", async (req, res) => {
+    // using GTFS
+    // get stops with bounds
     try {
         const bbox = req.query.bbox;
+        if (!bbox) return;
 
         const [west, south, east, north] = bbox.split(",").map(Number);
 
@@ -128,6 +135,31 @@ app.get("/api/stops-nearby", async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Failed to load nearby stops" });
+    }
+});
+
+app.get("/api/vehicles", async (req, res) => {
+    // using OBA, GTFS
+    // get live vehicles
+    try {
+        const vehicleResponse = await client.vehiclesForAgency.list(1);
+        const allVehicles = vehicleResponse.data.list;
+        
+        const result = await Promise.all(allVehicles.map(async v => {
+            return {
+                id: v.vehicleId,
+                lat: v.location?.lat,
+                lon: v.location?.lon,
+                bearing: v.tripStatus?.orientation || 0,
+                tripId: v.tripId,
+                status: v.status
+            };
+        }));
+
+        res.json(result);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Failed to fetch vehicles" });
     }
 });
 

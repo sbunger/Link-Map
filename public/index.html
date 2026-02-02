@@ -11,7 +11,10 @@
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <script src="https://unpkg.com/@mapbox/polyline@1.1.1/src/polyline.js"></script>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+        <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 
         <title>Link Map</title>
         <link rel="stylesheet" href="style.css">
@@ -20,9 +23,13 @@
     <body>
         <div class="info" id="data">
             <h2 id="stopName"></h2>
-            <hr id="solid">
+            <hr id="solid"/>
             <h3 id="routes"></h3>
             <ul id="arrivals"></ul>
+        </div>
+
+        <div class="info" id="options">
+            <h2>Options</h1>
         </div>
 
         <div class="info" id="warning">
