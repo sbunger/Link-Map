@@ -36,15 +36,45 @@
     margin-left: 0.2em;
 }
 
+.custom-cluster-icon {
+    background-image: url(images/bus-group.png);
+    background-size: 100%;
+    opacity: 75%;
+
+    color: #ffffff;
+    width: 12px;
+    height: 12px;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    
+    font-weight: bold;
+    font-size: 14px;
+    
+    z-index: 7000 !important;
+
+    transition: transform 0.2s;
+}
+
 #data {
     left: 80px;
     top: 80px;
+
+    display: none;
 }
 
 #att {
     left: 80px;
     bottom: 80px;
     height: 25px;
+}
+
+#options {
+    right: 80px;
+    top: 80px;
+    
+    display: none;
 }
 
 #modeSwap {
@@ -89,7 +119,7 @@
 .info {
     align-content: center;
     position: absolute;
-    z-index: 1000;
+    z-index: 10000;
     border-radius: 3px;
     background: #ffffff2c;
 

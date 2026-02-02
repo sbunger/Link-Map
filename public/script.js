@@ -2,24 +2,52 @@ let map = L.map('map', {
     center: [47.6, -122.33],
     zoom: 13,
     preferCanvas: true,
-    zoomControl: false
+    zoomControl: false,
+    maxZoom: 18
 });
+
+map.createPane('vehiclePane');
+map.getPane('vehiclePane').style.zIndex = 7000
 
 let routeLine;
 let userLocation;
 let routeLines = [];
+
 let stopLayer = L.layerGroup().addTo(map);
+let pinnedStopLayer = L.layerGroup().addTo(map);
+let routeLayer = L.layerGroup().addTo(map);
+
+let vehicleLayer = L.markerClusterGroup({
+    spiderfyOnMaxZoom: false,
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true,
+    maxClusterRadius: 40,
+    pane: 'vehiclePane',
+    iconCreateFunction: function(cluster) {
+        const count = cluster.getChildCount();
+        return L.divIcon({
+            html: `<div class="cluster-count">${count}</div>`,
+            className: 'custom-cluster-icon',
+            iconSize: [30, 30]
+        });
+    }
+});
+
+
+map.addLayer(vehicleLayer);
 
 let selectedStop;
-let selectedRouteLine;
 let selectedStopMarker;
 
 let isDarkMode = false;
+let renderBusses = true;
 
 let hoverTimeout;
 
 const warn = document.getElementById("warning");
 const button = document.getElementById("modeSwap");
+
+const savedTheme = localStorage.getItem("theme");
 
 let defaultLine = {
     color: "#6FADCA",
@@ -31,15 +59,19 @@ const hoverTooltip = L.tooltip({ sticky: true });
 
 let stopIcon = L.icon({
     iconUrl: '/images/stop-icon.png',
-    iconSize: [30, 30],
+    iconSize: [24, 24],
 });
 
 let selectedStopIcon = L.icon({
     iconUrl: '/images/selected-stop-icon.png',
-    iconSize: [40, 40],
+    iconSize: [34, 34],
 });
 
-const savedTheme = localStorage.getItem("theme");
+const busIcon = L.icon({
+    iconUrl: "/images/bus.png",
+    iconSize: [20, 20],
+});
+
 
 
 function initMap() {
@@ -47,7 +79,7 @@ function initMap() {
         attribution: '&copy; CARTO'
     }).addTo(map);
     if (savedTheme === "dark") {
-        
+
     darkMode();
         isDarkMode = true;
     }
@@ -69,7 +101,12 @@ function switchMode() {
         darkMode();
     }
     
-    updateStops()
+    selectedStop = null;
+    selectedStopMarker = null;
+    pinnedStopLayer.clearLayers();
+
+    loadArrivals();
+    updateStops();
 }
 
 function lightMode() {
@@ -81,11 +118,11 @@ function lightMode() {
 
     stopIcon = L.icon({
         iconUrl: '/images/stop-icon.png',
-        iconSize: [30, 30],
+        iconSize: [24, 24],
     });
     selectedStopIcon = L.icon({
         iconUrl: '/images/selected-stop-icon.png',
-        iconSize: [40, 40],
+        iconSize: [34, 34],
     });
 
     document.querySelectorAll('.info').forEach(el => {
@@ -108,11 +145,11 @@ function darkMode() {
 
     stopIcon = L.icon({
         iconUrl: '/images/stop-icon-dark.png',
-        iconSize: [30, 30],
+        iconSize: [24, 24],
     });
     selectedStopIcon = L.icon({
         iconUrl: '/images/selected-stop-icon-dark.png',
-        iconSize: [40, 40],
+        iconSize: [34, 34],
     });
 
     document.querySelectorAll('.info').forEach(el => {
@@ -151,7 +188,6 @@ async function loadArrivals() {
 
 
     const { routes, stopName, arrivals, direction } = data;
-    console.log(routes);
 
     if (!direction) {
         name.innerHTML = `${stopName}`;
@@ -211,17 +247,14 @@ async function loadArrivals() {
     routesText.innerHTML = `Serving ${routesData.join(", ")}`;
 }
 
-
-
 async function updateLines() {
     
     const res = await fetch(
         `/api/routes-nearby`
     );
-
     const routes = await res.json();
 
-    routeLines.forEach(line => map.removeLayer(line));
+    routeLayer.clearLayers();
     routeLines = [];
 
     routes.forEach((routeShape, index) => {
@@ -230,7 +263,7 @@ async function updateLines() {
             (a, b) => a.shape_pt_sequence - b.shape_pt_sequence
         );
         
-        let coords = routeShape.shape.map(point => [
+        const coords = routeShape.shape.map(point => [
             point.shape_pt_lat,
             point.shape_pt_lon,
         ]);
@@ -240,71 +273,110 @@ async function updateLines() {
 
         line.routeName = routeShape.name ?? "Unnamed Route"; 
         line.latLngs = line.getLatLngs();
+        line.routeId = routeShape.route_id;
 
+        routeLayer.addLayer(line);
         routeLines.push(line);
     });   
 }
 
 async function updateStops() {
-
     const bounds = map.getBounds();
 
     const res = await fetch(
         `/api/stops-nearby?bbox=${bounds.toBBoxString()}`
     );
-
-    stopLayer.clearLayers();
-
     const stops = await res.json();
 
-    if (stops.length > 750) {
+    const newLayer = L.layerGroup();
+
+    if (stops.length > 600) {
         warn.style.display = "block";
+        stopLayer.clearLayers();
         return;
     };
-
     warn.style.display = "none";
     
     stops.forEach((stop) => {
+        if (selectedStop === stop.stop_id) return;
+
         const coords = [stop.lat, stop.lon];
         const marker = L.marker(coords, { icon: stopIcon }).addTo(map)
         
-        if (selectedStop === stop.stop_id) {
-            marker.setIcon(selectedStopIcon);
-            selectedStopMarker = marker;
-        }
-        
         marker.stopData = stop;
+        newLayer.addLayer(marker);
 
-        stopLayer.addLayer(marker);
 
-        marker.on('click', () => {
-            if (selectedStopMarker) {
-                selectedStopMarker.setIcon(stopIcon);
-            }
+        marker.on('click', (e) => {
+            L.DomEvent.stopPropagation(e);
 
-            marker.setIcon(selectedStopIcon);
-            selectedStopMarker = marker;
+            pinnedStopLayer.clearLayers();
+
+            selectedStopMarker = L.marker(coords, {
+                icon: selectedStopIcon
+            }).addTo(pinnedStopLayer);
+
             selectedStop = stop.stop_id;
 
             loadArrivals();
+            updateStops();
         });
     });
+    stopLayer.clearLayers();
+    stopLayer.addLayer(newLayer);
+}
+
+
+async function updateVehicles() {
+    if (!renderBusses) {
+        vehicleLayer.clearLayers();
+        return;
+    };
+
+    const res = await fetch(`/api/vehicles`);
+    const vehicles = await res.json();
+
+    const newLayer = L.layerGroup();
+    const bounds = map.getBounds(); 
+
+    vehicles.forEach(v => {
+        if (!v.lat || !v.lon) return;
+
+        const latlng = L.latLng(v.lat, v.lon);
+
+        if (bounds.contains(latlng)) {
+            const marker = L.marker(latlng, { 
+                icon: busIcon,
+                pane: 'vehiclePane',
+                opacity: 0.75,
+                interactive: false
+            });
+            newLayer.addLayer(marker);
+        }
+    });
+
+    vehicleLayer.clearLayers();
+    vehicleLayer.addLayer(newLayer);
 }
 
 
 window.onload = () => {
     initMap();
-    loadArrivals();
     updateStops();
+    updateVehicles();
 
     updateLines();
 
     button.addEventListener("click", switchMode);
 
     setInterval(loadArrivals, 30000);
+    setInterval(updateVehicles, 15000);
 };
 
-map.on("moveend", updateStops);
+map.on("moveend", () => {
+    updateStops();
+    updateVehicles();
+});
 
 function isNearLine(map, latlng, polyline, tolerance = 8) {
     const point = map.latLngToLayerPoint(latlng);
@@ -348,12 +420,14 @@ map.on('mousemove', e => {
 
 map.on('click', (e) => {
     if (selectedStopMarker) {
-        selectedStopMarker.setIcon(stopIcon); // reset previous marker icon
+        selectedStopMarker.setIcon(stopIcon);
         selectedStopMarker = null;
     }
     selectedStop = null;
 
-    // Hide the arrivals info panel
+    pinnedStopLayer.clearLayers();
+
     const info = document.getElementById("data");
     info.style.display = "none";
+    updateStops();
 });
