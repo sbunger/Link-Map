@@ -11,12 +11,35 @@
     width: 100vw;
 }
 
+.info {
+    align-content: center;
+    position: absolute;
+    z-index: 10000;
+    border-radius: 3px;
+    background: #ffffff2c;
+
+    color: #202F37;
+
+    outline: 3px solid #b0b9bd;
+
+    backdrop-filter: blur(20px);
+
+    padding: 14px;
+
+    transition: all 0.5s;
+}
+
 .direction {
-    color: #b0b9bd;
+    color: #92999d;
+}
+
+.info a {
+    color: #92999d;
+    text-decoration: underline wavy;
 }
 
 .scheduledArrival {
-    color: #b0b9bd;
+    color: #92999d;
 }
 
 .confirmedArrival:after {
@@ -53,15 +76,23 @@
     font-size: 14px;
     
     z-index: 7000 !important;
-
-    transition: transform 0.2s;
 }
 
 #data {
     left: 80px;
     top: 80px;
 
+    max-height: 400px;
+    overflow-y: auto;
     display: none;
+}
+
+#data li {
+    margin-top: 10px
+}
+
+#data li b {
+    font-weight: 600;
 }
 
 #att {
@@ -70,13 +101,11 @@
     height: 25px;
 }
 
-
-
 #options {
     left: 80px;
     bottom: 80px;
 
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
 }
@@ -148,9 +177,16 @@
 
 
 #modeSwap {
-    right: 580px;
+    right: 460px;
     top: 80px;
+}
 
+#settingsButton {
+    right: 535px;
+    top: 80px;
+}
+
+.circle {
     height: 25px;
     width: 25px;
 
@@ -163,11 +199,11 @@
     transition: transform .25s;
 }
 
-#modeSwap:hover {
+.circle:hover {
     transform: scale(1.15);
 }
 
-#modeSwap img {
+.circle img {
     width: 100%;
     transform: scale(1.5);
 }
@@ -185,25 +221,6 @@
     background: #202f37;
 }
 
-
-.info {
-    align-content: center;
-    position: absolute;
-    z-index: 10000;
-    border-radius: 3px;
-    background: #ffffff2c;
-
-    color: #202F37;
-
-    outline: 3px solid #b0b9bd;
-
-    backdrop-filter: blur(20px);
-
-    padding: 14px;
-
-    transition: all 0.5s;
-}
-
 .info.dark {
     outline: 3px solid #40515A;
     color: #d6dbe1;
@@ -216,6 +233,8 @@ li {
     text-decoration: none;
     list-style-type: none;
 }
+
+
 
 #solid {
   border: 1.5px solid #b0b9bd;
@@ -245,12 +264,3 @@ li {
     background-color:#b0b9bd;
 }
 
-#hide {
-    color: #b0b9bd;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-#hide:hover {
-    text-decoration: underline;
-}

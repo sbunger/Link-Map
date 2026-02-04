@@ -48,13 +48,14 @@ let hoverTimeout;
 const warn = document.getElementById("warning");
 const button = document.getElementById("modeSwap");
 
+const optionsButton = document.getElementById("settingsButton");
+
+
 const vehiclesToggle = document.getElementById("toggleVehicles");
 const stopsToggle = document.getElementById("toggleStops");
 
-const hideOptions = document.getElementById("hide");
-
 const savedTheme = localStorage.getItem("theme");
-const showOptions = localStorage.getItem("showOptions");
+let showOptions = localStorage.getItem("showOptions") !== "false";
 
 let defaultLine = {
     color: "#6FADCA",
@@ -120,6 +121,7 @@ function lightMode() {
     }).addTo(map);
 
     button.querySelector('img').src = "/images/moon.png";
+    optionsButton.querySelector('img').src = "/images/gear-dark.png";
 
     stopIcon = L.icon({
         iconUrl: '/images/stop-icon.png',
@@ -147,6 +149,7 @@ function darkMode() {
     }).addTo(map);
 
     button.querySelector('img').src = "/images/sun.png";
+    optionsButton.querySelector('img').src = "/images/gear.png";
 
     stopIcon = L.icon({
         iconUrl: '/images/stop-icon-dark.png',
@@ -218,19 +221,21 @@ async function loadArrivals() {
 
 
     shortArrivals.forEach(a => {
+        console.log(a.tripHeadsign);
+
         const li = document.createElement("li");
 
         const arrivalTime = a.predictedArrivalTime || a.scheduledArrivalTime;
 
 
-        const minutes = Math.round((arrivalTime - Date.now()) / 60000)
+        const minutes = Math.round((arrivalTime - Date.now()) / 60000);
 
         if (minutes < 0) {
-            li.innerHTML = `${a.routeShortName} arrived ${(minutes * -1)} minutes ago.`
+            li.innerHTML = `<b>${a.routeShortName} arrived ${(minutes * -1)} minutes ago</b>`
         } else if (minutes > 0) {
-            li.innerHTML = `${a.routeShortName} arriving in ${minutes} minutes.`
+            li.innerHTML = `<b>${a.routeShortName} arriving in ${minutes} minutes</b><br>${a.tripHeadsign}`
         } else {
-            li.innerHTML = `${a.routeShortName} arriving now.`
+            li.innerHTML = `<b>${a.routeShortName} arriving now</b><br>${a.tripHeadsign}.`
         }
 
         if (arrivalTime == a.scheduledArrivalTime) {
@@ -405,9 +410,20 @@ stopsToggle.addEventListener("change", function () {
 });
 
 function optionsManager() {
-    hideOptions.addEventListener("click", () => {
-        options.style.display = "none";
-        localStorage.setItem("showOptions", "false");
+    if (showOptions) {
+        options.style.display = "flex";
+    }
+
+    optionsButton.addEventListener("click", () => {
+        if (showOptions) {
+            options.style.display = "none";
+            localStorage.setItem("showOptions", "false");
+            showOptions = false;
+        } else {
+            options.style.display = "flex";
+            localStorage.setItem("showOptions", "true");
+            showOptions = true;
+        }
     });
 }
 

@@ -45,8 +45,8 @@ app.get("/api/arrivals", async (req, res) => {
         const stop = await client.stop.retrieve(stopId);
         const arrivalsList = await client.arrivalAndDeparture.list(stopId, 
             {
-                minutesBefore: 0,
-                minutesAfter: 60
+                minutesBefore: 1,
+                minutesAfter: 60,
             }
         );
 
@@ -92,7 +92,7 @@ app.get("/api/routes-nearby", async (req, res) => {
                 shape: shape,
                 name: route.route_short_name,
                 route_id: route.route_id,
-                route_color: route.route_color,
+                route_color: route.route_color
             });
         }
 
