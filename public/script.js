@@ -41,13 +41,20 @@ let selectedStopMarker;
 
 let isDarkMode = false;
 let renderBusses = true;
+let renderStops = true;
 
 let hoverTimeout;
 
 const warn = document.getElementById("warning");
 const button = document.getElementById("modeSwap");
 
+const vehiclesToggle = document.getElementById("toggleVehicles");
+const stopsToggle = document.getElementById("toggleStops");
+
+const hideOptions = document.getElementById("hide");
+
 const savedTheme = localStorage.getItem("theme");
+const showOptions = localStorage.getItem("showOptions");
 
 let defaultLine = {
     color: "#6FADCA",
@@ -79,14 +86,12 @@ function initMap() {
         attribution: '&copy; CARTO'
     }).addTo(map);
     if (savedTheme === "dark") {
-
-    darkMode();
+        darkMode();
         isDarkMode = true;
     }
 }
 
 function switchMode() {
-
     map.eachLayer(function(layer) {
         if (layer instanceof L.TileLayer) {
             map.removeLayer(layer);
@@ -281,6 +286,12 @@ async function updateLines() {
 }
 
 async function updateStops() {
+    if (!renderStops) {
+        stopLayer.clearLayers();
+        warn.style.display = "none";
+        return;
+    }
+
     const bounds = map.getBounds();
 
     const res = await fetch(
@@ -290,8 +301,9 @@ async function updateStops() {
 
     const newLayer = L.layerGroup();
 
-    if (stops.length > 600) {
+    if (stops.length > 900) {
         warn.style.display = "block";
+        warn.querySelector("h3").textContent = "Zoom in to view stops!";
         stopLayer.clearLayers();
         return;
     };
@@ -368,10 +380,36 @@ window.onload = () => {
     updateLines();
 
     button.addEventListener("click", switchMode);
+    optionsManager();
 
     setInterval(loadArrivals, 30000);
     setInterval(updateVehicles, 15000);
 };
+
+vehiclesToggle.addEventListener("change", function () {
+  if (this.checked) {
+    renderBusses = true;
+  } else {
+    renderBusses = false;
+  }
+  updateVehicles();
+});
+
+stopsToggle.addEventListener("change", function () {
+  if (this.checked) {
+    renderStops = true;
+  } else {
+    renderStops = false;
+  }
+  updateStops();
+});
+
+function optionsManager() {
+    hideOptions.addEventListener("click", () => {
+        options.style.display = "none";
+        localStorage.setItem("showOptions", "false");
+    });
+}
 
 map.on("moveend", () => {
     updateStops();
@@ -431,3 +469,4 @@ map.on('click', (e) => {
     info.style.display = "none";
     updateStops();
 });
+

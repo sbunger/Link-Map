@@ -65,21 +65,91 @@
 }
 
 #att {
-    left: 80px;
-    bottom: 80px;
+    right: 80px;
+    top: 80px;
     height: 25px;
 }
 
+
+
 #options {
-    right: 80px;
-    top: 80px;
-    
-    display: none;
+    left: 80px;
+    bottom: 80px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin-top: 10px;
+}
+
+.switch {
+    position: relative;
+    width: 42px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.option-label {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #b0b9bd;
+    opacity: 90%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.25s;
+}
+
+.info.dark .slider {
+    background: #40515A;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    top: 4px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.15s;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(18px);
+}
+
+.switch input:checked + .slider {
+    background: #6FADCA;
+}
+
+.info.dark .slider-track {
+    background: #40515A;
+}
+
+
+
+
 #modeSwap {
-    left: 580px;
-    bottom: 80px;
+    right: 580px;
+    top: 80px;
 
     height: 25px;
     width: 25px;
@@ -173,4 +243,14 @@ li {
 
 .leaflet-container {
     background-color:#b0b9bd;
+}
+
+#hide {
+    color: #b0b9bd;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#hide:hover {
+    text-decoration: underline;
 }

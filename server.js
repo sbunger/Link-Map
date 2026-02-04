@@ -139,7 +139,7 @@ app.get("/api/stops-nearby", async (req, res) => {
 });
 
 app.get("/api/vehicles", async (req, res) => {
-    // using OBA, GTFS
+    // using OBA
     // get live vehicles
     try {
         const vehicleResponse = await client.vehiclesForAgency.list(1);
@@ -152,7 +152,8 @@ app.get("/api/vehicles", async (req, res) => {
                 lon: v.location?.lon,
                 bearing: v.tripStatus?.orientation || 0,
                 tripId: v.tripId,
-                status: v.status
+                status: v.status,
+                time: v.lastUpdateTime
             };
         }));
 
