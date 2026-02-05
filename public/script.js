@@ -55,7 +55,9 @@ const vehiclesToggle = document.getElementById("toggleVehicles");
 const stopsToggle = document.getElementById("toggleStops");
 
 const savedTheme = localStorage.getItem("theme");
-let showOptions = localStorage.getItem("showOptions") !== "false";
+let showOptions = localStorage.getItem("showOptions") === "true";
+const savedRenderBusses = localStorage.getItem("busses");
+const savedRenderStops = localStorage.getItem("stops");
 
 let defaultLine = {
     color: "#6FADCA",
@@ -86,9 +88,20 @@ function initMap() {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; CARTO'
     }).addTo(map);
+
     if (savedTheme === "dark") {
         darkMode();
         isDarkMode = true;
+    }
+
+    if (savedRenderBusses === "false") {
+        renderBusses = false;
+        vehiclesToggle.checked = false;
+    }
+
+    if (savedRenderStops === "false") {
+        renderStops = false;
+        stopsToggle.checked = false;
     }
 }
 
@@ -394,8 +407,10 @@ window.onload = () => {
 vehiclesToggle.addEventListener("change", function () {
   if (this.checked) {
     renderBusses = true;
+    localStorage.setItem("busses", "true");
   } else {
     renderBusses = false;
+    localStorage.setItem("busses", "false");
   }
   updateVehicles();
 });
@@ -403,8 +418,10 @@ vehiclesToggle.addEventListener("change", function () {
 stopsToggle.addEventListener("change", function () {
   if (this.checked) {
     renderStops = true;
+    localStorage.setItem("stops", "true");
   } else {
     renderStops = false;
+    localStorage.setItem("stops", "false");
   }
   updateStops();
 });
