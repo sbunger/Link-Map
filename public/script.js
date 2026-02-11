@@ -7,7 +7,7 @@ let map = L.map('map', {
 });
 
 map.createPane('vehiclePane');
-map.getPane('vehiclePane').style.zIndex = 7000
+map.getPane('vehiclePane').style.zIndex = 4000;
 
 let routeLine;
 let userLocation;
@@ -65,16 +65,30 @@ let defaultLine = {
     opacity: .333
 }
 
+let highlightedLine = {
+    color: "#1a1a1a",
+    weight: 4,
+    opacity: 0.9
+};
+
+let dimmedLine = {
+    color: "#6FADCA",
+    weight: 4,
+    opacity: 0.15
+};
+
 const hoverTooltip = L.tooltip({ sticky: true });
 
 let stopIcon = L.icon({
     iconUrl: '/images/stop-icon.png',
     iconSize: [24, 24],
+    opacity: 0.7,
 });
 
 let selectedStopIcon = L.icon({
     iconUrl: '/images/selected-stop-icon.png',
     iconSize: [34, 34],
+    opacity: 0.7,
 });
 
 const busIcon = L.icon({
@@ -124,11 +138,18 @@ function switchMode() {
     selectedStopMarker = null;
     pinnedStopLayer.clearLayers();
 
+    clearHighlight();
     loadArrivals();
     updateStops();
 }
 
 function lightMode() {
+    highlightedLine = {
+        color: "#1a1a1a",
+        weight: 6,
+        opacity: 0.9
+    };
+
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; CARTO'
     }).addTo(map);
@@ -157,6 +178,12 @@ function lightMode() {
 }
 
 function darkMode() {
+    highlightedLine = {
+        color: "#ffffff",
+        weight: 6,
+        opacity: 0.9
+    };
+
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; CARTO'
     }).addTo(map);
@@ -331,7 +358,7 @@ async function updateStops() {
         if (selectedStop === stop.stop_id) return;
 
         const coords = [stop.lat, stop.lon];
-        const marker = L.marker(coords, { icon: stopIcon }).addTo(map)
+        const marker = L.marker(coords, { icon: stopIcon, opacity: 0.75 }).addTo(map)
         
         marker.stopData = stop;
         newLayer.addLayer(marker);
@@ -343,7 +370,8 @@ async function updateStops() {
             pinnedStopLayer.clearLayers();
 
             selectedStopMarker = L.marker(coords, {
-                icon: selectedStopIcon
+                icon: selectedStopIcon,
+                opacity: 1
             }).addTo(pinnedStopLayer);
 
             selectedStop = stop.stop_id;
@@ -355,7 +383,6 @@ async function updateStops() {
     stopLayer.clearLayers();
     stopLayer.addLayer(newLayer);
 }
-
 
 async function updateVehicles() {
     if (!renderBusses) {
@@ -403,6 +430,24 @@ window.onload = () => {
     setInterval(loadArrivals, 30000);
     setInterval(updateVehicles, 15000);
 };
+
+const selectRoute = document.getElementById("searchRoutes");
+
+selectRoute.addEventListener("click", () => {
+    const routeInput = document.getElementById("routeInput");
+    const input = routeInput.value;
+
+    if (!input) {
+        clearHighlight();
+    } else {
+        result = highlightRouteByName(input);
+    }
+
+    if (result.length == 0) {
+        clearHighlight();
+    }
+});
+
 
 vehiclesToggle.addEventListener("change", function () {
   if (this.checked) {
@@ -463,6 +508,32 @@ function isNearLine(map, latlng, polyline, tolerance = 8) {
     return false;
 }
 
+function highlightRouteByName(routeName) {
+    let lines = [];
+
+    routeLines.forEach(line => {
+        if (line.routeName === routeName) {
+            line.setStyle(highlightedLine);
+            lines.push(line);
+        } else {
+            line.setStyle(dimmedLine);
+        }
+    });
+
+    if (lines.length > 0) {
+        const group = L.featureGroup(lines);
+        map.flyToBounds(group.getBounds(), { padding: [50, 50] });
+    }
+
+    return lines;
+}
+
+function clearHighlight(){
+    routeLines.forEach(line => {
+        line.setStyle(defaultLine);
+    });
+}
+
 function isLineVisible(line, bounds) {
     return line.latLngs.some(ll => bounds.contains(ll));
 }
@@ -490,6 +561,8 @@ map.on('mousemove', e => {
 });
 
 map.on('click', (e) => {
+    clearHighlight();
+
     if (selectedStopMarker) {
         selectedStopMarker.setIcon(stopIcon);
         selectedStopMarker = null;
