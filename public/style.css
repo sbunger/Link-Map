@@ -14,7 +14,7 @@
 .info {
     align-content: center;
     position: absolute;
-    z-index: 10000;
+    z-index: 20000;
     border-radius: 3px;
     background: #ffffff2c;
 
@@ -26,16 +26,16 @@
 
     padding: 14px;
 
-    transition: all 0.5s;
+    transition: all 0.25s;
 }
 
 .direction {
     color: #92999d;
 }
 
-.info a {
+a {
     color: #92999d;
-    text-decoration: underline wavy;
+    text-decoration: underline wavy !important;
 }
 
 .scheduledArrival {
@@ -78,17 +78,91 @@
     z-index: 7000 !important;
 }
 
+.leaflet-tooltip {
+  background-color: #222;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+
+  z-index: 10000 !important;
+}
+
+.leaflet-tooltip-left:before {
+  border-left-color: #222;
+  border-left-width: 7px;
+}
+
+.leaflet-tooltip-right:before {
+  border-right-color: #222;
+  border-left-width: 7px;
+}
+
 #data {
     left: 80px;
-    top: 80px;
+    top: 160px;
 
     max-height: 400px;
     overflow-y: auto;
     display: none;
 }
 
+#highlight {
+    left: 80px;
+    top: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#highlight input {
+    outline: none;
+
+    font-weight: 500;
+
+    border: none;
+    box-sizing: border-box;
+    color: #202F37;
+
+    margin-right: 15px;
+    margin-left: 15px;
+
+    font-size: 15px;
+    padding-left: 4px;
+    border-radius: 3px;
+
+    width: 100px;
+
+    background: #ffffff;
+}
+
+#highlight.dark input {
+    background: #40515A;
+    color: #d6dbe1;
+}
+
+#searchRoutes {
+    box-sizing: border-box;
+    background-color: #6FADCA;
+    height: 20px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    border-radius: 3px;
+    padding: 1px;
+
+    transition: .15s all;
+    cursor: pointer;
+}
+
+#searchRoutes:hover {
+    transform: scale(1.15);
+}
+
+
 #data li {
-    margin-top: 10px
+    margin-top: 10px;
 }
 
 #data li b {
@@ -140,7 +214,7 @@
     transition: background 0.25s;
 }
 
-.info.dark .slider {
+.info .dark .slider {
     background: #40515A;
 }
 
