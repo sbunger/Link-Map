@@ -38,6 +38,7 @@ map.addLayer(vehicleLayer);
 
 let selectedStop;
 let selectedStopMarker;
+let selectedRoute;
 
 let isDarkMode = false;
 let renderBusses = true;
@@ -59,10 +60,22 @@ let showOptions = localStorage.getItem("showOptions") === "true";
 const savedRenderBusses = localStorage.getItem("busses");
 const savedRenderStops = localStorage.getItem("stops");
 
+const palette = [
+    "#6FADCA", // kc metro
+    "#2f4eb3", // soundtransit i think?
+    "#2f4eb3", // kc water taxi
+    "#2f4eb3", // vashon ferry
+    "#f14377",  // streetcars
+    "#f14377", // rapidride
+];
+
+const colorMap = {};
+let paletteIndex = 0;
+
 let defaultLine = {
     color: "#6FADCA",
     weight: 4,
-    opacity: .333
+    opacity: .45
 }
 
 let highlightedLine = {
@@ -211,6 +224,17 @@ function darkMode() {
     localStorage.setItem("theme", "dark");
 }
 
+function getMappedColor(original) {
+    if (!original) return defaultLine.color;
+
+    if (!colorMap[original]) {
+        colorMap[original] = palette[paletteIndex % palette.length]
+        paletteIndex++;
+    }
+
+    return colorMap[original];
+}
+
 async function loadArrivals() {
 
     const info = document.getElementById("data");
@@ -297,6 +321,30 @@ async function loadArrivals() {
     routesText.innerHTML = `Serving ${routesData.join(", ")}`;
 }
 
+function getWeightForZoom(zoom) {
+    const minZoom = 10;
+    const maxZoom = 18;
+
+    const minWeight = 1.5;
+    const maxWeight = 10;
+
+    const scale = (zoom - minZoom) / (maxZoom - minZoom);
+    return minWeight + scale * (maxWeight - minWeight);
+}
+
+function updateLineWeights() {
+    const zoom = map.getZoom();
+    const newWeight = getWeightForZoom(zoom);
+
+    routeLines.forEach(line => {
+        line.setStyle({
+            weight: newWeight
+        });
+    });
+}
+
+map.on('zoomend', updateLineWeights);
+
 async function updateLines() {
     
     const res = await fetch(
@@ -318,12 +366,20 @@ async function updateLines() {
             point.shape_pt_lon,
         ]);
 
-        const line = L.polyline(coords, defaultLine)
+        const original = routeShape.route_color;
+
+        const color = getMappedColor(routeShape.route_color);
+
+        const line = L.polyline(coords, {
+            ...defaultLine,
+            color: color,
+        })
             .addTo(map);
 
         line.routeName = routeShape.name ?? "Unnamed Route"; 
         line.latLngs = line.getLatLngs();
         line.routeId = routeShape.route_id;
+        line.color = color;
 
         routeLayer.addLayer(line);
         routeLines.push(line);
@@ -346,7 +402,7 @@ async function updateStops() {
 
     const newLayer = L.layerGroup();
 
-    if (stops.length > 900) {
+    if (stops.length > 700) {
         warn.style.display = "block";
         warn.querySelector("h3").textContent = "Zoom in to view stops!";
         stopLayer.clearLayers();
@@ -423,6 +479,7 @@ window.onload = () => {
     updateVehicles();
 
     updateLines();
+    updateLineWeights();
 
     button.addEventListener("click", switchMode);
     optionsManager();
@@ -515,8 +572,9 @@ function highlightRouteByName(routeName) {
         if (line.routeName === routeName) {
             line.setStyle(highlightedLine);
             lines.push(line);
+            selectedRoute = line;
         } else {
-            line.setStyle(dimmedLine);
+            line.setStyle({...dimmedLine, color: line.color});
         }
     });
 
@@ -530,7 +588,7 @@ function highlightRouteByName(routeName) {
 
 function clearHighlight(){
     routeLines.forEach(line => {
-        line.setStyle(defaultLine);
+        line.setStyle({...defaultLine, color: line.color});
     });
 }
 
