@@ -491,37 +491,41 @@ window.onload = () => {
 const selectRoute = document.getElementById("searchRoutes");
 const routeInput = document.getElementById("routeInput");
 
-selectRoute.addEventListener("click", () => {
+function getInput() {
     const input = routeInput.value;
 
     if (!input) {
         clearHighlight();
     } else {
         result = highlightRouteByName(input);
-        if (result.length > 0) routeInput.value = "";
+        if (result.length > 0) {
+            routeInput.value = "";
+            selectRoute.style.backgroundColor = "#b0b9bd";
+        }
     }
 
     if (result.length == 0) {
         clearHighlight();
     }
+}
+
+selectRoute.addEventListener("click", () => {
+    getInput();
 });
 
 routeInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
-        const input = routeInput.value;
-
-        if (!input) {
-            clearHighlight();
-        } else {
-            result = highlightRouteByName(input);
-            if (result.length > 0) routeInput.value = "";
-        }
-
-        if (result.length == 0) {
-            clearHighlight();
-        }
+        getInput();
     }
-})
+});
+
+routeInput.addEventListener("input", () => {
+    if (routeInput.value.trim().length === 0) {
+        selectRoute.style.backgroundColor = "#b0b9bd";
+    } else {
+        selectRoute.style.backgroundColor = "#6FADCA";
+    }
+});
 
 
 vehiclesToggle.addEventListener("change", function () {
