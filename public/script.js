@@ -21,7 +21,7 @@ let vehicleLayer = L.markerClusterGroup({
     spiderfyOnMaxZoom: false,
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true,
-    maxClusterRadius: 40,
+    maxClusterRadius: 80,
     pane: 'vehiclePane',
     iconCreateFunction: function(cluster) {
         const count = cluster.getChildCount();
@@ -489,21 +489,39 @@ window.onload = () => {
 };
 
 const selectRoute = document.getElementById("searchRoutes");
+const routeInput = document.getElementById("routeInput");
 
 selectRoute.addEventListener("click", () => {
-    const routeInput = document.getElementById("routeInput");
     const input = routeInput.value;
 
     if (!input) {
         clearHighlight();
     } else {
         result = highlightRouteByName(input);
+        if (result.length > 0) routeInput.value = "";
     }
 
     if (result.length == 0) {
         clearHighlight();
     }
 });
+
+routeInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        const input = routeInput.value;
+
+        if (!input) {
+            clearHighlight();
+        } else {
+            result = highlightRouteByName(input);
+            if (result.length > 0) routeInput.value = "";
+        }
+
+        if (result.length == 0) {
+            clearHighlight();
+        }
+    }
+})
 
 
 vehiclesToggle.addEventListener("change", function () {
