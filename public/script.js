@@ -517,7 +517,7 @@ function getInput() {
         result = highlightRouteByName(input);
         if (result.length > 0) {
             routeInput.value = "";
-            selectRoute.style.backgroundColor = "#b0b9bd";
+            selectRoute.classList.add("okay");
         }
     }
 
@@ -538,9 +538,9 @@ routeInput.addEventListener("keydown", (event) => {
 
 routeInput.addEventListener("input", () => {
     if (routeInput.value.trim().length === 0) {
-        selectRoute.style.backgroundColor = "#b0b9bd";
+        selectRoute.classList.remove("okay");
     } else {
-        selectRoute.style.backgroundColor = "#6FADCA";
+        selectRoute.classList.add("okay");
     }
 });
 
