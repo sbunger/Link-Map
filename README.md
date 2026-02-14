@@ -11,12 +11,13 @@ Link Map is a Node web app that uses the OneBusAway API and SDK for node to get 
 - Clean UI with glass effect, light and dark mode
 - Options menu
 - Live busses rendered on map for all availible lines (with clumping for close busses)
+- Splash screen with info
 
 ## Hosting
-I set up a raspberry pi as a server and request all of the data from there!
+I set up a raspberry pi as a server and request all of the data from there! Sorry for slow speeds...
 
 ## Future Plans
-Eventually, I plan to add route planning, and change up the UI (especially for dark mode) a little bit.
+Eventually, I plan to add route planning, using a library.
 
 ## Screenshots
 <img src="/screenshots/sc1.png" width=50%><img src="/screenshots/sc2.png" width=50%>

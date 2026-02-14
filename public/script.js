@@ -95,13 +95,13 @@ const hoverTooltip = L.tooltip({ sticky: true });
 let stopIcon = L.icon({
     iconUrl: '/images/stop-icon.png',
     iconSize: [24, 24],
-    opacity: 0.7,
+    opacity: 0.8,
 });
 
 let selectedStopIcon = L.icon({
     iconUrl: '/images/selected-stop-icon.png',
     iconSize: [34, 34],
-    opacity: 0.7,
+    opacity: 0.8,
 });
 
 const busIcon = L.icon({
@@ -617,6 +617,7 @@ function highlightRouteByName(routeName) {
 function clearHighlight(){
     routeLines.forEach(line => {
         line.setStyle({...defaultLine, color: line.color});
+        updateLineWeights();
     });
 }
 
