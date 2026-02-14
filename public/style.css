@@ -11,6 +11,97 @@
     width: 100vw;
 }
 
+
+#splash {
+    height: 100vh; 
+    width: 100vw;
+
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+
+    z-index: 100000;
+    
+    backdrop-filter: blur(6px);
+    background-color: #ffffff00;
+    transition: all .3s;
+}
+
+#splash.hidden {
+    pointer-events: none;
+    background-color: #00000000;
+    backdrop-filter: blur(0px);
+}
+
+#welcome {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+#splash.hidden #splashtext {
+    opacity: 0;
+}
+
+#splash.hidden #begin {
+    opacity: 0;
+}
+
+#splashtext {
+    position: relative;
+    background-color: #ffffff;
+    text-align: left;
+    width: 40%;
+    padding: 25px;
+}
+
+#splashtext.dark {
+    background-color: #202F37;
+}
+
+#splashtext p {
+    text-align: justify;
+}
+
+#welcome img {
+    height: 22px;
+    margin-right: 8px;
+}
+
+#splashtext h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#begin {
+    margin-top: 20px;
+    position: relative;
+    transition: transform .1s;
+    background: none;
+    outline: none;
+
+    text-shadow: 0px 0px 40px #ffffff;
+}
+
+#begin.dark {
+    text-shadow: 0px 0px 40px #000000;
+}
+
+#splashtext:hover + #begin {
+    transform: scale(1.06);
+}
+
+#begin:hover {
+    transform: scale(1.06);
+}
+
+
+
+
+
 .info {
     align-content: center;
     position: absolute;
