@@ -115,6 +115,10 @@ const busIcon = L.icon({
 document.addEventListener("click", function () {
     const splash = document.getElementById("splash");
     splash.classList.add("hidden");
+
+    document.querySelectorAll('.ui').forEach(el => {
+        el.classList.add('shown');
+    });
 });
 
 function initMap() {

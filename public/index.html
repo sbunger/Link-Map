@@ -27,14 +27,14 @@
                 <div id="welcome"><h2 style="text-decoration: underline wavy 1px;">Welcome to Link Map!</h2><img src="images/busmoji.png"></div>
                 <p>This is a node web app I created using King County Metro GTFS data and OneBusAway for Seattle, Washington. It features vehicle rendering, colored lines, and stop data.</p>
                 <h3>How to Use</h3>
-                <p>Zoom in to view stops. Click on a stop to view real-time data and directions + routes. In the options menu, vehicle and stop rendering can be enabled or disabled. Highlight a route by inputting a route number into the box and pressing enter. <b>Deselect a stop or route by clicking the map.</b></p>
+                <p>Zoom in to view stops. Click on a stop to view real-time data and directions + routes. In the options menu, vehicle and stop rendering can be enabled or disabled. Highlight a route by inputting a route number into the box and pressing enter. <b>Deselect a stop or route by clicking the map.</b> Ironically does not include data for Link Light Rail.</p>
             </div>
             <div class="info" id="begin">
                 <p><b>Click anywhere to begin!</b></p>
             </div>
         </div>
 
-        <div class="info" id="highlight">
+        <div class="info ui" id="highlight">
             <p><b>Highlight Route:</b></p>
             <input type="text" id="routeInput" placeholder="Try '45' or '67'">
             <div id="searchRoutes">
@@ -42,14 +42,14 @@
             </div>
         </div>
 
-        <div class="info" id="data">
+        <div class="info ui" id="data">
             <h2 id="stopName"></h2>
             <hr id="solid"/>
             <h3 id="routes"></h3>
             <ul id="arrivals"></ul>
         </div>
 
-        <div class="info" id="options">
+        <div class="info ui" id="options">
             <h2>Options</h1>
 
                 <div class="option">
@@ -73,19 +73,19 @@
                 </div>
         </div>
 
-        <div class="info" id="warning">
+        <div class="info ui" id="warning">
             <h3></h3>
         </div>
 
-        <div class="info" id="att">
+        <div class="info ui" id="att">
             <p><b>Data provided by <a href="https://kingcounty.gov/en/dept/metro">KCM</a> and <a href="https://pugetsound.onebusaway.org/">OneBusAway</a></b></p>
         </div>
 
-        <div class="info circle" id="modeSwap">
+        <div class="info ui circle" id="modeSwap">
             <img src="images/moon.png">
         </div>
 
-        <div class="info circle" id="settingsButton">
+        <div class="info ui circle" id="settingsButton">
             <img src="images/gear-dark.png">
         </div>
 
