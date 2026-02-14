@@ -72,7 +72,7 @@ li {
     position: relative;
     background-color: #ffffff;
     text-align: left;
-    width: 40%;
+    width: 50%;
 
     cursor: pointer;
 }
@@ -286,6 +286,14 @@ li {
 
     transition: .15s all;
     cursor: pointer;
+}
+
+.info.dark #searchRoutes {
+    background-color: #40515A;
+}
+
+#searchRoutes.okay {
+    background-color: #6FADCA !important;
 }
 
 #searchRoutes:hover {
