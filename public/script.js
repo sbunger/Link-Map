@@ -36,6 +36,8 @@ let vehicleLayer = L.markerClusterGroup({
 
 map.addLayer(vehicleLayer);
 
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
 let selectedStop;
 let selectedStopMarker;
 let selectedRoute;
@@ -92,21 +94,26 @@ let dimmedLine = {
 
 const hoverTooltip = L.tooltip({ sticky: true });
 
+
+const stopSize = isMobile ? 32 : 24;
+const selectedStopSize = isMobile ? 42 : 34;
+const busSize = isMobile ? 28 : 20;
+
 let stopIcon = L.icon({
     iconUrl: '/images/stop-icon.png',
-    iconSize: [24, 24],
+    iconSize: [stopSize, stopSize],
     opacity: 0.8,
 });
 
 let selectedStopIcon = L.icon({
     iconUrl: '/images/selected-stop-icon.png',
-    iconSize: [34, 34],
+    iconSize: [selectedStopSize, selectedStopSize],
     opacity: 0.8,
 });
 
 const busIcon = L.icon({
     iconUrl: "/images/bus.png",
-    iconSize: [20, 20],
+    iconSize: [busSize, busSize],
 });
 
 
@@ -182,11 +189,11 @@ function lightMode() {
 
     stopIcon = L.icon({
         iconUrl: '/images/stop-icon.png',
-        iconSize: [24, 24],
+        iconSize: [stopSize, stopSize],
     });
     selectedStopIcon = L.icon({
         iconUrl: '/images/selected-stop-icon.png',
-        iconSize: [34, 34],
+        iconSize: [selectedStopSize, selectedStopSize],
     });
 
     document.querySelectorAll('.info').forEach(el => {
@@ -216,11 +223,11 @@ function darkMode() {
 
     stopIcon = L.icon({
         iconUrl: '/images/stop-icon-dark.png',
-        iconSize: [24, 24],
+        iconSize: [stopSize, stopSize],
     });
     selectedStopIcon = L.icon({
         iconUrl: '/images/selected-stop-icon-dark.png',
-        iconSize: [34, 34],
+        iconSize: [selectedStopSize, selectedStopSize],
     });
 
     document.querySelectorAll('.info').forEach(el => {
