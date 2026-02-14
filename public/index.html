@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,59 +35,77 @@
             </div>
         </div>
 
-        <div class="info ui" id="highlight">
-            <p><b>Highlight Route:</b></p>
-            <input type="text" id="routeInput" placeholder="Try '45' or '67'">
-            <div id="searchRoutes">
-                <img src="images/check.png">
+        <div id="ui-overlay">
+            <div class="row top">
+                <div class="ui left">
+                    <div class="info" id="highlight">
+                        <p>
+                            <b>Highlight Route:</b>
+                        </p>
+                        <input type="text" id="routeInput" placeholder="Try '45' or '67'">
+                        <div id="searchRoutes">
+                            <img src="images/check.png">
+                        </div>
+                    </div>
+
+                    <div class="info circle" id="modeSwap">
+                        <img src="images/moon.png">
+                    </div>
+
+                    <div class="info circle" id="settingsButton">
+                        <img src="images/gear-dark.png">
+                    </div>
+                </div>
+
+                <div class="ui right">
+                    <div class="info" id="att">
+                        <p>
+                            <b>Data provided by <a href="https://kingcounty.gov/en/dept/metro">KCM</a> and <a href="https://pugetsound.onebusaway.org/">OneBusAway</a></b>
+                        </p>
+                    </div>
+
+                    <div class="info ui" id="data">
+                        <h2 id="stopName"></h2>
+                        <hr id="solid"/>
+                        <h3 id="routes"></h3>
+                        <ul id="arrivals"></ul>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="info ui" id="data">
-            <h2 id="stopName"></h2>
-            <hr id="solid"/>
-            <h3 id="routes"></h3>
-            <ul id="arrivals"></ul>
-        </div>
+            <div class="row bottom">
+                <div class="ui left">
+                    <div class="info" id="options">
+                        <h2>Options</h1>
+                    
+                        <div class="option">
+                            <p><span class="option-label">Render Stops</span></p>
+                            <label class="switch">
+                                <input type="checkbox" id="toggleStops" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
 
-        <div class="info ui" id="options">
-            <h2>Options</h1>
+                        <div class="option">
+                            <p><span class="option-label">Render Vehicles</span></p>
+                            <label class="switch">
+                                <input type="checkbox" id="toggleVehicles" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
 
-                <div class="option">
-                    <span class="option-label">Render Stops</span>
-                    <label class="switch">
-                        <input type="checkbox" id="toggleStops" checked>
-                        <span class="slider"></span>
-                    </label>
+                        <div class="option">
+                            <h3 style="font-size: 16px;">Made by <a href="https://silasunger.me">Silas Unger</a> in WA :)</h3>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="option">
-                    <span class="option-label">Render Vehicles</span>
-                    <label class="switch">
-                        <input type="checkbox" id="toggleVehicles" checked>
-                        <span class="slider"></span>
-                    </label>
+                <div class="ui right">
+                    <div class="info" id="warning">
+                        <h3></h3>
+                    </div>
                 </div>
-
-                <div class="option">
-                    <h3 style="font-size: 16px;">Made by <a href="https://silasunger.me">Silas Unger</a> in WA :)</h3>
-                </div>
-        </div>
-
-        <div class="info ui" id="warning">
-            <h3></h3>
-        </div>
-
-        <div class="info ui" id="att">
-            <p><b>Data provided by <a href="https://kingcounty.gov/en/dept/metro">KCM</a> and <a href="https://pugetsound.onebusaway.org/">OneBusAway</a></b></p>
-        </div>
-
-        <div class="info ui circle" id="modeSwap">
-            <img src="images/moon.png">
-        </div>
-
-        <div class="info ui circle" id="settingsButton">
-            <img src="images/gear-dark.png">
+            </div>
         </div>
 
         <div id="map"></div>
