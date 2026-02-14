@@ -51,15 +51,18 @@
 }
 
 #splashtext {
+    margin-top: 50px;
     position: relative;
     background-color: #ffffff;
     text-align: left;
     width: 40%;
     padding: 25px;
+
+    cursor: pointer;
 }
 
 #splashtext.dark {
-    background-color: #202F37;
+    background-color: #222729;
 }
 
 #splashtext p {
@@ -68,7 +71,7 @@
 
 #welcome img {
     height: 22px;
-    margin-right: 8px;
+    margin-left: auto;
 }
 
 #splashtext h3 {
@@ -82,20 +85,19 @@
     transition: transform .1s;
     background: none;
     outline: none;
+    box-shadow: none;
 
-    text-shadow: 0px 0px 40px #ffffff;
+    cursor: pointer;
+
+    text-shadow: 0px 0px 30px #ffffff;
 }
 
 #begin.dark {
-    text-shadow: 0px 0px 40px #000000;
+    text-shadow: 0px 0px 30px #000000;
 }
 
-#splashtext:hover + #begin {
-    transform: scale(1.06);
-}
-
-#begin:hover {
-    transform: scale(1.06);
+#splashtext:hover {
+    transform: translateY(-5px);
 }
 
 
@@ -118,6 +120,8 @@
     padding: 14px;
 
     transition: all 0.25s;
+
+    box-shadow: 0px 5px 25px #1f1f1f16;
 }
 
 .direction {
@@ -126,7 +130,7 @@
 
 a {
     color: #92999d;
-    text-decoration: underline wavy !important;
+    text-decoration: underline wavy 1px !important;
 }
 
 .scheduledArrival {
@@ -231,7 +235,7 @@ a {
 }
 
 #highlight.dark input {
-    background: #40515A;
+    background: #40494e;
     color: #d6dbe1;
 }
 
@@ -306,7 +310,7 @@ a {
     transition: background 0.25s;
 }
 
-.info .dark .slider {
+.info.dark .slider {
     background: #40515A;
 }
 
@@ -379,14 +383,14 @@ a {
 }
 
 #warning.dark {
-    background: #202f37;
+    background: #222729;
 }
 
 .info.dark {
-    outline: 3px solid #40515A;
+    outline: 3px solid #40494e;
     color: #d6dbe1;
 
-    background: #202f374f;
+    background: #2227294f;
 }
 
 
