@@ -111,6 +111,12 @@ const busIcon = L.icon({
 
 
 
+
+document.addEventListener("click", function () {
+    const splash = document.getElementById("splash");
+    splash.classList.add("hidden");
+});
+
 function initMap() {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; CARTO'
