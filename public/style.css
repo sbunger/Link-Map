@@ -211,7 +211,10 @@ li {
 #data {
     max-height: 400px;
     overflow-y: auto;
-    display: none;
+}
+
+#data.hidden {
+    transform: translate(600px);
 }
 
 #data li {
@@ -303,9 +306,13 @@ li {
 
 
 #options {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#options.hidden {
+    transform: translate(-600px);
 }
 
 .option {
