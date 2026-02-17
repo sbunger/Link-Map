@@ -261,11 +261,11 @@ async function loadArrivals() {
     const routesText = document.getElementById("routes");
 
     if (!selectedStop) {
-        info.style.display = "none";
+        info.classList.add("hidden");
         return;
     }
 
-    info.style.display = "block";
+    info.classList.remove("hidden");
     routesText.innerHTML = "Retriving data...";
     list.innerHTML = "";
     name.innerHTML = "";
@@ -568,17 +568,19 @@ stopsToggle.addEventListener("change", function () {
 });
 
 function optionsManager() {
-    if (showOptions) {
-        options.style.display = "flex";
+    if (!showOptions) {
+        options.classList.add("hidden");
     }
 
     optionsButton.addEventListener("click", () => {
+        console.log(showOptions);
         if (showOptions) {
-            options.style.display = "none";
+            options.classList.add("hidden");
+            console.log(options.classList);
             localStorage.setItem("showOptions", "false");
             showOptions = false;
         } else {
-            options.style.display = "flex";
+            options.classList.remove("hidden");
             localStorage.setItem("showOptions", "true");
             showOptions = true;
         }
@@ -670,7 +672,7 @@ map.on('click', (e) => {
     pinnedStopLayer.clearLayers();
 
     const info = document.getElementById("data");
-    info.style.display = "none";
+    info.classList.add("hidden");
     updateStops();
 });
 
