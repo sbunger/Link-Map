@@ -71,19 +71,21 @@ const palette = [
     "#f14377", // rapidride
 ];
 
+const railColor = "#f14377";
+
 const colorMap = {};
 let paletteIndex = 0;
 
 let defaultLine = {
     color: "#6FADCA",
     weight: 4,
-    opacity: .45
+    opacity: .4
 }
 
 let highlightedLine = {
     color: "#1a1a1a",
     weight: 4,
-    opacity: 0.9
+    opacity: 0.8
 };
 
 let dimmedLine = {
@@ -272,7 +274,7 @@ async function loadArrivals() {
     line.style.display = "none";
     
 
-    const res = await fetch(`/api/arrivals?stop_id=1_${selectedStop}`);
+    const res = await fetch(`/api/arrivals?stop_id=${selectedStop.agency}_${selectedStop.stop_id}`);
     const data = await res.json();
 
 
@@ -302,8 +304,6 @@ async function loadArrivals() {
 
 
     shortArrivals.forEach(a => {
-        console.log(a.tripHeadsign);
-
         const li = document.createElement("li");
 
         const arrivalTime = a.predictedArrivalTime || a.scheduledArrivalTime;
@@ -383,20 +383,20 @@ async function updateLines() {
             point.shape_pt_lon,
         ]);
 
-        const original = routeShape.route_color;
-
-        const color = getMappedColor(routeShape.route_color);
+        let isRail = ((routeShape.route_type === 0) && routeShape.agency_id.startsWith("st_"));
+        let color = isRail ? railColor : getMappedColor(routeShape.route_color);
 
         const line = L.polyline(coords, {
             ...defaultLine,
             color: color,
-        })
-            .addTo(map);
+            opacity: isRail ? (defaultLine.opacity * 2) : defaultLine.opacity
+        }).addTo(map);
 
         line.routeName = routeShape.name ?? "Unnamed Route"; 
         line.latLngs = line.getLatLngs();
         line.routeId = routeShape.route_id;
         line.color = color;
+        line.isRail = isRail;
 
         routeLayer.addLayer(line);
         routeLines.push(line);
@@ -419,7 +419,7 @@ async function updateStops() {
 
     const newLayer = L.layerGroup();
 
-    if (stops.length > 700) {
+    if (stops.length > 750) {
         warn.style.display = "block";
         warn.querySelector("h3").textContent = "Zoom in to view stops!";
         stopLayer.clearLayers();
@@ -428,7 +428,14 @@ async function updateStops() {
     warn.style.display = "none";
     
     stops.forEach((stop) => {
-        if (selectedStop === stop.stop_id) return;
+        if (selectedStop && (selectedStop.stop_id === stop.stop_id)) return;
+
+        if (stop.stop_id.includes("LS") || stop.stop_id.includes("C") || stop.name.toLowerCase().includes("entrance") || stop.name.toLowerCase().includes("bay") ) return;
+
+        if (stop.stop_id.length === 3 || stop.stop_id.length === 4) return;
+        if (stop.name.includes("&") && !(stop.agency == "1")) return;
+
+        // if (stop.agency == "1") return;
 
         const coords = [stop.lat, stop.lon];
         const marker = L.marker(coords, { icon: stopIcon, opacity: 0.75 }).addTo(map)
@@ -438,6 +445,7 @@ async function updateStops() {
 
 
         marker.on('click', (e) => {
+            // console.log(marker.stopData.name, marker.stopData.stop_id);
             L.DomEvent.stopPropagation(e);
 
             pinnedStopLayer.clearLayers();
@@ -447,7 +455,7 @@ async function updateStops() {
                 opacity: 1
             }).addTo(pinnedStopLayer);
 
-            selectedStop = stop.stop_id;
+            selectedStop = stop;
 
             loadArrivals();
             updateStops();
@@ -573,10 +581,8 @@ function optionsManager() {
     }
 
     optionsButton.addEventListener("click", () => {
-        console.log(showOptions);
         if (showOptions) {
             options.classList.add("hidden");
-            console.log(options.classList);
             localStorage.setItem("showOptions", "false");
             showOptions = false;
         } else {
@@ -610,7 +616,7 @@ function highlightRouteByName(routeName) {
     let lines = [];
 
     routeLines.forEach(line => {
-        if (line.routeName === routeName) {
+        if (line.routeName.toLowerCase() === routeName.toLowerCase()) {
             line.setStyle(highlightedLine);
             lines.push(line);
             selectedRoute = line;
@@ -629,7 +635,7 @@ function highlightRouteByName(routeName) {
 
 function clearHighlight(){
     routeLines.forEach(line => {
-        line.setStyle({...defaultLine, color: line.color});
+        line.setStyle({...defaultLine, color: line.color, opacity: line.isRail ? (defaultLine.opacity * 2) : defaultLine.opacity});
         updateLineWeights();
     });
 }
