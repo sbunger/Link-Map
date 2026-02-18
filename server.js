@@ -6,10 +6,17 @@ import { importGtfs, openDb, getRoutes, getShapes, getTrips } from "gtfs";
 
 const config = {
     sqlitePath: "data/gtfs/gtfs.sqlite",
+    ignoreDuplicates: true,
     agencies: [
         {
-            agency_key: "local_agency",
-            path:"data/gtfs/",
+            agency_key: "metro",
+            path:"data/gtfs/metro-1",
+            prefix: "kcm_"
+        },
+        {
+            agency_key: "sound_transit",
+            path: "data/gtfs/sound-transit-40",
+            prefix: "st_"
         },
     ],
 };
@@ -69,6 +76,7 @@ app.get("/api/routes-nearby", async (req, res) => {
     // get all routes
     try {
         const routes = await getRoutes();
+
         const shapes = [];
 
         for (const route of routes) {
@@ -92,7 +100,9 @@ app.get("/api/routes-nearby", async (req, res) => {
                 shape: shape,
                 name: route.route_short_name,
                 route_id: route.route_id,
-                route_color: route.route_color
+                route_color: route.route_color,
+                route_type: route.route_type,
+                agency_id: route.agency_id
             });
         }
 
@@ -101,7 +111,6 @@ app.get("/api/routes-nearby", async (req, res) => {
         console.error(err);
         res.status(500).json({ error: "Failed to load nearby routes" });
     }
-    
 });
 
 app.get("/api/stops-nearby", async (req, res) => {
@@ -126,10 +135,11 @@ app.get("/api/stops-nearby", async (req, res) => {
 
         res.json(
             rows.map(stop => ({
-                stop_id: stop.stop_id,
+                stop_id: stop.stop_id.replace(/^(st_|kcm_)/, ""),
                 name: stop.stop_name,
                 lat: stop.stop_lat,
                 lon: stop.stop_lon,
+                agency: stop.stop_id.startsWith("st_") ? "40" : "1"
             }))
         );
     } catch (err) {
