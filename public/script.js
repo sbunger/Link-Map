@@ -17,11 +17,12 @@ let stopLayer = L.layerGroup().addTo(map);
 let pinnedStopLayer = L.layerGroup().addTo(map);
 let routeLayer = L.layerGroup().addTo(map);
 
-let vehicleLayer = L.markerClusterGroup({
+let railLayer = L.layerGroup().addTo(map);
+let busLayer = L.markerClusterGroup({
     spiderfyOnMaxZoom: false,
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true,
-    maxClusterRadius: 80,
+    maxClusterRadius: 45,
     pane: 'vehiclePane',
     iconCreateFunction: function(cluster) {
         const count = cluster.getChildCount();
@@ -32,9 +33,7 @@ let vehicleLayer = L.markerClusterGroup({
         });
     }
 });
-
-
-map.addLayer(vehicleLayer);
+map.addLayer(busLayer);
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -113,9 +112,15 @@ let selectedStopIcon = L.icon({
     opacity: 0.8,
 });
 
+
 const busIcon = L.icon({
     iconUrl: "/images/bus.png",
     iconSize: [busSize, busSize],
+});
+
+const linkIcon = L.icon({
+    iconUrl: "/images/rail.png",
+    iconSize: [busSize + 4, busSize + 4],
 });
 
 
@@ -430,10 +435,10 @@ async function updateStops() {
     stops.forEach((stop) => {
         if (selectedStop && (selectedStop.stop_id === stop.stop_id)) return;
 
-        if (stop.stop_id.includes("LS") || stop.stop_id.includes("C") || stop.name.toLowerCase().includes("entrance") || stop.name.toLowerCase().includes("bay") ) return;
+        if ((stop.stop_id.includes("LS") || stop.stop_id.includes("C") || stop.name.toLowerCase().includes("entrance") || stop.name.toLowerCase().includes("bay"))  && !(stop.agency == "1")) return;
 
-        if (stop.stop_id.length === 3 || stop.stop_id.length === 4) return;
-        if (stop.name.includes("&") && !(stop.agency == "1")) return;
+        if ((stop.stop_id.length === 3 || stop.stop_id.length === 4) && !(stop.agency == "1")) return;
+        if ((stop.name.includes("&")) && !(stop.agency == "1")) return;
 
         // if (stop.agency == "1") return;
 
@@ -467,34 +472,44 @@ async function updateStops() {
 
 async function updateVehicles() {
     if (!renderBusses) {
-        vehicleLayer.clearLayers();
-        return;
+        busLayer.clearLayers();
     };
 
     const res = await fetch(`/api/vehicles`);
     const vehicles = await res.json();
 
-    const newLayer = L.layerGroup();
+    const newBusLayer = L.layerGroup();
+    const newRailLayer = L.layerGroup();
     const bounds = map.getBounds(); 
 
     vehicles.forEach(v => {
         if (!v.lat || !v.lon) return;
 
         const latlng = L.latLng(v.lat, v.lon);
+        if (!bounds.contains(latlng)) return;
 
-        if (bounds.contains(latlng)) {
-            const marker = L.marker(latlng, { 
-                icon: busIcon,
-                pane: 'vehiclePane',
-                opacity: 0.75,
-                interactive: false
-            });
-            newLayer.addLayer(marker);
+        
+        const marker = L.marker(latlng, { 
+            icon: (v.type === 0) ? linkIcon : busIcon,
+            pane: 'vehiclePane',
+            interactive: false
+        });
+
+        if (v.type === 0) {
+            newRailLayer.addLayer(marker)
+        } else {
+            newBusLayer.addLayer(marker);
         }
     });
 
-    vehicleLayer.clearLayers();
-    vehicleLayer.addLayer(newLayer);
+    busLayer.clearLayers();
+    railLayer.clearLayers();
+
+    railLayer.addLayer(newRailLayer);
+
+    if (renderBusses) {
+        busLayer.addLayer(newBusLayer);
+    };
 }
 
 
