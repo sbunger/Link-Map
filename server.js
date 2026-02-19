@@ -2,7 +2,7 @@ import express from "express";
 import OnebusawaySDK from 'onebusaway-sdk';
 import dotenv from "dotenv";
 
-import { importGtfs, openDb, getRoutes, getShapes, getTrips } from "gtfs";
+import { importGtfs, openDb, getRoutes, getShapes, getTrips, getTimeframes } from "gtfs";
 
 const config = {
     sqlitePath: "data/gtfs/gtfs.sqlite",
@@ -149,25 +149,72 @@ app.get("/api/stops-nearby", async (req, res) => {
 });
 
 app.get("/api/vehicles", async (req, res) => {
-    // using OBA
+    // using OBA & GTFS
     // get live vehicles
     try {
-        const vehicleResponse = await client.vehiclesForAgency.list(1);
-        const allVehicles = vehicleResponse.data.list;
-        
-        const result = await Promise.all(allVehicles.map(async v => {
-            return {
+        const agencies = [1, 40];
+
+        const vehicleResponse = await Promise.all(
+            agencies.map(async (agencyId) => {
+                const response = await client.vehiclesForAgency.list(agencyId)
+
+                return response.data.list.map(v => ({
                 id: v.vehicleId,
                 lat: v.location?.lat,
                 lon: v.location?.lon,
                 bearing: v.tripStatus?.orientation || 0,
                 tripId: v.tripId,
                 status: v.status,
-                time: v.lastUpdateTime
-            };
-        }));
+                time: v.lastUpdateTime,
+                agency: agencyId
+                }));
+            })
+        );
+        
+        const vehicles = vehicleResponse.flat();
 
-        res.json(result);
+        const vehiclesWithType = await Promise.all(
+          vehicles.map(async (vehicle) => {
+
+                if (!vehicle.tripId) {
+                    return { ...vehicle, type: null };
+                }
+
+                let newId = vehicle.tripId;
+
+                if (vehicle.tripId.startsWith("1_")) {
+                    newId = vehicle.tripId.replace("1_", "kcm_");
+                } else if (vehicle.tripId.startsWith("40_")) {
+                    newId = vehicle.tripId.replace("40_", "st_");
+                }
+
+                const trips = await getTrips({ trip_id: newId });
+
+                if (!trips.length) {
+                    return { ...vehicle, type: null };
+                }
+
+                const routeId = trips[0]?.route_id;
+                if (!routeId) {
+                    return { ...vehicle, type: null };
+                }
+
+                const routes = await getRoutes({ route_id: routeId });
+
+                if (!routes.length) {
+                    return { ...vehicle, type: null };
+                }
+
+                const routeType = routes[0]?.route_type ?? null;
+
+                return {
+                    ...vehicle,
+                    type: routeType
+                };
+            })
+        );
+
+        res.json(vehiclesWithType);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Failed to fetch vehicles" });
