@@ -13,27 +13,26 @@ let routeLine;
 let userLocation;
 let routeLines = [];
 
-let stopLayer = L.layerGroup().addTo(map);
-let pinnedStopLayer = L.layerGroup().addTo(map);
-let routeLayer = L.layerGroup().addTo(map);
-
-let railLayer = L.layerGroup().addTo(map);
-let busLayer = L.markerClusterGroup({
-    spiderfyOnMaxZoom: false,
-    showCoverageOnHover: false,
-    zoomToBoundsOnClick: true,
-    maxClusterRadius: 45,
-    pane: 'vehiclePane',
-    iconCreateFunction: function(cluster) {
-        const count = cluster.getChildCount();
-        return L.divIcon({
-            html: `<div class="cluster-count">${count}</div>`,
+const layers = {
+    stopLayer: L.layerGroup().addTo(map),
+    pinnedStopLayer: L.layerGroup().addTo(map),
+    routeLayer: L.layerGroup().addTo(map),
+    railLayer: L.layerGroup().addTo(map),
+    busLayer: L.markerClusterGroup({
+        spiderfyOnMaxZoom: false,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        maxClusterRadius: 45,
+        pane: 'vehiclePane',
+        iconCreateFunction: cluster => L.divIcon({
+            html: `<div class="cluster-count">${cluster.getChildCount()}</div>`,
             className: 'custom-cluster-icon',
             iconSize: [30, 30]
-        });
-    }
-});
-map.addLayer(busLayer);
+        })
+    }).addTo(map)
+}
+
+
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
@@ -41,25 +40,19 @@ let selectedStop;
 let selectedStopMarker;
 let selectedRoute;
 
-let isDarkMode = false;
-let renderBusses = true;
-let renderStops = true;
+let isDarkMode   = localStorage.getItem("theme") === "true";
+let showOptions  = localStorage.getItem("showOptions") === "true";
+let renderBusses = localStorage.getItem("busses") !== "false";
+let renderStops  = localStorage.getItem("stops") !== "false";
 
 let hoverTimeout;
 
 const warn = document.getElementById("warning");
 const button = document.getElementById("modeSwap");
-
 const optionsButton = document.getElementById("settingsButton");
-
-
 const vehiclesToggle = document.getElementById("toggleVehicles");
 const stopsToggle = document.getElementById("toggleStops");
-
-const savedTheme = localStorage.getItem("theme");
-let showOptions = localStorage.getItem("showOptions") === "true";
-const savedRenderBusses = localStorage.getItem("busses");
-const savedRenderStops = localStorage.getItem("stops");
+const splash = document.getElementById("splash");
 
 const palette = [
     "#6FADCA", // kc metro
@@ -127,7 +120,7 @@ const linkIcon = L.icon({
 
 
 document.addEventListener("click", function () {
-    const splash = document.getElementById("splash");
+    
     splash.classList.add("hidden");
 
     document.querySelectorAll('.ui').forEach(el => {
@@ -140,20 +133,8 @@ function initMap() {
         attribution: '&copy; CARTO'
     }).addTo(map);
 
-    if (savedTheme === "dark") {
-        darkMode();
-        isDarkMode = true;
-    }
-
-    if (savedRenderBusses === "false") {
-        renderBusses = false;
-        vehiclesToggle.checked = false;
-    }
-
-    if (savedRenderStops === "false") {
-        renderStops = false;
-        stopsToggle.checked = false;
-    }
+    isDarkMode ? darkMode() : lightMode();
+    console.log(isDarkMode);
 }
 
 function switchMode() {
@@ -173,7 +154,7 @@ function switchMode() {
     
     selectedStop = null;
     selectedStopMarker = null;
-    pinnedStopLayer.clearLayers();
+    layers.pinnedStopLayer.clearLayers();
 
     clearHighlight();
     loadArrivals();
@@ -211,7 +192,7 @@ function lightMode() {
         e.style.backgroundColor = "#b8bdbe";
     });
 
-    localStorage.setItem("theme", "light");
+    localStorage.setItem("theme", "false");
 }
 
 function darkMode() {
@@ -245,7 +226,7 @@ function darkMode() {
         e.style.backgroundColor = "#151515";
     });
 
-    localStorage.setItem("theme", "dark");
+    localStorage.setItem("theme", "true");
 }
 
 function getMappedColor(original) {
@@ -374,7 +355,7 @@ async function updateLines() {
     );
     const routes = await res.json();
 
-    routeLayer.clearLayers();
+    layers.routeLayer.clearLayers();
     routeLines = [];
 
     routes.forEach((routeShape, index) => {
@@ -403,14 +384,14 @@ async function updateLines() {
         line.color = color;
         line.isRail = isRail;
 
-        routeLayer.addLayer(line);
+        layers.routeLayer.addLayer(line);
         routeLines.push(line);
     });   
 }
 
 async function updateStops() {
     if (!renderStops) {
-        stopLayer.clearLayers();
+        layers.stopLayer.clearLayers();
         warn.style.display = "none";
         return;
     }
@@ -427,7 +408,7 @@ async function updateStops() {
     if (stops.length > 750) {
         warn.style.display = "block";
         warn.querySelector("h3").textContent = "Zoom in to view stops!";
-        stopLayer.clearLayers();
+        layers.stopLayer.clearLayers();
         return;
     };
     warn.style.display = "none";
@@ -453,12 +434,12 @@ async function updateStops() {
             // console.log(marker.stopData.name, marker.stopData.stop_id);
             L.DomEvent.stopPropagation(e);
 
-            pinnedStopLayer.clearLayers();
+            layers.pinnedStopLayer.clearLayers();
 
             selectedStopMarker = L.marker(coords, {
                 icon: selectedStopIcon,
                 opacity: 1
-            }).addTo(pinnedStopLayer);
+            }).addTo(layers.pinnedStopLayer);
 
             selectedStop = stop;
 
@@ -466,13 +447,13 @@ async function updateStops() {
             updateStops();
         });
     });
-    stopLayer.clearLayers();
-    stopLayer.addLayer(newLayer);
+    layers.stopLayer.clearLayers();
+    layers.stopLayer.addLayer(newLayer);
 }
 
 async function updateVehicles() {
     if (!renderBusses) {
-        busLayer.clearLayers();
+        layers.busLayer.clearLayers();
     };
 
     const res = await fetch(`/api/vehicles`);
@@ -502,19 +483,21 @@ async function updateVehicles() {
         }
     });
 
-    busLayer.clearLayers();
-    railLayer.clearLayers();
+    layers.busLayer.clearLayers();
+    layers.railLayer.clearLayers();
 
-    railLayer.addLayer(newRailLayer);
+    layers.railLayer.addLayer(newRailLayer);
 
     if (renderBusses) {
-        busLayer.addLayer(newBusLayer);
+        layers.busLayer.addLayer(newBusLayer);
     };
 }
 
 
 window.onload = () => {
     initMap();
+
+    initToggle();
     updateStops();
     updateVehicles();
 
@@ -568,27 +551,34 @@ routeInput.addEventListener("input", () => {
 });
 
 
-vehiclesToggle.addEventListener("change", function () {
-  if (this.checked) {
-    renderBusses = true;
-    localStorage.setItem("busses", "true");
-  } else {
-    renderBusses = false;
-    localStorage.setItem("busses", "false");
-  }
-  updateVehicles();
-});
 
-stopsToggle.addEventListener("change", function () {
-  if (this.checked) {
-    renderStops = true;
-    localStorage.setItem("stops", "true");
-  } else {
-    renderStops = false;
-    localStorage.setItem("stops", "false");
-  }
-  updateStops();
-});
+function initToggle() {    
+    vehiclesToggle.addEventListener("change", function () {
+        if (this.checked) {
+            renderBusses = true;
+            localStorage.setItem("busses", "true");
+        } else {
+            renderBusses = false;
+            localStorage.setItem("busses", "false");
+        }
+        updateVehicles();
+    });
+
+    stopsToggle.addEventListener("change", function () {
+        if (this.checked) {
+            renderStops = true;
+            localStorage.setItem("stops", "true");
+        } else {
+            renderStops = false;
+            localStorage.setItem("stops", "false");
+        }
+        updateStops();
+    });
+
+    vehiclesToggle.checked = renderBusses;
+    stopsToggle.checked = renderStops;
+}
+
 
 function optionsManager() {
     if (!showOptions) {
@@ -690,7 +680,7 @@ map.on('click', (e) => {
     }
     selectedStop = null;
 
-    pinnedStopLayer.clearLayers();
+    layers.pinnedStopLayer.clearLayers();
 
     const info = document.getElementById("data");
     info.classList.add("hidden");
