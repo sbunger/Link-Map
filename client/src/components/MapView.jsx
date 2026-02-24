@@ -1,7 +1,11 @@
 import { useEffect, useRef } from "react";
+
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+
 import "leaflet.markercluster";
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 
 export default function MapView({
     darkMode,
@@ -15,6 +19,28 @@ export default function MapView({
     const mapInstance = useRef(null);
     const layers = useRef({});
     const routeLines = useRef([]);
+
+    let stopIcon = L.icon({
+        iconUrl: "/images/stop-icon.png",
+        iconSize: [24, 24],
+        opacity: 0.8,
+    });
+
+    let selectedStopIcon = L.icon({
+        iconUrl: '/images/selected-stop-icon.png',
+        iconSize: [34, 34],
+        opacity: 0.8,
+    });
+
+    const busIcon = L.icon({
+        iconUrl: "/images/bus.png",
+        iconSize: [24, 24],
+    });
+
+    const linkIcon = L.icon({
+        iconUrl: "/images/rail.png",
+        iconSize: [26, 26],
+    });
 
     //map
     useEffect(() => {
@@ -42,7 +68,12 @@ export default function MapView({
                 showCoverageOnHover: false,
                 zoomToBoundsOnClick: true,
                 maxClusterRadius: 45,
-                pane: "vehiclePane"
+                pane: 'vehiclePane',
+                iconCreateFunction: cluster => L.divIcon({
+                    html: `<div class="cluster-count">${cluster.getChildCount()}</div>`,
+                    className: 'bus-cluster',
+                    iconSize: [30, 30]
+                })
             }).addTo(map)
         };
 
@@ -114,7 +145,7 @@ export default function MapView({
 
     }, []);
 
-    //highlihht
+    //highlight route
     useEffect(() => {
         routeLines.current.forEach(line => {
             if (!highlightedRoute) {
@@ -136,10 +167,8 @@ export default function MapView({
         const map = mapInstance.current;
         if (!map) return;
 
-        if (!renderStops) {
-            layers.current.stopLayer.clearLayers();
-            return;
-        }
+        layers.current.stopLayer.clearLayers();
+        if (!renderStops) return;
 
         const loadStops = () => {
             const bounds = map.getBounds();
@@ -152,7 +181,8 @@ export default function MapView({
                     if (stops.length > 850) return;
 
                     stops.forEach(stop => {
-                        const marker = L.marker([stop.lat, stop.lon]);
+                        const marker = L.marker([stop.lat, stop.lon], { icon: stopIcon });
+
                         marker.on("click", e => {
                             L.DomEvent.stopPropagation(e);
                             setSelectedStop(stop);
@@ -174,6 +204,51 @@ export default function MapView({
 
     }, [renderStops]);
 
+    //vehicles
+    useEffect(() => {
+        const map = mapInstance.current;
+        if (!map) return;
+
+        const loadVehicles = async () => {
+            try {
+                const res = await fetch("/api/vehicles");
+                const vehicles = await res.json();
+
+                const newBusLayer = L.layerGroup();
+                const newRailLayer = L.layerGroup();
+
+                vehicles.forEach(v => {
+                    if (!v.lat || !v.lon) return;
+                    const marker = L.marker([v.lat, v.lon], {
+                        icon: (v.type === 0) ? linkIcon : busIcon,
+                        pane: 'vehiclePane',
+                        interactive: false
+                    });
+
+                    if (v.type === 0) {
+                        newRailLayer.addLayer(marker);
+                    } else {
+                        newBusLayer.addLayer(marker);
+                    }
+                });
+
+                layers.current.busLayer.clearLayers();
+                layers.current.railLayer.clearLayers();
+
+                layers.current.railLayer.addLayer(newRailLayer);
+                
+                if (renderVehicles) {
+                    layers.current.busLayer.addLayer(newBusLayer);
+                };
+            } catch (err) {
+                console.error("Vehicle load error:", err);
+            }
+        };
+
+        loadVehicles();
+        const interval = setInterval(loadVehicles, 15000);
+        return () => clearInterval(interval);
+    }, [renderVehicles]);
 
     return <div ref={mapRef} style={{ height: "100vh", width: "100vw" }} />;
 }
