@@ -1,3 +1,10 @@
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 import express from "express";
 import OnebusawaySDK from 'onebusaway-sdk';
 import dotenv from "dotenv";
@@ -40,7 +47,7 @@ const client = new OnebusawaySDK({
     apiKey: KEY,
 });
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "client/dist")));
 app.head("/", (req, res) => res.status(200).end());
 
 app.get("/api/arrivals", async (req, res) => {
@@ -219,6 +226,10 @@ app.get("/api/vehicles", async (req, res) => {
         console.error(err);
         res.status(500).json({ error: "Failed to fetch vehicles" });
     }
+});
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "client/dist/index.html"));
 });
 
 app.listen(PORT, () => {
