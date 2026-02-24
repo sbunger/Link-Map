@@ -34,3 +34,24 @@ html, body, #root {
     z-index: 7000 !important;
     transition: transform 0.25s;
 }
+
+.leaflet-tooltip.route-tooltip {
+  background-color: #222;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+
+  z-index: 10000 !important;
+}
+
+.leaflet-tooltip.route-tooltip.leaflet-tooltip-left:before {
+  border-left-color: #222;
+  border-left-width: 7px;
+}
+
+.leaflet-tooltip.route-tooltip.leaflet-tooltip-right:before {
+  border-right-color: #222;
+  border-left-width: 7px;
+}
