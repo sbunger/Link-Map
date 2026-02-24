@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import MapView from "./components/MapView";
+import UIOverlay from "./components/UIOverlay";
 import './styles.css'
 
 export default function App() {
@@ -20,7 +21,14 @@ export default function App() {
 
   return (
     <>
-      
+      <UIOverlay
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        renderStops={renderStops}
+        setRenderStops={setRenderStops}
+        renderVehicles={renderVehicles}
+        setRenderVehicles={setRenderVehicles}
+      />
 
       <MapView
         darkMode={darkMode}

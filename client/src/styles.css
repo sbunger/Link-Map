@@ -1,0 +1,36 @@
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-family: "Google Sans", sans-serif;
+}
+
+.leaflet-container {
+    height: 100vh; 
+    width: 100vw;
+    background: #eee;
+}
+
+.bus-cluster {
+    background-image: url(/images/bus-group.png);
+    background-size: cover;
+    background-position: center;
+
+    color: #ffffff;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    font-weight: 600;
+    font-size: 14px;
+
+    line-height: 29px;
+    
+    z-index: 7000 !important;
+    transition: transform 0.25s;
+}
