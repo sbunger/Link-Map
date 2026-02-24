@@ -66,12 +66,8 @@ export default function UIOverlay({
 
   const arrivalRows = formatArrivals(arrivals, stopKey);
 
-  // arrivals "loading" is when a stop is selected but we haven't received data yet
   const arrivalsLoading = Boolean(selectedStop && !arrivalsData);
 
-  // show panel when either:
-  // - stop selected, OR
-  // - routes are loading
   const showDataPanel = Boolean(selectedStop || routesLoading);
 
   return (
