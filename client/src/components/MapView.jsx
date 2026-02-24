@@ -15,7 +15,10 @@ export default function MapView({
     renderVehicles,
     selectedStop,
     setSelectedStop,
-    highlightedRoute
+    highlightedRoute,
+    onMapClick,
+    setWarningText,
+    setRoutesLoading
 }) {
     const mapRef = useRef(null);
     const mapInstance = useRef(null);
@@ -135,7 +138,7 @@ export default function MapView({
         };
 
         map.on("click", () => {
-            setSelectedStop(null);
+            onMapClick?.();
         });
     }, []);
 
@@ -171,6 +174,8 @@ export default function MapView({
 
         
         const loadRoutes = async () => {
+            setRoutesLoading?.(true);
+
             try {
                 const res = await fetch("/api/routes-nearby");
                 const routes = await res.json();
@@ -202,12 +207,14 @@ export default function MapView({
                 });
             } catch (err) {
                 console.error("Route load error:", err);
+            } finally {
+                setRoutesLoading?.(false);
             }
         };
 
         loadRoutes();
 
-    }, []);
+    }, [setRoutesLoading]);
 
     //route colors
     let colorMap = {};
@@ -234,19 +241,29 @@ export default function MapView({
 
     //highlight route
     useEffect(() => {
+        let found = false;
+
         routeLines.current.forEach(line => {
             if (!highlightedRoute) {
                 line.setStyle({ opacity: line.isRail ? 0.8 : 0.4 });
-            } else if (line.routeName === highlightedRoute) {
+            } else if (line.routeName.toLowerCase() === highlightedRoute.toLowerCase()) {
                 line.setStyle({ opacity: 0.9});
+                found = true;
                 
                 const group = L.featureGroup([line]);
                 mapInstance.current.flyToBounds(group.getBounds(), { padding: [50, 50] });
 
             } else {
-                line.setStyle({ opacity: 0.15 });
+                line.setStyle({ opacity: 0.1 });
             }
         });
+
+        if (found == false) {
+            highlightedRoute = null;
+            routeLines.current.forEach(line => {
+                line.setStyle({ opacity: line.isRail ? 0.8 : 0.4 });
+            });
+        }
     }, [highlightedRoute]);
 
     //tooltip
@@ -311,7 +328,13 @@ export default function MapView({
             fetch(`/api/stops-nearby?bbox=${bounds.toBBoxString()}`)
                 .then(res => res.json())
                 .then(stops => {
-                    
+                    if (stops.length > 850) {
+                        setWarningText?.("Zoom in to view stops!");
+                        layers.current.stopLayer.clearLayers();
+                        layers.current.selectedStopLayer.clearLayers();
+                    } else {
+                        setWarningText?.("");
+                    }
 
                     const newStopLayer = L.layerGroup();
                     const newSelectedStopLayer = L.layerGroup();
@@ -362,7 +385,7 @@ export default function MapView({
             map.off("moveend", loadStops);
         };
 
-    }, [renderStops, darkMode, selectedStop]);
+    }, [renderStops, darkMode, selectedStop, setWarningText]);
 
 
 
