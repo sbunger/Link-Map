@@ -1,4 +1,5 @@
 import React from "react";
+import useSeattleWeather from "./Weather";
 
 function formatArrivals(arrivals = [], stopKey = "nostop") {
   const short = arrivals.slice(0, 9);
@@ -50,6 +51,7 @@ export default function UIOverlay({
   dataPanelOpen,
 }) {
   const infoClass = `info ${darkMode ? "dark" : ""}`;
+  const { weather, weatherLoading } = useSeattleWeather();
 
   const stopName = arrivalsData?.stopName;
   const direction = arrivalsData?.direction;
@@ -93,7 +95,7 @@ export default function UIOverlay({
               role="button"
               tabIndex={0}
             >
-              <img src="images/check.png" alt="search" />
+              <img src="images/ui/check.png" alt="search" />
             </div>
           </div>
 
@@ -105,7 +107,7 @@ export default function UIOverlay({
             tabIndex={0}
           >
             <img
-              src={darkMode ? "images/sun.png" : "images/moon.png"}
+              src={darkMode ? "images/ui/sun.png" : "images/ui/moon.png"}
               alt="toggle theme"
             />
           </div>
@@ -118,7 +120,7 @@ export default function UIOverlay({
             tabIndex={0}
           >
             <img
-              src={darkMode ? "images/gear.png" : "images/gear-dark.png"}
+              src={darkMode ? "images/ui/gear.png" : "images/ui/gear-dark.png"}
               alt="settings"
             />
           </div>
@@ -241,6 +243,21 @@ export default function UIOverlay({
             style={{ display: warningText ? "block" : "none" }}
           >
             <h3>{warningText}</h3>
+          </div>
+
+          <div className={`${infoClass}`} id="weather">
+            {weatherLoading ? (
+              <p>Weather Loading</p>
+            ) : weather ? (
+              <>
+                <div id="weatherRow">
+                  <img id="weatherIcon" src={`/images/${weather.icon}${darkMode ? "-dark.png" : ".png"}`}/>
+                  <h3>{weather.temp}°</h3>
+                </div>
+              </>
+            ) : (
+              <p>Unavailible :(</p>
+            )}
           </div>
         </div>
       </div>

@@ -46,7 +46,7 @@ export default function MapView({
     const stopIconLight = useMemo(
         () =>
             L.icon({
-                iconUrl: "/images/stop-icon.png",
+                iconUrl: "/images/map/stop-icon.png",
                 iconSize: [24, 24]
             }),
         []
@@ -55,7 +55,7 @@ export default function MapView({
     const stopIconDark = useMemo(
         () =>
             L.icon({
-                iconUrl: "/images/stop-icon-dark.png",
+                iconUrl: "/images/map/stop-icon-dark.png",
                 iconSize: [24, 24]
             }),
         []
@@ -65,7 +65,7 @@ export default function MapView({
     const selectedStopIconLight = useMemo(
         () =>
             L.icon({
-                iconUrl: "/images/selected-stop-icon.png",
+                iconUrl: "/images/map/selected-stop-icon.png",
                 iconSize: [28, 28]
             }),
         []
@@ -74,7 +74,7 @@ export default function MapView({
     const selectedStopIconDark = useMemo(
         () =>
             L.icon({
-                iconUrl: "/images/selected-stop-icon-dark.png",
+                iconUrl: "/images/map/selected-stop-icon-dark.png",
                 iconSize: [28, 28]
             }),
         []
@@ -83,7 +83,7 @@ export default function MapView({
     const busIcon = useMemo(
         () =>
             L.icon({
-                iconUrl: "/images/bus.png",
+                iconUrl: "/images/map/bus.png",
                 iconSize: [24, 24],
             }),
         []
@@ -92,7 +92,7 @@ export default function MapView({
     const linkIcon = useMemo(
         () =>
             L.icon({
-                iconUrl: "/images/rail.png",
+                iconUrl: "/images/map/rail.png",
                 iconSize: [26, 26],
             }),
         []

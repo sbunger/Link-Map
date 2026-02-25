@@ -157,6 +157,10 @@ li {
     box-sizing: border-box;
 }
 
+.row.bottom .ui.right.shown {
+    flex-direction: row !important;
+}
+
 .left {
     flex-direction: row;
     transform: translate(-600px);
@@ -387,6 +391,22 @@ li {
     background: #222729;
 }
 
+#weather {
+    text-align: center;
+}
+
+#weatherRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90px;
+}
+
+#weatherRow img {
+    width: 1.5em;
+    transform: scale(1.4);
+}
 
 
 .scheduledArrival {
