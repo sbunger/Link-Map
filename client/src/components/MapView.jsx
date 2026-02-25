@@ -192,7 +192,7 @@ export default function MapView({
 
                     const line = L.polyline(coords, {
                         color,
-                        weight: 4,
+                        weight: getLineWeight(map.getZoom()),
                         opacity: isRail ? 0.8 : 0.4
                     }).addTo(layers.current.routeLayer);
 
@@ -265,6 +265,31 @@ export default function MapView({
             });
         }
     }, [highlightedRoute]);
+
+    //weights
+
+    const getLineWeight = (zoom) => {
+        const result = Math.pow(zoom / 13, 12) + 2;
+        console.log(result);
+        return result;
+    }
+
+    useEffect(() => {
+        const map = mapInstance.current;
+        if (!map) return;
+
+        const updateWeights = () => {
+            routeLines.current.forEach(line => {
+                line.setStyle({weight: getLineWeight(map.getZoom())});
+            });
+        };
+
+        map.on("zoomend", updateWeights);
+
+        return () => {
+            map.off("zoomend", updateWeights);
+        }
+    }, []);
 
     //tooltip
     useEffect(() => {

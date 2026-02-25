@@ -10,6 +10,12 @@ function getIcon(code) {
     return "/weather/cloudy";
 }
 
+function bearingToDir(deg) {
+    const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+    const index = Math.round(deg / 45) % 8;
+    return directions[index];
+}
+
 export default function useSeattleWeather() {
     const [weather, setWeather] = useState(null);
     const [weatherLoading, setWeatherLoading] = useState(true);
@@ -27,6 +33,7 @@ export default function useSeattleWeather() {
             setWeather({
                 temp: Math.round((current.temperature * 9) / 5 + 32),
                 wind: Math.round(current.windspeed),
+                windDir: bearingToDir(current.winddirection),
                 icon: getIcon(current.weathercode),
             });
         } catch (err) {

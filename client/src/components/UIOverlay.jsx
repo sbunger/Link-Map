@@ -236,16 +236,18 @@ export default function UIOverlay({
           </div>
         </div>
 
-        <div className={`ui right ${started ? "shown" : ""}`}>
+        <div className={`ui right ${(started) ? "shown" : ""}`}>
           <div
-            className={`${infoClass}`}
+            className={`${infoClass} ${warningText ? "visible" : ""}`}
             id="warning"
-            style={{ display: warningText ? "block" : "none" }}
           >
-            <h3>{warningText}</h3>
+            <h3>Zoom in to view stops!</h3>
           </div>
 
-          <div className={`${infoClass}`} id="weather">
+          <div 
+            className={`${infoClass}`} 
+            id="weather"
+            >
             {weatherLoading ? (
               <p>Weather Loading</p>
             ) : weather ? (
@@ -253,6 +255,10 @@ export default function UIOverlay({
                 <div id="weatherRow">
                   <img id="weatherIcon" src={`/images/${weather.icon}${darkMode ? "-dark.png" : ".png"}`}/>
                   <h3>{weather.temp}°</h3>
+                </div>
+
+                <div className={`weather-tooltip ${darkMode ? "dark" : ""}`}>
+                  Wind: {weather.wind} mph ({weather.windDir})
                 </div>
               </>
             ) : (

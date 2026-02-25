@@ -383,8 +383,12 @@ li {
 
 
 #warning {
-    display: none;
+    opacity: 0;
     background: #ffffff;
+}
+
+#warning.visible {
+    opacity: 1;
 }
 
 #warning.dark {
@@ -393,6 +397,44 @@ li {
 
 #weather {
     text-align: center;
+    position: relative;
+
+    width: 110px;
+}
+
+#weather:hover .weather-tooltip {
+    opacity: 1;
+}
+
+.weather-tooltip:hover {
+    opacity: 0 !important;
+}
+
+.weather-tooltip {
+    box-sizing: border-box;
+    transition: all 0.2s;
+
+    font-weight: 500;
+    font-size: 13px;
+    border-radius: 4px;
+
+    background: #ffffff;
+
+    padding: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 112px;
+
+
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    bottom: 70px;
+}
+
+.weather-tooltip.dark {
+    background: #40494e;
 }
 
 #weatherRow {
@@ -400,7 +442,6 @@ li {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 90px;
 }
 
 #weatherRow img {
