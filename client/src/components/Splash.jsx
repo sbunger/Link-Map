@@ -6,7 +6,7 @@ export default function Splash({ darkMode, hidden, onClick }) {
       <div className={`info ${darkMode ? "dark" : ""}`} id="splashtext">
         <div id="welcome">
           <h2 style={{ textDecoration: "underline wavy 1px" }}>Welcome to Link Map!</h2>
-          <img src="images/busmoji.png" alt="bus" />
+          <img src="images/ui/busmoji.png" alt="bus" />
         </div>
         <p>
           This is a node web app I created using King County Metro and SoundTransit GTFS data and
