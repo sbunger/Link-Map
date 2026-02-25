@@ -3,6 +3,7 @@ import MapView from "./components/MapView";
 import UIOverlay from "./components/UIOverlay";
 import Splash from "./components/Splash";
 import './styles.css'
+import { act } from 'react';
 
 export default function App() {
   const [started, setStarted] = useState(false);
@@ -38,6 +39,7 @@ export default function App() {
   useEffect(() => localStorage.setItem("busses", String(renderVehicles)), [renderVehicles]);
   useEffect(() => localStorage.setItem("showOptions", String(showOptions)), [showOptions]);
 
+  //arrivals
   useEffect(() => {
     let intervalId;
 
@@ -61,6 +63,7 @@ export default function App() {
     return () => clearInterval(intervalId);
   }, [selectedStop]);
 
+  //highlight route
   const onSubmitRoute = () => {
     const input = routeQuery.trim();
     if (!input) {
@@ -71,6 +74,7 @@ export default function App() {
     setRouteQuery("");
   };
 
+  //clear when map click
   const clearSelection = () => {
     setHighlightedRoute(null);
     setDataPanelOpen(false);
