@@ -425,7 +425,7 @@ li {
     height: 1em;
     vertical-align: middle;
 
-    background-image: url(images/ui/live-arrival.png);
+    background-image: url(/images/ui/live-arrival.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
