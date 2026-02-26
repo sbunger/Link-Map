@@ -116,7 +116,10 @@ export default function MapView({
         map.createPane("vehiclePane");
         map.getPane("vehiclePane").style.zIndex = 850;
 
-        hoverTooltipRef.current = L.tooltip({ sticky: true, className: "route-tooltip" });
+        map.createPane("tooltipTopPane");
+        map.getPane("tooltipTopPane").style.zIndex = 2000;
+
+        hoverTooltipRef.current = L.tooltip({ sticky: true, className: "route-tooltip", pane: "tooltipTopPane" });
 
         layers.current = {
             stopLayer: L.layerGroup().addTo(map),
@@ -269,7 +272,7 @@ export default function MapView({
     //weights
 
     const getLineWeight = (zoom) => {
-        const result = Math.pow(zoom / 13, 12) + 2;
+        const result = Math.pow(zoom / 13, 11) + 1.5;
         console.log(result);
         return result;
     }
@@ -467,5 +470,5 @@ export default function MapView({
 
 
 
-    return <div ref={mapRef} style={{ height: "100vh", width: "100vw" }} />;
+    return <div ref={mapRef} class={`map ${darkMode ? 'dark' : ''}`} />;
 }
