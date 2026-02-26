@@ -57,6 +57,7 @@ export default function UIOverlay({
   const direction = arrivalsData?.direction;
   const routes = arrivalsData?.routes ?? [];
   const arrivals = arrivalsData?.arrivals ?? [];
+  const accessible = arrivalsData?.accessible;
 
   const routesShortNames = routes
     .map((r) => r?.data?.entry?.shortName)
@@ -147,7 +148,7 @@ export default function UIOverlay({
 
             {selectedStop && (
               <>
-                <h2 id="stopName">
+                <h2 id="stopName" className={ accessible ? "wheelchair" : "" }>
                   {stopName ? (
                     <>
                       {stopName}{" "}
@@ -238,7 +239,7 @@ export default function UIOverlay({
 
         <div className={`ui right ${(started) ? "shown" : ""}`}>
           <div
-            className={`${infoClass} ${warningText ? "visible" : ""}`}
+            className={`${infoClass} ${(warningText && renderStops) ? "visible" : ""}`}
             id="warning"
           >
             <h3>Zoom in to view stops!</h3>

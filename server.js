@@ -67,11 +67,12 @@ app.get("/api/arrivals", async (req, res) => {
         const stopName = stop.data.entry.name;
         const arrivals = arrivalsList.data.entry.arrivalsAndDepartures;
         const direction = stop.data.entry.direction;
+        const accessible = (stop.data.entry.wheelchairBoarding == "ACCESSIBLE") ? true : false;
         
         const routes = await Promise.all(stop.data.entry.routeIds.map(route => client.route.retrieve(route))
 );
 
-        res.json({ routes, stopName, arrivals, direction });
+        res.json({ routes, stopName, arrivals, direction, accessible });
     } catch (err) {
         console.error("API fetch failed:", err);
         res.status(500).json({ error: "Failed to fetch arrivals" });
