@@ -231,7 +231,7 @@ export default function UIOverlay({
 
             <div className="option">
               <h3 style={{ fontSize: 16 }}>
-                Made by <a href="https://silasunger.me">Silas Unger</a> in WA :)
+                Made by <a href="https://sbunger.tech">Silas Unger</a> in WA :)
               </h3>
             </div>
           </div>
