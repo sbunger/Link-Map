@@ -1,18 +1,17 @@
-Below is a list of the changes included in the SC-Spring-2026.2 release of Sound Transit GTFS data.
+Below is a list of the changes included in the SC-Spring-2026.3 release of Sound Transit GTFS data.
 
 Schedule Changes
-* 2 Line:
-    * February 14 - March 27 simulated service for the cross lake connection
+* 1 & 2 Lines:
+    * March 3-5 late night closure between Northgate and Lynnwood with replacement bus shuttle
+    * March 2, 6, 9-20 weeknight single tracking at Shoreline South
 * Sounder:
-    * Spring 2026 service for N Line and S Line
-* T Line:
-    * Spring 2026 service
+    * 2026 game train event service
 
 Route Changes
 * none
 
 Stop Changes
-* none
+* Update stop TTS (text-to-speech) values
 
 Other Changes
 * none
