@@ -1,18 +1,7 @@
 stop_id,stop_name,stop_lat,stop_lon,stop_code,stop_desc,zone_id,stop_url,location_type,parent_station,wheelchair_boarding,stop_timezone,platform_code,tts_stop_name
 1108,Westlake,47.611450,-122.337532,,Westlake to Federal Way,DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/westlake-station,,C03,1,America/Los_Angeles,2,
-1110,Pine St & 5th Ave,47.611767,-122.336456,1110,,,,,,1,America/Los_Angeles,,Pine Street and Fifth Avenue
-1120,Pine St & 4th Ave,47.611103,-122.338028,1120,,,,,,1,America/Los_Angeles,,Pine Street and Fourth Avenue
 1121,Westlake,47.611759,-122.335785,,Westlake to Lynnwood,DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/westlake-station,,C03,1,America/Los_Angeles,1,
-1400,Stadium District (N 1st St & Tacoma Ave),47.264380,-122.448718,1593,,,,,,1,,,
-1401,Stadium District (N 1st St & Tacoma Ave),47.264494,-122.448465,1594,,,,,,1,,,
-1677,Union Station (Pacific Ave & S 19th St),47.244818,-122.436784,1901,,,,,,1,,,
-25240,Montlake Blvd NE & NE Pacific Pl - Bay 3,47.650227,-122.304420,25240,,,,,,1,America/Los_Angeles,,Montlake Boulevard Northeast and Northeast Pacific Place - Bay Three
-25755,Montlake Blvd NE & NE Pacific Pl - Bay 4,47.650494,-122.304092,25755,,,,,,1,America/Los_Angeles,,Montlake Boulevard Northeast and Northeast Pacific Place - Bay Four
-29262,E John St & Broadway  E - Bay 2,47.619980,-122.320114,29262,,,,,,1,America/Los_Angeles,,East John Street and 10th Avenue East - Bay Two
-29270,E John St & Broadway  E - Bay 1,47.619846,-122.320473,29270,,,,,,1,America/Los_Angeles,,East John Street and Broadway East - Bay One
-330,6th Ave & MLK Wy,47.257192,-122.453094,373,,3,,,,1,,,
 455,Symphony,47.607246,-122.335754,,Symphony to Federal Way,DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/symphony-station,,C05,1,America/Los_Angeles,2,
-47200,S200th St & 28th Ave S,47.422813,-122.298627,,,,,,,1,,,
 501,Pioneer Square,47.602139,-122.331055,,Pioneer Square to Federal Way,DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/pioneer-square-station,,C07,1,America/Los_Angeles,2,
 532,Pioneer Square,47.603199,-122.331581,,Pioneer Square to Lynnwood,DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/pioneer-square-station,,C07,1,America/Los_Angeles,1,
 55578,Rainier Beach,47.522953,-122.279083,,Rainier Beach to Lynnwood,C29,https://www.soundtransit.org/ride-with-us/stops-stations/rainier-beach-station,,C29,1,America/Los_Angeles,1,
@@ -26,24 +15,12 @@ stop_id,stop_name,stop_lat,stop_lon,stop_code,stop_desc,zone_id,stop_url,locatio
 565,Symphony,47.608246,-122.336166,,Symphony to Lynnwood,DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/symphony-station,,C05,1,America/Los_Angeles,1,
 621,Int'l Dist/Chinatown,47.598438,-122.327820,,Int'l Dist/Chinatown to Lynnwood,DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/international-district-chinatown-station,,C09,1,America/Los_Angeles,1,International District Chinatown
 623,Int'l Dist/Chinatown,47.597660,-122.328217,,Int'l Dist/Chinatown to Federal Way,DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/international-district-chinatown-station,,C09,1,America/Los_Angeles,2,International District Chinatown
-731,Tacoma General (Division Ave & MLK Jr Way),47.260844,-122.453382,839,,,,,,1,,,
-9134,U District Station - Bay 4,47.660072,-122.313255,9134,,,,,,1,America/Los_Angeles,,You District Station - Bay Four
-9587,U District Station - Bay 1,47.659878,-122.314117,9587,,,,,,1,America/Los_Angeles,,You District Station - Bay One
 990001,U District,47.659875,-122.314194,,U District to Federal Way,N07,https://www.soundtransit.org/ride-with-us/stops-stations/u-district-station,,N07,1,America/Los_Angeles,2,you district
 990002,U District,47.660749,-122.314067,,U District to Lynnwood,N07,https://www.soundtransit.org/ride-with-us/stops-stations/u-district-station,,N07,1,America/Los_Angeles,1,you district
 990003,Roosevelt,47.676107,-122.316041,,Roosevelt to Federal Way,N09,https://www.soundtransit.org/ride-with-us/stops-stations/roosevelt-station,,N09,1,America/Los_Angeles,2,
 990004,Roosevelt,47.677081,-122.315928,,Roosevelt to Lynnwood,N09,https://www.soundtransit.org/ride-with-us/stops-stations/roosevelt-station,,N09,1,America/Los_Angeles,1,
 990005,Northgate,47.702662,-122.328320,,Northgate to Federal Way,N11,https://www.soundtransit.org/ride-with-us/stops-stations/northgate-station,,N11,1,America/Los_Angeles,2,
 990006,Northgate,47.703414,-122.328244,,Northgate to Lynnwood,N11,https://www.soundtransit.org/ride-with-us/stops-stations/northgate-station,,N11,1,America/Los_Angeles,1,
-990007,Rainier Ave S & S Forest St,47.577410,-122.297569,,,,,,,1,,,
-990008,Rainier Ave S & S Forest St,47.577463,-122.297354,,,,,,,,,,
-990009,Martin Luther King Jr Way & S Edmund St,47.558907,-122.291934,,,,,,,1,,,
-990010,Martin Luther King Jr Way & S Columbian St,47.562412,-122.294599,,,,,,,1,,,
-990011,Martin Luther King Jr Way & S Myrtle St,47.538473,-122.282062,,,,,,,1,,,
-990012,Martin Luther King Jr Way & S Othello St,47.537367,-122.280999,,,,,,,1,,,
-990013,Martin Luther King Jr Way & S Henderson St,47.523805,-122.278801,,,,,,,1,,,
-990014,Martin Luther King Jr Way & S Henderson St,47.523115,-122.279417,,,,,,,1,,,
-990015,Tukwila Int'l Blvd Stn - Bay 2,47.464076,-122.287876,,,,,,,1,,,
 99101,Stadium,47.591824,-122.327354,,Stadium to Federal Way,C13,https://www.soundtransit.org/ride-with-us/stops-stations/stadium-station,,C13,1,America/Los_Angeles,2,
 99111,SODO,47.579952,-122.327522,,SODO to Federal Way,C15,https://www.soundtransit.org/ride-with-us/stops-stations/sodo-station,,C15,1,America/Los_Angeles,2,so dough
 99121,Beacon Hill,47.579124,-122.311279,,Beacon Hill to Federal Way,C19,https://www.soundtransit.org/ride-with-us/stops-stations/beacon-hill-station,,C19,1,America/Los_Angeles,2,
@@ -54,10 +31,10 @@ stop_id,stop_name,stop_lat,stop_lon,stop_code,stop_desc,zone_id,stop_url,locatio
 99604,Univ of Washington,47.649349,-122.303795,,Univ of Washington to Federal Way,N05,https://www.soundtransit.org/ride-with-us/stops-stations/university-washington-station,,N05,1,America/Los_Angeles,2,University of Washington
 99605,Univ of Washington,47.650312,-122.303736,,Univ of Washington to Lynnwood,N05,https://www.soundtransit.org/ride-with-us/stops-stations/university-washington-station,,N05,1,America/Los_Angeles,1,University of Washington
 99610,Capitol Hill,47.619560,-122.320389,,Capitol Hill to Federal Way,N03,https://www.soundtransit.org/ride-with-us/stops-stations/capitol-hill-station,,N03,1,America/Los_Angeles,2,
-99900,Tukwila Int'l Blvd,47.464272,-122.288399,,Tukwila Int'l Blvd to Federal Way,C35,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-international-boulevard-station,,C35,1,America/Los_Angeles,2,Tuck willa International Boulevard
+99900,Tukwila Int'l Blvd,47.464272,-122.288399,,Tukwila Int'l Blvd to Federal Way,C35,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-international-boulevard-station,,C35,1,America/Los_Angeles,2,Tuck‑WILL‑uh International Boulevard
 99903,SeaTac/Airport,47.445053,-122.296692,,SeaTac/Airport to Lynnwood,C37,https://www.soundtransit.org/ride-with-us/stops-stations/seatac-airport-station,,C37,1,America/Los_Angeles,1,sea tack airport
 99904,SeaTac/Airport,47.444969,-122.297028,,SeaTac/Airport to Federal Way,C37,https://www.soundtransit.org/ride-with-us/stops-stations/seatac-airport-station,,C37,1,America/Los_Angeles,2,sea tack airport
-99905,Tukwila Int'l Blvd,47.463924,-122.288002,,Tukwila Int'l Blvd to Lynnwood,C35,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-international-boulevard-station,,C35,1,America/Los_Angeles,1,Tuck willa International Boulevard
+99905,Tukwila Int'l Blvd,47.463924,-122.288002,,Tukwila Int'l Blvd to Lynnwood,C35,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-international-boulevard-station,,C35,1,America/Los_Angeles,1,Tuck‑WILL‑uh International Boulevard
 99913,Angle Lake,47.423025,-122.297765,,Angle Lake to Lynnwood,S01,https://www.soundtransit.org/ride-with-us/stops-stations/angle-lake-station,,S01,1,America/Los_Angeles,1,
 99914,Angle Lake,47.422145,-122.297834,,Angle Lake to Federal Way,S01,https://www.soundtransit.org/ride-with-us/stops-stations/angle-lake-station,,S01,1,America/Los_Angeles,2,
 C03,Westlake,47.611572,-122.336720,,"Westlake Station - 4th Ave & Pine St Seattle, WA 98101",DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/westlake-station,1,,1,America/Los_Angeles,,
@@ -103,8 +80,8 @@ C27-E-00003,Othello Station South Entrance,47.537269,-122.281280,,,,,2,C27,1,,,"
 C27-E-00004,Othello Station South Entrance,47.537271,-122.281127,,,,,2,C27,1,,,"Othello Station, South Entrance"
 C29,Rainier Beach,47.522394,-122.279391,,"Rainier Beach Station - 9132 Martin Luther King Jr Way S Seattle, WA 98118",C29,https://www.soundtransit.org/ride-with-us/stops-stations/rainier-beach-station,1,,1,America/Los_Angeles,,
 C29-E-00001,Rainier Beach Station Entrance,47.523099,-122.279212,,,,,2,C29,1,,,Rainier Beach Station Entrance
-C35,Tukwila Int'l Blvd,47.464031,-122.287996,,"Tukwila International Boulevard Station - 3651 Southcenter Blvd Tukwila, WA 98188",C35,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-international-boulevard-station,1,,1,America/Los_Angeles,,Tuck wila International Boulevard
-C35-E-00001,Tukwila International Blvd Station Entrance,47.464192,-122.288005,,,,,2,C35,,,,Tukwila International Blvd Station Entrance
+C35,Tukwila Int'l Blvd,47.464031,-122.287996,,"Tukwila International Boulevard Station - 3651 Southcenter Blvd Tukwila, WA 98188",C35,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-international-boulevard-station,1,,1,America/Los_Angeles,,Tuck‑WILL‑uh International Boulevard
+C35-E-00001,Tukwila International Blvd Station Entrance,47.464192,-122.288005,,,,,2,C35,,,,Tuck‑WILL‑uh International Boulevard Station Entrance
 C37,SeaTac/Airport,47.445381,-122.296898,,"SeaTac/Airport Station - International Blvd & S 176th St Seattle, WA 98188",C37,https://www.soundtransit.org/ride-with-us/stops-stations/seatac-airport-station,1,,1,America/Los_Angeles,,sea tack airport
 E01,Judkins Park,47.590299,-122.304508,,"Judkins Park Station - 1485 Rainier Ave S Seattle, WA 98144",E01,,1,,1,America/Los_Angeles,,
 E01-T1,Judkins Park,47.590311,-122.304989,,Judkins Park to Lynnwood,E01,,,E01,1,America/Los_Angeles,1,
@@ -152,38 +129,48 @@ E27-E-00003,Redmond Technology Station Entrance B2,47.643996,-122.133475,,,,,2,E
 E27-E-00004,Redmond Technology Station Entrance C,47.644050,-122.133445,,,,,2,E27,1,,,Redmond Technology Station Entrance See
 E27-T1,Redmond Technology,47.644424,-122.133556,,Redmond Technology to/from South Bellevue,E27,https://www.soundtransit.org/ride-with-us/stops-stations/redmond-technology-station,,E27,1,America/Los_Angeles,1,
 E27-T2,Redmond Technology,47.645199,-122.133673,,Redmond Technology to/from South Bellevue,E27,https://www.soundtransit.org/ride-with-us/stops-stations/redmond-technology-station,,E27,1,America/Los_Angeles,2,
-E29,Marymoor Village,47.667263,-122.109800,,Marymoor Village Station - 17300 NE 70th St Redmond WA 98052,E29,https://www.soundtransit.org/ride-with-us/stops-stations/marymoor-village-station,1,,1,America/Los_Angeles,,
-E29-T1,Marymoor Village,47.667166,-122.110398,,Marymoor Village to South Bellevue,E29,https://www.soundtransit.org/ride-with-us/stops-stations/marymoor-village-station,,E29,1,America/Los_Angeles,1,
-E29-T2,Marymoor Village,47.667381,-122.109118,,Marymoor Village to Downtown Redmond,E29,https://www.soundtransit.org/ride-with-us/stops-stations/marymoor-village-station,,E29,1,America/Los_Angeles,2,
+E29,Marymoor Village,47.667263,-122.109800,,Marymoor Village Station - 17300 NE 70th St Redmond WA 98052,E29,https://www.soundtransit.org/ride-with-us/stops-stations/marymoor-village-station,1,,1,America/Los_Angeles,,Marry More Villiage
+E29-T1,Marymoor Village,47.667166,-122.110398,,Marymoor Village to South Bellevue,E29,https://www.soundtransit.org/ride-with-us/stops-stations/marymoor-village-station,,E29,1,America/Los_Angeles,1,Marry More Villiage
+E29-T2,Marymoor Village,47.667381,-122.109118,,Marymoor Village to Downtown Redmond,E29,https://www.soundtransit.org/ride-with-us/stops-stations/marymoor-village-station,,E29,1,America/Los_Angeles,2,Marry More Villiage
 E31,Downtown Redmond,47.671645,-122.118480,,Downtown Redmond Station - 16620 NE 76th St Redmond WA 98052,E31,https://www.soundtransit.org/ride-with-us/stops-stations/downtown-redmond-station,1,,1,America/Los_Angeles,,
 E31-T1,Downtown Redmond,47.671467,-122.117864,,Downtown Redmond to/from South Bellevue,E31,https://www.soundtransit.org/ride-with-us/stops-stations/downtown-redmond-station,,E31,1,America/Los_Angeles,1,
 E31-T2,Downtown Redmond,47.671788,-122.118952,,Downtown Redmond to/from South Bellevue,E31,https://www.soundtransit.org/ride-with-us/stops-stations/downtown-redmond-station,,E31,1,America/Los_Angeles,2,
-LS11060,Broadway & E Denny Way,47.618425,-122.320940,,,,,,,1,,,
-LS1110,Pine St & 5th Ave,47.611767,-122.336456,,,,,,,1,,,
-LS16440,Roosevelt Station - Bay 5,47.675457,-122.317467,,,,,,,1,,,
-LS21833,6th Ave S & S Royal Brougham Way,47.592049,-122.326073,,,,,,,1,,,
-LS23561,Roosevelt Station - Bay 3,47.677135,-122.315582,,,,,,,1,,,
-LS25240,Montlake Blvd NE & NE Pacific Pl,47.650227,-122.304420,,,,,,,,,,
-LS25755,Mountlake Blvd NE & NE Pacific Pl,47.650144,-122.304217,,,,,,,1,,,
-LS29262,E John St & Broadway,47.619980,-122.320114,,,,,,,1,,,
-LS29270,E John St & Broadway Ave E,47.619846,-122.320473,,,,,,,,,,
-LS3470,Beacon Ave S & S Lander St,47.579296,-122.312169,,,,,,,1,,,
-LS35318,Northgate Station - Bay 4,47.702309,-122.328026,,,,,,,1,,,
-LS3810,Beacon Ave S & S Lander St,47.579280,-122.312242,,,,,,,1,,,
-LS450,3rd Ave & Union St,47.608253,-122.336548,,,,,,,1,,,
-LS500,3rd Ave & James St,47.602139,-122.331055,,,,,,,1,,,
-LS531,3rd Ave & James St,47.602642,-122.331184,,,,,,,1,,,
-LS570,3rd Ave & Union St,47.608688,-122.336700,,,,,,,1,,,
-LS590,3rd Ave & Pine St,47.611137,-122.338951,,,,,,,1,,,
-LS620,4th Ave S & S Jackson St,47.598812,-122.328903,,,,,,,1,,,
-LS666,SODO Busway & S Lander St,47.580383,-122.327521,,,,,,,1,,,
-LS844,5th Ave S & S Jackson St,47.598605,-122.327815,,,,,,,1,,,
-LS8681,Rainier Ave S & S Forest St - Bay 4,47.576854,-122.297105,,,,,,,1,,,
-LS9134,University Way NE & NE 43rd St,47.660072,-122.313255,,,,,,,1,,,
-LS9587,U District Station - Bay 1,47.659878,-122.314117,,,,,,,,,,
-LS99254,SODO Busway & S Lander St,47.580460,-122.327423,,,,,,,1,,,
-LS99261,S Lander St & SODO Busway,47.579856,-122.327223,,,,,,,1,,,
-LS99267,SODO Busway & S Royal Brougham Way,47.592129,-122.327316,,,,,,,1,,,
+LS11060,Broadway & E Denny Way,47.618425,-122.320940,,,,,,,1,,,Broadway and East Denny Way
+LS1110,Pine St & 5th Ave,47.611767,-122.336456,,,,,,,1,,,Pine Street and Fifth Avenue
+LS16440,Roosevelt Station - Bay 5,47.675457,-122.317467,,,,,,,1,,,"Roosevelt Station, Bay Five"
+LS21833,6th Ave S & S Royal Brougham Way,47.592049,-122.326073,,,,,,,1,,,Sixth Avenue South and South Royal broham Way
+LS23561,Roosevelt Station - Bay 3,47.677135,-122.315582,,,,,,,1,,,"Roosevelt Station, Bay Three"
+LS25240,Montlake Blvd NE & NE Pacific Pl,47.650227,-122.304420,,,,,,,,,,Montlake Boulevard Northeast and Northeast Pacific Place
+LS25755,Mountlake Blvd NE & NE Pacific Pl,47.650144,-122.304217,,,,,,,1,,,Mountlake Boulevard Northeast and Northeast Pacific Place
+LS29262,E John St & Broadway,47.619980,-122.320114,,,,,,,1,,,East John Street and Broadway
+LS29270,E John St & Broadway Ave E,47.619846,-122.320473,,,,,,,,,,East John Street and Broadway Avenue East
+LS3470,Beacon Ave S & S Lander St,47.579296,-122.312169,,,,,,,1,,,Beacon Avenue South and South Lander Street
+LS35318,Northgate Station - Bay 4,47.702309,-122.328026,,,,,,,1,,,"Northgate Station, Bay Four"
+LS3810,Beacon Ave S & S Lander St,47.579280,-122.312242,,,,,,,1,,,Beacon Avenue South and South Lander Street
+LS450,3rd Ave & Union St,47.608253,-122.336548,,,,,,,1,,,Third Avenue and Union Street
+LS500,3rd Ave & James St,47.602139,-122.331055,,,,,,,1,,,Third Avenue and James Street
+LS531,3rd Ave & James St,47.602642,-122.331184,,,,,,,1,,,Third Avenue and James Street
+LS570,3rd Ave & Union St,47.608688,-122.336700,,,,,,,1,,,Third Avenue and Union Street
+LS590,3rd Ave & Pine St,47.611137,-122.338951,,,,,,,1,,,Third Avenue and Pine Street
+LS620,4th Ave S & S Jackson St,47.598812,-122.328903,,,,,,,1,,,Fourth Avenue South and South Jackson Street
+LS666,SODO Busway & S Lander St,47.580383,-122.327521,,,,,,,1,,,So Dough Busway and South Lander Street
+LS844,5th Ave S & S Jackson St,47.598605,-122.327815,,,,,,,1,,,Fifth Avenue South and South Jackson Street
+LS8681,Rainier Ave S & S Forest St - Bay 4,47.576854,-122.297105,,,,,,,1,,,"Rainier Avenue South and South Forest Street, Bay Four"
+LS9134,University Way NE & NE 43rd St,47.660072,-122.313255,,,,,,,1,,,University Way Northeast and Northeast Forty Third Street
+LS9587,U District Station - Bay 1,47.659878,-122.314117,,,,,,,,,,"You District Station, Bay One"
+LS99254,SODO Busway & S Lander St,47.580460,-122.327423,,,,,,,1,,,So Dough Busway and South Lander Street
+LS99261,S Lander St & SODO Busway,47.579856,-122.327223,,,,,,,1,,,South Lander Street and So Dough Busway
+LS99267,SODO Busway & S Royal Brougham Way,47.592129,-122.327316,,,,,,,1,,,So Dough Busway and south Royal Broham Way
+LS_N11_T1,Northgate Station Bay 2,47.702012,-122.328377,,,,,,N11,,,,
+LS_N11_T2,Northgate Station Bay 4,47.702307,-122.327992,,,,,,N11,,,,
+LS_N15_T1,Shoreline South/148th Station Bay 3,47.735717,-122.324873,,,,,,N15,,,,
+LS_N15_T2,Shoreline South/148th Station Bay 2,47.736055,-122.325088,,,,,,N15,,,,
+LS_N17_T1,Shoreline North/185th Station Bay 1,47.763830,-122.322712,,,,,,N17,,,,
+LS_N17_T2,Shoreline North/185th Station Bay 3,47.764084,-122.322414,,,,,,N17,,,,
+LS_N19_T1,Mountlake Terrace Fwy Station Bay 7,47.787566,-122.316282,,,,,,N19,,,,
+LS_N19_T2,Mountlake Terrace Fwy Station Bay 6,47.787230,-122.316408,,,,,,N19,,,,
+LS_N23_T1,Lynnwood City Center Station Bay A5,47.816293,-122.295833,,,,,,N23,,,,
+LS_N23_T2,Lynnwood City Center Station Bay D3,47.815878,-122.296312,,,,,,N23,,,,
 LS_S01-T1,S200th St & 28th Ave S,47.422629,-122.297802,,,,,,,1,,,
 LS_S01-T2,S200th St & 28th Ave S,47.422813,-122.298627,,,,,,,1,,,
 LS_S03,S 236th St & 30th Ave S,47.389533,-122.294422,,,,,,,1,,,
@@ -213,8 +200,8 @@ N11-E-00003,Northgate Station Entrance B2,47.702320,-122.328125,,,,,2,N11,1,,,"N
 N11-E-00004,Northgate Station Entrance C,47.702552,-122.328338,,,,,2,N11,1,,,"Northgate Station, Entrance See"
 N11-E-00005,Northgate Station Elevator Entrance,47.702624,-122.328280,,,,,2,N11,1,,,Northgate Station Elevator Entrance
 N15,Shoreline South/148th,47.736095,-122.325227,,"Shoreline South/148th Station - 14711 5th Ave NE Shoreline, WA 98155",N15,https://www.soundtransit.org/ride-with-us/stops-stations/shoreline-south-148th-station,1,,1,America/Los_Angeles,,shoreline south and one forty eighth
-N15-E-00001,Shoreline North/185th Station Entrance A,47.736453,-122.325470,,,,,2,N15,1,,,"Shoreline North and One Hundred Eighty Fifth Station, Entrance A"
-N15-E-00002,Shoreline North/185th Station Entrance B,47.735736,-122.325016,,,,,2,N15,1,,,"Shoreline North and One Hundred Eighty Fifth Station, Entrance Bee"
+N15-E-00001,Shoreline South/148th Station Entrance A,47.736453,-122.325470,,,,,2,N15,1,,,"shoreline south and one forty eighth Station, Entrance A"
+N15-E-00002,Shoreline South/148th Station Entrance B,47.735736,-122.325016,,,,,2,N15,1,,,"shoreline south and one forty eighth Station, Entrance Bee"
 N15-T1,Shoreline South/148th,47.736499,-122.325446,,Shoreline South to Lynnwood,N15,https://www.soundtransit.org/ride-with-us/stops-stations/shoreline-south-148th-station,,N15,1,America/Los_Angeles,1,shoreline south and one forty eighth
 N15-T2,Shoreline South/148th,47.735753,-122.325040,,Shoreline South to Federal Way,N15,https://www.soundtransit.org/ride-with-us/stops-stations/shoreline-south-148th-station,,N15,1,America/Los_Angeles,2,shoreline south and one forty eighth
 N17,Shoreline North/185th,47.764067,-122.322889,,"Shoreline North/185th - 710 NE 185th St Shoreline, WA 98155",N17,https://www.soundtransit.org/ride-with-us/stops-stations/shoreline-north-185th-station,1,,1,America/Los_Angeles,,shoreline north and one eighty fifth
@@ -252,11 +239,11 @@ SN02,Edmonds Station,47.811152,-122.384373,SN02,Edmonds Station - 170 Railroad A
 SN03,Mukilteo Station,47.948370,-122.301052,SN03,Mukilteo Station - SR525 and 1st Street,S_MU,https://www.soundtransit.org/ride-with-us/stops-stations/mukilteo-station,1,,1,America/Los_Angeles,,
 SN04,Everett Station,47.974947,-122.197257,SN04,Everett Station - 3201 Smith Ave,S_EV,https://www.soundtransit.org/ride-with-us/stops-stations/everett-station,1,,1,America/Los_Angeles,,
 SS01,King Street Station,47.597702,-122.329456,SS01,King Street Station - 301 South Jackson Street,S_KS,https://www.soundtransit.org/ride-with-us/stops-stations/king-street-station,1,,1,America/Los_Angeles,,
-SS02,Tukwila Station,47.460199,-122.240430,SS02,Tukwila Station - S Longacres Way & Longacres Dr SW,S_TK,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-station,1,,1,America/Los_Angeles,,tuck willa station
+SS02,Tukwila Station,47.460199,-122.240430,SS02,Tukwila Station - S Longacres Way & Longacres Dr SW,S_TK,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-station,1,,1,America/Los_Angeles,,Tuck‑WILL‑uh station
 SS03,Kent Station,47.384154,-122.233033,SS03,Kent Station - 301 Railroad Avenue North,S_KE,https://www.soundtransit.org/ride-with-us/stops-stations/kent-station,1,,1,America/Los_Angeles,,
 SS04,Auburn Station,47.306411,-122.232257,SS04,Auburn Station - 23 A Street SW,S_AU,https://www.soundtransit.org/ride-with-us/stops-stations/auburn-station,1,,1,America/Los_Angeles,,
 SS05,Sumner Station,47.201287,-122.244813,SS05,Sumner Station - 810 Maple Street,S_SU,https://www.soundtransit.org/ride-with-us/stops-stations/sumner-station,1,,1,America/Los_Angeles,,
-SS06,Puyallup Station,47.192717,-122.295675,SS06,Puyallup Station - 131 West Main Street,S_PU,https://www.soundtransit.org/ride-with-us/stops-stations/puyallup-station,1,,1,America/Los_Angeles,,pew all up station
+SS06,Puyallup Station,47.192717,-122.295675,SS06,Puyallup Station - 131 West Main Street,S_PU,https://www.soundtransit.org/ride-with-us/stops-stations/puyallup-station,1,,1,America/Los_Angeles,,Pew‑ALL‑up station
 SS07,Tacoma Dome Station,47.239571,-122.427024,SS07,Tacoma Dome Station - 424 25th Street,S_TD,https://www.soundtransit.org/ride-with-us/stops-stations/tacoma-dome-station,1,,1,America/Los_Angeles,,
 SS08,South Tacoma Station,47.203491,-122.485552,SS08,South Tacoma Station - S 58th St & Hood St,S_ST,https://www.soundtransit.org/ride-with-us/stops-stations/south-tacoma-station,1,,1,America/Los_Angeles,,
 SS09,Lakewood Station,47.153189,-122.499103,SS09,Lakewood Station - Pacific Hwy SW & 114th St SW,S_LW,https://www.soundtransit.org/ride-with-us/stops-stations/lakewood-station,1,,1,America/Los_Angeles,,
@@ -272,21 +259,21 @@ S_KS_T9,King Street Station,47.597694,-122.329909,SS01,,S_KS,https://www.soundtr
 S_LW,Lakewood Station,47.153189,-122.499103,SS09,,S_LW,https://www.soundtransit.org/ride-with-us/stops-stations/lakewood-station,,SS09,1,America/Los_Angeles,,
 S_MU,Mukilteo Station,47.949110,-122.299030,SN03,,S_MU,https://www.soundtransit.org/ride-with-us/stops-stations/mukilteo-station,,SN03,1,America/Los_Angeles,1,
 S_MU_T2,Mukilteo Station,47.949061,-122.298703,SN03,,S_MU,https://www.soundtransit.org/ride-with-us/stops-stations/mukilteo-station,,SN03,1,America/Los_Angeles,2,
-S_PU_NB,Puyallup Station,47.192634,-122.295644,SS06,,S_PU,https://www.soundtransit.org/ride-with-us/stops-stations/puyallup-station,,SS06,1,America/Los_Angeles,2,pew all up station
-S_PU_SB,Puyallup Station,47.192736,-122.295349,SS06,,S_PU,https://www.soundtransit.org/ride-with-us/stops-stations/puyallup-station,,SS06,1,America/Los_Angeles,1,pew all up station
+S_PU_NB,Puyallup Station,47.192634,-122.295644,SS06,,S_PU,https://www.soundtransit.org/ride-with-us/stops-stations/puyallup-station,,SS06,1,America/Los_Angeles,2,Pew‑ALL‑up station
+S_PU_SB,Puyallup Station,47.192736,-122.295349,SS06,,S_PU,https://www.soundtransit.org/ride-with-us/stops-stations/puyallup-station,,SS06,1,America/Los_Angeles,1,Pew‑ALL‑up station
 S_ST,South Tacoma Station,47.203491,-122.485552,SS08,,S_ST,https://www.soundtransit.org/ride-with-us/stops-stations/south-tacoma-station,,SS08,1,America/Los_Angeles,,
 S_SU_NB,Sumner Station,47.201418,-122.244497,SS05,,S_SU,https://www.soundtransit.org/ride-with-us/stops-stations/sumner-station,,SS05,1,America/Los_Angeles,2,
 S_SU_SB,Sumner Station,47.201218,-122.245037,SS05,,S_SU,https://www.soundtransit.org/ride-with-us/stops-stations/sumner-station,,SS05,1,America/Los_Angeles,1,
 S_TD,Tacoma Dome Station,47.239443,-122.428193,SS07,,S_TD,https://www.soundtransit.org/ride-with-us/stops-stations/tacoma-dome-station,,SS07,1,America/Los_Angeles,1,
 S_TD_T2,Tacoma Dome Station,47.239378,-122.427870,SS07,,S_TD,https://www.soundtransit.org/ride-with-us/stops-stations/tacoma-dome-station,,SS07,1,America/Los_Angeles,2,
-S_TK_NB,Tukwila Station,47.460527,-122.240293,SS02,,S_TK,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-station,,SS02,1,America/Los_Angeles,2,tuck willa station
-S_TK_SB,Tukwila Station,47.460432,-122.240507,SS02,,S_TK,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-station,,SS02,1,America/Los_Angeles,1,tuck willa station
+S_TK_NB,Tukwila Station,47.460527,-122.240293,SS02,,S_TK,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-station,,SS02,1,America/Los_Angeles,2,Tuck‑WILL‑uh station
+S_TK_SB,Tukwila Station,47.460432,-122.240507,SS02,,S_TK,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-station,,SS02,1,America/Los_Angeles,1,Tuck‑WILL‑uh station
 T01,Tacoma Dome,47.239868,-122.428118,,Tacoma Dome to/from St Joseph,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/tacoma-dome-station,,,1,America/Los_Angeles,,
 T01-T02S,Tacoma Dome,47.239841,-122.429442,,,,,,,,,,
 T01S,Tacoma Dome,47.239876,-122.427232,,,,,,,1,,,
-T02S,S 25th,47.239207,-122.434523,,,,,,,,,,
+T02S,S 25th,47.239207,-122.434523,,,,,,,,,,south twenty fifth
 T03,S 25th,47.239081,-122.434202,,S 25th to Tacoma Dome/St Joseph,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/s-25th-station,,,1,America/Los_Angeles,,south twenty fifth
-T03S,S 25th,47.239126,-122.434201,,,,,,,1,,,
+T03S,S 25th,47.239126,-122.434201,,,,,,,1,,,south twenty fifth
 T05,Union Station,47.244865,-122.436623,,,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/union-station,1,,1,America/Los_Angeles,,
 T05-T1,Union Station,47.244915,-122.436616,,Union Station to St Joseph,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/union-station,,T05,1,America/Los_Angeles,1,
 T05-T2,Union Station,47.244770,-122.436628,,Union Station to Tacoma Dome,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/union-station,,T05,1,America/Los_Angeles,2,
@@ -309,7 +296,7 @@ T15,S 4th,47.261319,-122.442723,,,TLZ,https://www.soundtransit.org/ride-with-us/
 T15-T1,S 4th,47.261428,-122.442799,,S 4th to St Joseph,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/s-4th-station,,T15,1,America/Los_Angeles,1,south fourth
 T15-T1S,S 4th,47.261414,-122.442692,,,,,,,1,,,
 T15-T2,S 4th,47.261224,-122.442654,,S 4th to Tacoma Dome,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/s-4th-station,,T15,1,America/Los_Angeles,2,south fourth
-T15-T2S,S 4th,47.261244,-122.442778,,,,,,,1,,,
+T15-T2S,S 4th,47.261244,-122.442778,,,,,,,1,,,south fourth
 T17,Stadium District,47.263869,-122.448999,,,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/stadium-district-station,1,,1,America/Los_Angeles,,
 T17-T1,Stadium District,47.263816,-122.449052,,Stadium District to St Joseph,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/stadium-district-station,,T17,1,America/Los_Angeles,1,
 T17-T2,Stadium District,47.263956,-122.448921,,Stadium District to Tacoma Dome,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/stadium-district-station,,T17,1,America/Los_Angeles,2,
@@ -319,9 +306,9 @@ T19-T1S,Tacoma General,47.259115,-122.453466,,,,,,,1,,,
 T19-T2,Tacoma General,47.260145,-122.453558,,Tacoma General to Tacoma Dome,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/tacoma-general-station,,T19,1,America/Los_Angeles,2,
 T21,6th Ave,47.256925,-122.452848,,,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/6th-ave-station,1,,1,America/Los_Angeles,,sixth ave
 T21-T1,6th Ave,47.256867,-122.452839,,6th Ave to St Joseph,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/6th-ave-station,,T21,1,America/Los_Angeles,1,sixth ave
-T21-T1S,6th Ave,47.257282,-122.453053,,,,,,,1,,,
+T21-T1S,6th Ave,47.257282,-122.453053,,,,,,,1,,,sixth ave
 T21-T2,6th Ave,47.256985,-122.452842,,6th Ave to Tacoma Dome,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/6th-ave-station,,T21,1,America/Los_Angeles,2,sixth ave
-T21-T2S,6th Ave,47.257471,-122.452861,,,,,,,1,,,
+T21-T2S,6th Ave,47.257471,-122.452861,,,,,,,1,,,sixth ave
 T23,Hilltop District,47.251758,-122.451665,,,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/hilltop-district-station,1,,1,America/Los_Angeles,,
 T23-T1,Hilltop District,47.251708,-122.451667,,Hilltop District to St Joseph,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/hilltop-district-station,,T23,1,America/Los_Angeles,1,
 T23-T1S,Hilltop District,47.251874,-122.451604,,,,,,,1,,,
@@ -330,4 +317,4 @@ T23-T2S,Hilltop District,47.252126,-122.451842,,,,,,,1,,,
 T25,St Joseph,47.245280,-122.450187,,,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/st-joseph-station,1,,1,America/Los_Angeles,,Saint Joseph
 T25-T1,St Joseph,47.245186,-122.450179,,St Joseph to/from Tacoma Dome,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/st-joseph-station,,T25,1,America/Los_Angeles,1,Saint Joseph
 T25-T2,St Joseph,47.245392,-122.450202,,St Joseph to/from Tacoma Dome,TLZ,https://www.soundtransit.org/ride-with-us/stops-stations/st-joseph-station,,T25,1,America/Los_Angeles,2,Saint Joseph
-T25-T2S,St Joseph,47.244051,-122.449810,,,,,,,1,,,
+T25-T2S,St Joseph,47.244051,-122.449810,,,,,,,1,,,Saint Joseph
