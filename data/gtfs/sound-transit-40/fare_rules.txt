@@ -85,5 +85,6 @@ fare_id,route_id,origin_id,destination_id
 19,SNDR_EV,S_KS,S_EV
 tline,TLINE,,
 tline,TLINE,TLZ,TLZ
-link4,100479,,
-link4,2LINE,,
+link,100479,,
+link,2LINE,,
+free,1-SHUTTLE,,

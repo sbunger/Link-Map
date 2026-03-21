@@ -196,6 +196,8 @@ app.get("/api/vehicles", async (req, res) => {
                     newId = vehicle.tripId.replace("40_", "st_");
                 }
 
+                console.log(newId);
+
                 const trips = await getTrips({ trip_id: newId });
 
                 if (!trips.length) {

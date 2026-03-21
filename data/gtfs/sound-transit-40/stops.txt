@@ -38,6 +38,14 @@ stop_id,stop_name,stop_lat,stop_lon,stop_code,stop_desc,zone_id,stop_url,locatio
 99913,Angle Lake,47.423025,-122.297765,,Angle Lake to Lynnwood,S01,https://www.soundtransit.org/ride-with-us/stops-stations/angle-lake-station,,S01,1,America/Los_Angeles,1,
 99914,Angle Lake,47.422145,-122.297834,,Angle Lake to Federal Way,S01,https://www.soundtransit.org/ride-with-us/stops-stations/angle-lake-station,,S01,1,America/Los_Angeles,2,
 C03,Westlake,47.611572,-122.336720,,"Westlake Station - 4th Ave & Pine St Seattle, WA 98101",DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/westlake-station,1,,1,America/Los_Angeles,,
+C03-E-00001,Westlake Entrance A1,47.612023,-122.335875,,,,,2,C03,,,,Westlake Entrance A one
+C03-E-00002,Westlake Entrance A2,47.611779,-122.336704,,,,,2,C03,,,,Westlake Entrance A two
+C03-E-00003,Westlake Entrance B,47.611641,-122.337216,,,,,2,C03,,,,Westlake Entrance bee
+C03-E-00004,Westlake Entrance C1,47.610999,-122.338376,,,,,2,C03,,,,Westlake Entrance see one
+C03-E-00005,Westlake Entrance C2,47.610864,-122.338219,,,,,2,C03,,,,Westlake Entrance see two
+C03-E-00006,Westlake Entrance A1,47.611788,-122.336509,,,,,2,C03,,,,Westlake Entrance A one
+C03-E-00007,Westlake Entrance C2,47.610965,-122.337862,,,,,2,C03,,,,Westlake Entrance see two
+C03-E-00008,Westlake Entrance C1,47.611182,-122.338025,,,,,2,C03,,,,Westlake Entrance see one
 C05,Symphony,47.607810,-122.336020,,"Symphony Station - 3rd Ave & Seneca St Seattle, WA 98101",DSTT,https://www.soundtransit.org/ride-with-us/stops-stations/symphony-station,1,,1,America/Los_Angeles,,
 C05-E-00001,Symphony Station Entrance A1,47.607929,-122.335875,,,,,2,C05,,,,"University Street Station, Entrance A One"
 C05-E-00002,Symphony Station Entrance A2,47.607817,-122.336388,,,,,2,C05,1,,,"University Street Station, Entrance A Two"
@@ -83,12 +91,19 @@ C29-E-00001,Rainier Beach Station Entrance,47.523099,-122.279212,,,,,2,C29,1,,,R
 C35,Tukwila Int'l Blvd,47.464031,-122.287996,,"Tukwila International Boulevard Station - 3651 Southcenter Blvd Tukwila, WA 98188",C35,https://www.soundtransit.org/ride-with-us/stops-stations/tukwila-international-boulevard-station,1,,1,America/Los_Angeles,,Tuck‑WILL‑uh International Boulevard
 C35-E-00001,Tukwila International Blvd Station Entrance,47.464192,-122.288005,,,,,2,C35,,,,Tuck‑WILL‑uh International Boulevard Station Entrance
 C37,SeaTac/Airport,47.445381,-122.296898,,"SeaTac/Airport Station - International Blvd & S 176th St Seattle, WA 98188",C37,https://www.soundtransit.org/ride-with-us/stops-stations/seatac-airport-station,1,,1,America/Los_Angeles,,sea tack airport
-E01,Judkins Park,47.590299,-122.304508,,"Judkins Park Station - 1485 Rainier Ave S Seattle, WA 98144",E01,,1,,1,America/Los_Angeles,,
-E01-T1,Judkins Park,47.590311,-122.304989,,Judkins Park to Lynnwood,E01,,,E01,1,America/Los_Angeles,1,
-E01-T2,Judkins Park,47.590281,-122.303603,,Judkins Park to Downtown Redmond,E01,,,E01,1,America/Los_Angeles,2,
-E07,Mercer Island,47.588198,-122.233232,,"Mercer Island Station - 2555 80th Ave SE Mercer Island, WA 98040",E07,,1,,1,America/Los_Angeles,,
-E07-T1,Mercer Island,47.588413,-122.233786,,Mercer Island to Lynnwood,E07,,,E07,1,America/Los_Angeles,1,
-E07-T2,Mercer Island,47.588003,-122.232737,,Mercer Island to Downtown Redmond,E07,,,E07,1,America/Los_Angeles,2,
+C37-E-00001,SeaTac/Airport West Entrance,47.445316,-122.297197,,,,,2,C37,1,,,SeaTac Airport West Entrance
+C37-E-00002,SeaTac/Airport East Entrance,47.445714,-122.296827,,,,,2,C37,1,,,SeaTac Airport East Entrance
+E01,Judkins Park,47.590299,-122.304508,,"Judkins Park Station - 1485 Rainier Ave S Seattle, WA 98144",E01,https://www.soundtransit.org/ride-with-us/stops-stations/judkins-park-station,1,,1,America/Los_Angeles,,
+E01-E-00001,Judkins Park Entrance A,47.590321,-122.302462,,,,,2,E01,1,,,Judkins Park entrance a
+E01-E-00002,Judkins Park Entrance B1,47.590392,-122.307104,,,,,2,E01,1,,,Judkins Park entrance bee one
+E01-E-00003,Judkins Park Entrance B2,47.590428,-122.307604,,,,,2,E01,1,,,Judkins Park entrance bee two
+E01-T1,Judkins Park,47.590311,-122.304989,,Judkins Park to Lynnwood,E01,https://www.soundtransit.org/ride-with-us/stops-stations/judkins-park-station,,E01,1,America/Los_Angeles,1,
+E01-T2,Judkins Park,47.590281,-122.303603,,Judkins Park to Downtown Redmond,E01,https://www.soundtransit.org/ride-with-us/stops-stations/judkins-park-station,,E01,1,America/Los_Angeles,2,
+E07,Mercer Island,47.588198,-122.233232,,"Mercer Island Station - 2555 80th Ave SE Mercer Island, WA 98040",E07,https://www.soundtransit.org/ride-with-us/stops-stations/mercer-island-station,1,,1,America/Los_Angeles,,
+E07-E-00001,Mercer Island Entrance A,47.588566,-122.234429,,,,,2,E07,1,,,Mercer Island entrance a
+E07-E-00002,Mercer Island Entrance B,47.587768,-122.232097,,,,,2,E07,1,,,Mercer Island entrance bee
+E07-T1,Mercer Island,47.588413,-122.233786,,Mercer Island to Lynnwood,E07,https://www.soundtransit.org/ride-with-us/stops-stations/mercer-island-station,,E07,1,America/Los_Angeles,1,
+E07-T2,Mercer Island,47.588003,-122.232737,,Mercer Island to Downtown Redmond,E07,https://www.soundtransit.org/ride-with-us/stops-stations/mercer-island-station,,E07,1,America/Los_Angeles,2,
 E09,South Bellevue,47.586556,-122.190396,,South Bellevue Station - 2654 Bellevue Way SE Bellevue WA 98004,E09,https://www.soundtransit.org/ride-with-us/stops-stations/south-bellevue-station,1,,1,America/Los_Angeles,,
 E09-E-00001,South Bellevue Station Entrance A,47.586996,-122.190532,,,,,2,E09,1,,,"South Bellevue Station, Entrance A"
 E09-E-00002,South Bellevue Station Entrance B,47.585996,-122.189886,,,,,2,E09,1,,,"South Bellevue Station, Entrance Bee"
@@ -130,9 +145,12 @@ E27-E-00004,Redmond Technology Station Entrance C,47.644050,-122.133445,,,,,2,E2
 E27-T1,Redmond Technology,47.644424,-122.133556,,Redmond Technology to/from South Bellevue,E27,https://www.soundtransit.org/ride-with-us/stops-stations/redmond-technology-station,,E27,1,America/Los_Angeles,1,
 E27-T2,Redmond Technology,47.645199,-122.133673,,Redmond Technology to/from South Bellevue,E27,https://www.soundtransit.org/ride-with-us/stops-stations/redmond-technology-station,,E27,1,America/Los_Angeles,2,
 E29,Marymoor Village,47.667263,-122.109800,,Marymoor Village Station - 17300 NE 70th St Redmond WA 98052,E29,https://www.soundtransit.org/ride-with-us/stops-stations/marymoor-village-station,1,,1,America/Los_Angeles,,Marry More Villiage
+E29-E-00001,Marymoor Village Entrance,47.667444,-122.108446,,,,,2,E29,1,,,Marymoor Village Entrance
 E29-T1,Marymoor Village,47.667166,-122.110398,,Marymoor Village to South Bellevue,E29,https://www.soundtransit.org/ride-with-us/stops-stations/marymoor-village-station,,E29,1,America/Los_Angeles,1,Marry More Villiage
 E29-T2,Marymoor Village,47.667381,-122.109118,,Marymoor Village to Downtown Redmond,E29,https://www.soundtransit.org/ride-with-us/stops-stations/marymoor-village-station,,E29,1,America/Los_Angeles,2,Marry More Villiage
 E31,Downtown Redmond,47.671645,-122.118480,,Downtown Redmond Station - 16620 NE 76th St Redmond WA 98052,E31,https://www.soundtransit.org/ride-with-us/stops-stations/downtown-redmond-station,1,,1,America/Los_Angeles,,
+E31-E-00001,Downtown Redmond Entrance A,47.671924,-122.119619,,,,,2,E31,1,,,Downtown Redmond Entrance A
+E31-E-00002,Downtown Redmond Entrance B,47.671558,-122.118080,,,,,2,E31,1,,,Downtown Redmond Entrance bee
 E31-T1,Downtown Redmond,47.671467,-122.117864,,Downtown Redmond to/from South Bellevue,E31,https://www.soundtransit.org/ride-with-us/stops-stations/downtown-redmond-station,,E31,1,America/Los_Angeles,1,
 E31-T2,Downtown Redmond,47.671788,-122.118952,,Downtown Redmond to/from South Bellevue,E31,https://www.soundtransit.org/ride-with-us/stops-stations/downtown-redmond-station,,E31,1,America/Los_Angeles,2,
 LS11060,Broadway & E Denny Way,47.618425,-122.320940,,,,,,,1,,,Broadway and East Denny Way
@@ -227,12 +245,24 @@ S01,Angle Lake,47.422703,-122.297714,,"Angle Lake Station - 19955 28th Ave S Sea
 S01-E-00001,Angle Lake Station North Entrance,47.423090,-122.297838,,,,,2,S01,1,,,"Angle Lake Station, North Entrance"
 S01-E-00002,Angle Lake Station South Entrance,47.422264,-122.297765,,,,,2,S01,1,,,"Angle Lake Station, South Entrance"
 S03,Kent Des Moines,47.389552,-122.294399,,"Kent Des Moines Station - 23525 30th Ave S Kent, WA 98032",S03,https://www.soundtransit.org/ride-with-us/stops-stations/kent-des-moines-station,1,,1,America/Los_Angeles,,
+S03-E-00001,Kent Des Moines Entrance A,47.389912,-122.294243,,,,,2,S03,1,,,
+S03-E-00002,Kent Des Moines Entrance A,47.389922,-122.294380,,,,,2,S03,1,,,
+S03-E-00003,Kent Des Moines Entrance B,47.389129,-122.294575,,,,,2,S03,1,,,
+S03-E-00004,Kent Des Moines Entrance B,47.389115,-122.294439,,,,,2,S03,1,,,
 S03-T1,Kent Des Moines,47.389904,-122.294272,,Kent Des Moines to Lynnwood,S03,https://www.soundtransit.org/ride-with-us/stops-stations/kent-des-moines-station,,S03,1,America/Los_Angeles,1,
 S03-T2,Kent Des Moines,47.389185,-122.294524,,Kent Des Moines to Federal Way,S03,https://www.soundtransit.org/ride-with-us/stops-stations/kent-des-moines-station,,S03,1,America/Los_Angeles,2,
 S05,Star Lake,47.359388,-122.297391,,"Star Lake Station - 27016 26th Ave S Kent, WA 98032",S05,https://www.soundtransit.org/ride-with-us/stops-stations/star-lake-station,1,,1,America/Los_Angeles,,
+S05-E-00001,Star Lake Entrance A,47.358968,-122.297654,,,,,2,S05,1,,,
+S05-E-00002,Star Lake Entrance A,47.358921,-122.297459,,,,,2,S05,1,,,
+S05-E-00003,Star Lake Entrance B,47.359712,-122.297325,,,,,2,S05,1,,,
+S05-E-00004,Star Lake Entrance B,47.359651,-122.297068,,,,,2,S05,1,,,
 S05-T1,Star Lake,47.359625,-122.297205,,Star Lake to Lynnwood,S05,https://www.soundtransit.org/ride-with-us/stops-stations/star-lake-station,,S05,1,America/Los_Angeles,1,
 S05-T2,Star Lake,47.359011,-122.297634,,Star Lake to Federal Way,S05,https://www.soundtransit.org/ride-with-us/stops-stations/star-lake-station,,S05,1,America/Los_Angeles,2,
 S07,Federal Way Downtown,47.315903,-122.303829,,"Federal Way Downtown Station - 31911 23rd Ave S Federal Way, WA 98003",S07,https://www.soundtransit.org/ride-with-us/stops-stations/federal-way-downtown-station,1,,1,America/Los_Angeles,,
+S07-E-00001,Federal Way Downtown Entrance A,47.316230,-122.303530,,,,,2,S07,1,,,
+S07-E-00002,Federal Way Downtown Entrance A,47.316273,-122.303678,,,,,2,S07,1,,,
+S07-E-00003,Federal Way Downtown Entrance B,47.315485,-122.304001,,,,,2,S07,1,,,
+S07-E-00004,Federal Way Downtown Entrance B,47.315528,-122.304149,,,,,2,S07,1,,,
 S07-T1,Federal Way Downtown,47.316208,-122.303587,,Federal Way Downtown to/from Lynnwood,S07,https://www.soundtransit.org/ride-with-us/stops-stations/federal-way-downtown-station,,S07,1,America/Los_Angeles,1,
 S07-T2,Federal Way Downtown,47.316241,-122.303689,,Federal Way Downtown to/from Lynnwood,S07,https://www.soundtransit.org/ride-with-us/stops-stations/federal-way-downtown-station,,S07,1,America/Los_Angeles,2,
 SN02,Edmonds Station,47.811152,-122.384373,SN02,Edmonds Station - 170 Railroad Avenue,S_ED,https://www.soundtransit.org/ride-with-us/stops-stations/edmonds-station,1,,1,America/Los_Angeles,,

@@ -28,7 +28,6 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 10305,10305,"Fairview Ave N & Harrison St",Fairview Avenue North and Harrison Street,"",47.6222763,-122.334229,1,,0,,America/Los_Angeles,1
 10325,10325,"Fairview Ave N & Valley St",Fairview Avenue North and Valley Street,"",47.6266136,-122.33345,1,,0,,America/Los_Angeles,1
 10328,10328,"Valley St & Fairview Ave N",Valley Street and Fairview Avenue North,"",47.6260338,-122.334106,1,,0,,America/Los_Angeles,1
-10340,10340,"Fairview Ave N & Yale Ave N",Fairview Avenue North and Yale Avenue North,"",47.6288757,-122.330597,1,,0,,America/Los_Angeles,1
 10350,10350,"Fairview Ave E & Yale Ave N",Fairview Avenue East and Yale Avenue North,"",47.6299744,-122.329185,1,,0,,America/Los_Angeles,1
 10370,10370,"NE 50th St & University Way NE",Northeast 50th Street and University Way Northeast,"",47.6648293,-122.31266,1,,0,,America/Los_Angeles,1
 10380,10380,"NE 50th St & 16th Ave NE",Northeast 50th Street and 16th Avenue Northeast,"",47.664814,-122.310432,1,,0,,America/Los_Angeles,1
@@ -234,6 +233,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 12485,12485,"S Walker St & 25th Ave S",South Walker Street and 25th Avenue South,"",47.5837135,-122.299629,1,,0,,America/Los_Angeles,1
 12486,12486,"Martin L King Jr Way S & S Bayview St",Martin Luther King Jr Way South and South Bayview Street,"",47.5810013,-122.296921,1,,0,,America/Los_Angeles,1
 12487,12487,"Martin L King Jr Way S & S Massachusetts St",Martin Luther King Jr Way South and South Massachusetts Street,"",47.5879974,-122.298195,1,,0,,America/Los_Angeles,1
+12493,12493,"S Massachusetts St & 26th Ave S",South Massachusetts Street and 26th Avenue South,"",47.5883865,-122.298477,1,,0,,America/Los_Angeles,1
 12496,12496,"S Plum St & 25th Ave S",South Plum Street and 25th Avenue South,"",47.5854111,-122.300079,1,,0,,America/Los_Angeles,1
 12497,12497,"Martin L King Jr Way S & S Massachusetts St",Martin Luther King Jr Way South and South Massachusetts Street,"",47.5887337,-122.297821,1,,0,,America/Los_Angeles,1
 125,125,"Madison St & Boylston Ave",Madison Street and Boylston Avenue,"",47.6105804,-122.322372,1,,0,,America/Los_Angeles,1
@@ -551,7 +551,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 17970,17970,"32nd Ave NW & NW 80th St",32nd Avenue Northwest and Northwest 80th Street,"",47.6880112,-122.398407,1,,0,,America/Los_Angeles,1
 17980,17980,"32nd Ave NW & NW 80th St",32nd Avenue Northwest and Northwest 80th Street,"",47.6863518,-122.398392,1,,0,,America/Los_Angeles,1
 17990,17990,"32nd Ave NW & NW 77th St",32nd Avenue Northwest and Northwest 77th Street,"",47.6849747,-122.398415,1,,0,,America/Los_Angeles,1
-18000,18000,"32nd Ave NW & NW 75th St",32nd Avenue Northwest and Northwest 75th Street,"",47.6832581,-122.398407,1,,0,,America/Los_Angeles,1
+18000,18000,"32nd Ave NW & NW 75th St",32nd Avenue Northwest and Northwest 75th Street,"",47.6828804,-122.398514,1,,0,,America/Los_Angeles,1
 18010,18010,"32nd Ave NW & NW 73rd St",32nd Avenue Northwest and Northwest 73rd Street,"",47.6816788,-122.398499,1,,0,,America/Los_Angeles,1
 18020,18020,"32nd Ave NW & NW 72nd St",32nd Avenue Northwest and Northwest 72nd Street,"",47.6807098,-122.398499,1,,0,,America/Los_Angeles,1
 18030,18030,"32nd Ave NW & NW 70th St",32nd Avenue Northwest and Northwest 70th Street,"",47.679245,-122.398483,1,,0,,America/Los_Angeles,1
@@ -765,9 +765,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 21350,21350,"16th Ave SW & SW Henderson St",16th Avenue Southwest and Southwest Henderson Street,"",47.5231438,-122.355003,1,,0,,America/Los_Angeles,1
 21360,21360,"16th Ave SW & SW Trenton St",16th Avenue Southwest and Southwest Trenton Street,"",47.5249634,-122.35498,1,,0,,America/Los_Angeles,1
 21361,21361,"16th Ave SW & SW Trenton St",16th Avenue Southwest and Southwest Trenton Street,"",47.5245476,-122.355179,1,,0,,America/Los_Angeles,1
-21370,21370,"16th Ave SW & SW Cloverdale St",16th Avenue Southwest and Southwest Cloverdale Street,"",47.5267601,-122.35498,1,,0,,America/Los_Angeles,1
 21380,21380,"16th Ave SW & SW Thistle St",16th Avenue Southwest and Southwest Thistle Street,"",47.5285187,-122.354965,1,,0,,America/Los_Angeles,1
-21390,21390,"16th Ave SW & SW Elmgrove St",16th Avenue Southwest and Southwest Elmgrove Street,"",47.5302734,-122.35495,1,,0,,America/Los_Angeles,1
 2140,2140,"W Olympic Pl & 3rd Ave W",West Olympic Place and Third Avenue West,"",47.6266556,-122.360306,1,,0,,America/Los_Angeles,1
 21400,21400,"16th Ave SW & SW Kenyon St",16th Avenue Southwest and Southwest Kenyon Street,"",47.5321198,-122.35495,1,,0,,America/Los_Angeles,1
 21410,21410,"16th Ave SW & SW Holden St",16th Avenue Southwest and Southwest Holden Street,"",47.5335159,-122.354935,1,,0,,America/Los_Angeles,1
@@ -826,11 +824,8 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 22196,22196,"Delridge Way SW & SW Thistle St",Delridge Way Southwest and Southwest Thistle Street,"",47.5275116,-122.360359,1,,0,,America/Los_Angeles,0
 2220,2220,"3rd Ave & Cedar St",3rd Avenue and Cedar Street,"",47.6167755,-122.34845,1,,0,,America/Los_Angeles,1
 22200,22200,"16th Ave SW & SW Kenyon St",16th Avenue Southwest and Southwest Kenyon Street,"",47.5316353,-122.355156,1,,0,,America/Los_Angeles,1
-22210,22210,"16th Ave SW & SW Elmgrove St",16th Avenue Southwest and Southwest Elmgrove Street,"",47.5298386,-122.355156,1,,0,,America/Los_Angeles,1
 22220,22220,"16th Ave SW & SW Thistle St",16th Avenue Southwest and Southwest Thistle Street,"",47.5280457,-122.355171,1,,0,,America/Los_Angeles,1
-22230,22230,"16th Ave SW & SW Cloverdale St",16th Avenue Southwest and Southwest Cloverdale Street,"",47.5262527,-122.355179,1,,0,,America/Los_Angeles,1
 22242,22242,"SW Henderson St & 17th Ave SW",Southwest Henderson Street and 17th Avenue Southwest,"",47.522934,-122.356941,1,,0,,America/Los_Angeles,1
-22244,22244,"16th Ave SW & SW Henderson St",16th Avenue Southwest and Southwest Henderson Street,"",47.5230179,-122.355209,1,,0,,America/Los_Angeles,1
 22252,22252,"Delridge Way SW & SW Henderson St",Delridge Way Southwest and Southwest Henderson Street,"",47.5224648,-122.359871,1,,0,,America/Los_Angeles,1
 22253,22253,"Delridge Way SW & SW Barton St",Delridge Way Southwest and Southwest Barton Street,"",47.5207825,-122.358353,1,,0,,America/Los_Angeles,1
 22255,22255,"SW Roxbury St & 16th Ave SW - Bay 6",Southwest Roxbury Street and 16th Avenue Southwest - Bay Six,"",47.517437,-122.355827,3,,0,,America/Los_Angeles,1
@@ -1642,6 +1637,10 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 3589,3589,"12th Ave S & S Weller St",12th Avenue South and South Weller Street,"",47.5973778,-122.317123,1,,0,,America/Los_Angeles,1
 35890,35890,"23rd Ave S & S Dearborn St",23rd Avenue South and South Dearborn Street,"",47.5953178,-122.30233,1,,0,,America/Los_Angeles,1
 35910,35910,"23rd Ave S & S Judkins St",23rd Avenue South and South Judkins Street,"",47.5916214,-122.302505,1,,0,,America/Los_Angeles,1
+35911,35911,"Judkins Park Station - Bay 1",Judkins Park Station Bay One,"",47.5901718,-122.307289,1,,0,,America/Los_Angeles,1
+35922,35922,"Judkins Park Station - Bay 2",Judkins Park Station Bay Two,"",47.5903549,-122.307205,1,,0,,America/Los_Angeles,1
+35923,35923,"23rd Ave S & S Massachusetts St - Bay 3",23rd Avenue South and South Massachusetts Street - Bay 3,"",47.5897484,-122.30233,1,,0,,America/Los_Angeles,1
+35924,35924,"23rd Ave S & S Judkins St - Bay 4",23rd Avenue South and South Judkins Street - Bay 4,"",47.590641,-122.30204,1,,0,,America/Los_Angeles,1
 35940,35940,"23rd Ave S & S Massachusetts St",23rd Avenue South and South Massachusetts Street,"",47.5880508,-122.302696,1,,0,,America/Los_Angeles,1
 35960,35960,"S Alaska St & 35th Ave S",South Alaska Street and 35th Avenue South,"",47.5607986,-122.289055,1,,0,,America/Los_Angeles,1
 35979,35979,"S Alaska St & Martin L King Jr Way S",South Alaska Street and Martin Luther King Jr Way South,"",47.5609131,-122.293983,1,,0,,America/Los_Angeles,1
@@ -1836,6 +1835,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 3881,3881,"Beacon Ave S & Veterans Administration Hospital",Beacon Avenue South and Veterans Administration Hospital,"",47.5633316,-122.305634,1,,0,,America/Los_Angeles,1
 38810,38810,"NE 145th St & 19th Ave NE",Northeast One Hundred Forty Fifth Street and 19th Avenue Northeast,"",47.7339783,-122.308693,20,,0,,America/Los_Angeles,1
 3883,3883,"Beacon Ave S & S Columbian Way",Beacon Avenue South and South Columbian Way,"",47.5592728,-122.304665,1,,0,,America/Los_Angeles,1
+38830,38830,"15th Ave NE & NE 145th St",15th Avenue Northeast and Northeast 145th Street,"",47.7335167,-122.312851,1,,0,,America/Los_Angeles,1
 38840,38840,"15th Ave NE & NE 143rd St",15th Avenue Northeast and Northeast 143rd Street,"",47.7318573,-122.31282,1,,0,,America/Los_Angeles,1
 38850,38850,"15th Ave NE & NE 140th St",15th Avenue Northeast and Northeast One Hundred Fortieth Street,"",47.7300568,-122.312798,1,,0,,America/Los_Angeles,1
 38870,38870,"15th Ave NE & NE 135th St",15th Avenue Northeast and Northeast 135th Street,"",47.7268677,-122.312752,1,,0,,America/Los_Angeles,1
@@ -1861,7 +1861,6 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 39334,39334,"15th Ave NE & NE 160th St",15th Avenue Northeast and Northeast One Hundred Sixtieth Street,"",47.7453918,-122.31292,18,,0,,America/Los_Angeles,1
 39336,39336,"15th Ave NE & NE 160th St",15th Avenue Northeast and Northeast One Hundred Sixtieth Street,"",47.7447166,-122.313095,18,,0,,America/Los_Angeles,1
 39340,39340,"15th Ave NE & NE 145th St",15th Avenue Northeast and Northeast One Hundred Forty Fifth Street,"",47.7343369,-122.31266,20,,0,,America/Los_Angeles,1
-39341,39341,"15th Ave NE & NE 145th St",15th Avenue Northeast and Northeast One Hundred Forty Fifth Street,"",47.7343369,-122.312866,20,,0,,America/Los_Angeles,1
 39350,39350,"NE 145th St & 20th Ave NE",Northeast One Hundred Forty Fifth Street and 20th Avenue Northeast,"",47.7338295,-122.307632,20,,0,,America/Los_Angeles,1
 3940,3940,"Boston St & Warren Ave N",Boston Street and Warren Avenue North,"",47.638195,-122.3545,1,,0,,America/Los_Angeles,1
 39420,39420,"SW Thistle St & Delridge Way SW",Southwest Thistle Street and Delridge Way Southwest,"",47.5283546,-122.360863,1,,0,,America/Los_Angeles,1
@@ -1933,6 +1932,8 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 39890,39890,"SW Thistle St & 41st Ave SW",Southwest Thistle Street and 41st Avenue Southwest,"",47.5284004,-122.384308,1,,0,,America/Los_Angeles,1
 3990,3990,"Taylor Ave N & 5th Ave N",Taylor Avenue North and Fifth Avenue North,"",47.6346092,-122.347519,1,,0,,America/Los_Angeles,1
 39900,39900,"SW Thistle St & 39th Ave SW",Southwest Thistle Street and 39th Avenue Southwest,"",47.5283508,-122.382133,1,,0,,America/Los_Angeles,1
+39904,39904,"SW Trenton St & 35th Ave SW",Southwest Trenton Street and 35th Avenue Southwest,"",47.5245857,-122.375717,1,,0,,America/Los_Angeles,1
+39906,39906,"SW Trenton St & 29th Ave SW",Southwest Trenton Street and 29th Avenue Southwest,"",47.5245972,-122.370316,1,,0,,America/Los_Angeles,1
 39910,39910,"SW Thistle St & 37th Ave SW",Southwest Thistle Street and 37th Avenue Southwest,"",47.5282898,-122.379471,1,,0,,America/Los_Angeles,1
 39920,39920,"SW Thistle St & 35th Ave SW",Southwest Thistle Street and 35th Avenue Southwest,"",47.5282288,-122.377136,1,,0,,America/Los_Angeles,1
 39930,39930,"SW Thistle St & 34th Ave SW",Southwest Thistle Street and 34th Avenue Southwest,"",47.5282173,-122.374924,1,,0,,America/Los_Angeles,1
@@ -1940,7 +1941,9 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 39955,39955,"SW Thistle St & 28th Ave SW",Southwest Thistle Street and 28th Avenue Southwest,"",47.5282135,-122.368759,1,,0,,America/Los_Angeles,1
 39965,39965,"SW Thistle St & 25th Ave SW",Southwest Thistle Street and 25th Avenue Southwest,"",47.5282135,-122.364922,1,,0,,America/Los_Angeles,1
 39976,39976,"25th Ave SW & SW Trenton St",25th Avenue Southwest and Southwest Trenton Street,"",47.5239944,-122.364632,1,,0,,America/Los_Angeles,1
+39977,39977,"SW Trenton St & 25th Ave SW",Southwest Trenton Street and 25th Avenue Southwest,"",47.5246124,-122.364647,1,,0,,America/Los_Angeles,1
 39980,39980,"25th Ave SW & SW Henderson St",25th Avenue Southwest and Southwest Henderson Street,"",47.5230141,-122.364632,1,,0,,America/Los_Angeles,1
+39981,39981,"25th Ave SW & SW Henderson St",25th Avenue Southwest and Southwest Henderson Street,"",47.5220222,-122.364647,1,,0,,America/Los_Angeles,1
 39983,39983,"SW Barton St & 25th Ave SW - Bay 3",Southwest Barton Street and 25th Avenue Southwest - Bay Three,"",47.5210915,-122.365234,1,,0,,America/Los_Angeles,1
 39990,39990,"25th Ave SW & SW Barton St - Bay 4",25th Avenue Southwest and Southwest Barton Street - Bay Four,"",47.521225,-122.364647,1,,0,,America/Los_Angeles,1
 400,400,"3rd Ave & Bell St",3rd Avenue and Bell Street,"",47.6142998,-122.344269,21,,0,,America/Los_Angeles,1
@@ -2590,6 +2593,8 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 49980,49980,"S 128th St & Roseberg Ave S",South One Hundred Twenty Eighth Street and Roseberg Avenue South,"",47.4886665,-122.309738,24,,0,,America/Los_Angeles,1
 500,500,"3rd Ave & James St",3rd Avenue and James Street,"",47.6028175,-122.331581,21,,0,,America/Los_Angeles,1
 50010,50010,"Des Moines Memorial Dr S & S 128th St",Des Moines Memorial Drive South and South One Hundred Twenty Eighth Street,"",47.48769,-122.312149,24,,0,,America/Los_Angeles,1
+50011,50011,"Kent Des Moines Station - Bay 2",Kent Des Moines Station - Bay 2,"",47.3894539,-122.294586,24,,0,,America/Los_Angeles,0
+50014,50014,"Kent Des Moines Station - Bay 3",Kent Des Moines Station - Bay 3,"",47.389595,-122.294868,24,,0,,America/Los_Angeles,1
 50020,50020,"Des Moines Memorial Dr S & S 132nd St",Des Moines Memorial Drive South and South One Hundred Thirty Second Street,"",47.4847145,-122.313545,24,,0,,America/Los_Angeles,1
 50030,50030,"Des Moines Memorial Dr S & S 134th St",Des Moines Memorial Drive South and South 134th Street,"",47.4828568,-122.313904,24,,0,,America/Los_Angeles,1
 50050,50050,"Des Moines Memorial Dr S & S 138th St",Des Moines Memorial Drive South and South One Hundred Thirty Eighth Street,"",47.4794121,-122.31456,24,,0,,America/Los_Angeles,1
@@ -2615,7 +2620,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 50340,50340,"Des Moines Memorial Dr S & S 202nd St",Des Moines Memorial Drive South and South 202nd Street,"",47.4212112,-122.320389,24,,0,,America/Los_Angeles,1
 50350,50350,"Des Moines Memorial Dr S & S 204th St",Des Moines Memorial Drive South and South 204th Street,"",47.4199295,-122.320351,24,,0,,America/Los_Angeles,1
 50360,50360,"Des Moines Memorial Dr S & S 206th St",Des Moines Memorial Drive South and South 206th Street,"",47.4182434,-122.320305,24,,0,,America/Los_Angeles,2
-50370,50370,"Des Moines Memorial Dr S & S 208th St",Des Moines Memorial Drive South and South 208th Street,"",47.4157639,-122.320457,24,,0,,America/Los_Angeles,2
+50370,50370,"Des Moines Memorial Dr S & S 208th St",Des Moines Memorial Drive South and South 208th Street,"",47.4157639,-122.320457,24,,0,,America/Los_Angeles,1
 50380,50380,"Des Moines Memorial Dr S & S 210th St",Des Moines Memorial Drive South and South 210th Street,"",47.4137993,-122.322601,24,,0,,America/Los_Angeles,1
 50390,50390,"Des Moines Memorial Dr S & S 212th St",Des Moines Memorial Drive South and South 212th Street,"",47.412571,-122.324448,24,,0,,America/Los_Angeles,1
 50450,50450,"24th Ave S & S 226th St",24th Avenue South and South 226th Street,"",47.3989105,-122.302498,24,,0,,America/Los_Angeles,1
@@ -2625,6 +2630,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 50468,50468,"16th Ave S & 17th Pl S",16th Avenue South and 17th Place South,"",47.3907471,-122.31189,24,,0,,America/Los_Angeles,1
 50479,50479,"Kent Des Moines Station - Bay 6",Kent Des Moines Station Bay Six,"",47.3891869,-122.295967,24,,0,,America/Los_Angeles,1
 50480,50480,"Pacific Hwy S & Kent Des Moines Rd",Pacific Highway South and Kent Des Moines Road,"",47.3925362,-122.295158,24,,0,,America/Los_Angeles,1
+50500,50500,"S 240th St & 26th Pl S",South 240th Street and 26th Place South,"",47.3865852,-122.299599,24,,0,,America/Los_Angeles,1
 50703,50703,"Reith Rd & 38th Ave S",Reith Road and 38th Avenue South,"",47.3700562,-122.283752,24,,0,,America/Los_Angeles,1
 50707,50707,"Reith Rd & S 253rd St",Reith Road and South 253rd Street,"",47.3747559,-122.277931,24,,0,,America/Los_Angeles,1
 50709,50709,"Reith Rd & Lake Fenwick Rd S",Reith Road and Lake Fenwick Road South,"",47.3784676,-122.274132,24,,0,,America/Los_Angeles,1
@@ -2752,6 +2758,8 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 53536,53536,"S 272nd St & Military Rd S",South Two Hundred Seventy Second Street and Military Road South,"",47.3578682,-122.293015,24,,0,,America/Los_Angeles,1
 53537,53537,"S 272nd St & 26th Ave S",South 272nd Street and 26th Avenue South,"",47.357975,-122.300217,24,,0,,America/Los_Angeles,0
 53538,53538,"S 272nd St & I-5",South Two Hundred Seventy Second Street and Eye Five,"",47.3578949,-122.29512,24,,0,,America/Los_Angeles,1
+53541,53541,"Star Lake Station & S 270th St - Bay 1",Star Lake Station and South 270th Street - Bay 1,"",47.3592911,-122.297684,24,,0,,America/Los_Angeles,0
+53542,53542,"Star Lake Station & S 270th St - Bay 2",Star Lake Station and South 270th Street - Bay 2,"",47.3594398,-122.297592,24,,0,,America/Los_Angeles,0
 53550,53550,"Kirkland Way & 6th St",Kirkland Way and Sixth Street,"",47.6765594,-122.197472,19,,0,,America/Los_Angeles,1
 5370,5370,"N 85th St & Aurora Ave N",North 85th Street and Aurora Avenue North,"",47.6904907,-122.344734,1,,0,,America/Los_Angeles,1
 53706,53706,"Sylvester Rd SW & SW 160th St",Sylvester Road Southwest and Southwest One Hundred Sixtieth Street,"",47.4583511,-122.340126,24,,0,,America/Los_Angeles,1
@@ -2904,6 +2912,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 55472,55472,"51st Ave S & Renton Ave S",51st Avenue South and Renton Avenue South,"",47.5174255,-122.269913,1,,0,,America/Los_Angeles,1
 55474,55474,"51st Ave S & S Fletcher St",51st Avenue South and South Fletcher Street,"",47.5189514,-122.269897,1,,0,,America/Los_Angeles,1
 5550,5550,"Greenwood Ave N & N 145th St",Greenwood Avenue North and North One Hundred Forty Fifth Street,"",47.7337799,-122.355675,20,,0,,America/Los_Angeles,1
+55566,55566,"152nd Ave NE & Da Vinci Ave NE - Bay 1",152nd Avenue Northeast and Da Vinci Avenue Northeast - Bay 1,"",47.6366844,-122.137779,19,,0,,America/Los_Angeles,0
 55583,55583,"Martin L King Jr Way S & S Henderson St",Martin Luther King Jr Way South and South Henderson Street,"",47.5236549,-122.278793,1,,0,,America/Los_Angeles,1
 55589,55589,"Martin L King Jr Way S & S Thistle St",Martin Luther King Jr Way South and South Thistle Street,"",47.5281334,-122.279999,1,,0,,America/Los_Angeles,1
 55590,55590,"Martin L King Jr Way S & S Kenyon St",Martin Luther King Jr Way South and South Kenyon Street,"",47.5318069,-122.280472,1,,0,,America/Los_Angeles,1
@@ -4376,7 +4385,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 68068,68068,"NE Bellevue Redmond Rd & 140th Ave NE",Northeast Bellevue Redmond Road and One Hundred Fortieth Avenue Northeast,"",47.6244926,-122.152725,19,,0,,America/Los_Angeles,1
 68069,68069,"NE Bellevue Redmond Rd & 143rd Ave NE",Northeast Bellevue Redmond Road and 143rd Avenue Northeast,"",47.6250648,-122.149879,19,,0,,America/Los_Angeles,1
 68070,68070,"NE Bellevue Redmond Rd & 136th Ave NE",Northeast Bellevue Redmond Road and 136th Avenue Northeast,"",47.6229706,-122.159988,19,,0,,America/Los_Angeles,1
-68085,68085,"NE 8th St & 116th Ave NE",Northeast Eighth Street and One Hundred Sixteenth Avenue Northeast,"",47.6172333,-122.184837,19,,0,,America/Los_Angeles,1
+68085,68085,"NE 8th St & 116th Ave NE - Bay 2",Northeast Eighth Street and One Hundred Sixteenth Avenue Northeast,"",47.6172333,-122.184837,19,,0,,America/Los_Angeles,1
 68094,68094,"NE 8th St & 120th Ave NE",Northeast Eighth Street and One Hundred Twentieth Avenue Northeast,"",47.6172523,-122.179787,19,,0,,America/Los_Angeles,1
 68100,68100,"NE 8th St & 124th Ave NE",Northeast Eighth Street and One Hundred Twenty Fourth Avenue Northeast,"",47.6172638,-122.174347,19,,0,,America/Los_Angeles,1
 68130,68130,"NE 8th St & 131st Ave NE",Northeast Eighth Street and One Hundred Thirty First Avenue Northeast,"",47.6171265,-122.162338,19,,0,,America/Los_Angeles,1
@@ -4702,7 +4711,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 71310,71310,"NE 24th St & 160th Ave NE",Northeast 24th Street and One Hundred Sixtieth Avenue Northeast,"",47.6315651,-122.127808,19,,0,,America/Los_Angeles,1
 71320,71320,"NE 24th St & 156th Ave NE",Northeast 24th Street and One Hundred Fifty Sixth Avenue Northeast,"",47.6316452,-122.131248,19,,0,,America/Los_Angeles,1
 71322,71322,"NE 24th St & NE Bel-Red Rd",Northeast 24th Street and Northeast Bel-Red Road,"",47.631649,-122.134445,19,,0,,America/Los_Angeles,1
-71323,71323,"152nd Ave NE & NE Shen St",One Hundred Fifty Second Avenue Northeast and Northeast Shen Street,"",47.6355629,-122.137589,19,,0,,America/Los_Angeles,1
+71323,71323,"152nd Ave NE & NE Shen St - Bay 2",One Hundred Fifty Second Avenue Northeast and Northeast Shen Street,"",47.6355629,-122.137589,19,,0,,America/Los_Angeles,1
 71325,71325,"NE 40th St & 152nd Ave NE",Northeast 40th Street and One Hundred Fifty Second Avenue Northeast,"",47.6459236,-122.137733,19,,0,,America/Los_Angeles,1
 71326,71326,"152nd Ave NE & Overlake Park&Ride",One Hundred Fifty Second Avenue Northeast and Overlake Park and Ride,"",47.633709,-122.137604,19,,0,,America/Los_Angeles,1
 71327,71327,"NE 40th St & 150th Ave NE",Northeast 40th Street and One Hundred Fiftieth Avenue Northeast,"",47.6460228,-122.140671,19,,0,,America/Los_Angeles,1
@@ -4864,6 +4873,8 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 72488,72488,"Redmond Way & 166th Ave NE",Redmond Way and One Hundred Sixty Sixth Avenue Northeast,"",47.6727791,-122.117928,19,,0,,America/Los_Angeles,1
 72492,72492,"Marymoor Village Station - Bay 2",Marymoor Village Station - Bay two,"",47.6677933,-122.107521,19,,0,,America/Los_Angeles,1
 72494,72494,"Marymoor Village Station - Bay 4",Marymoor Village Station - Bay four,"",47.6678581,-122.1073,19,,0,,America/Los_Angeles,1
+72498,72498,"Redmond Ridge Dr NE & NE Marketplace Dr",Redmond Ridge Drive Northeast and Northeast Marketplace Drive,"",47.6951485,-122.036705,40,,0,,America/Los_Angeles,1
+72499,72499,"Redmond Ridge Dr NE & NE Marketplace Dr",Redmond Ridge Drive Northeast and Northeast Marketplace Drive,"",47.6950645,-122.03688,40,,0,,America/Los_Angeles,1
 72520,72520,"Avondale Rd NE & NE 85th Pl",Avondale Road Northeast and Northeast 85th Place,"",47.6784248,-122.104637,19,,0,,America/Los_Angeles,1
 72521,72521,"Cedar Park NE & NE Marketplace Dr",Cedar Park Northeast and Northeast Marketplace Drive,"",47.6931648,-122.044876,40,,0,,America/Los_Angeles,1
 72522,72522,"Cedar Park NE & NE Marketplace Dr",Cedar Park Northeast and Northeast Marketplace Drive,"",47.6930962,-122.04509,40,,0,,America/Los_Angeles,1
@@ -4915,7 +4926,6 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 73059,73059,"NE 40th St & 156th Ave NE",Northeast 40th Street and One Hundred Fifty Sixth Avenue Northeast,"",47.6461182,-122.130539,19,,0,,America/Los_Angeles,1
 73077,73077,"NE 40th St & NE Bel-Red Rd",Northeast 40th Street and Northeast Bel-Red Road,"",47.6461487,-122.115196,19,,0,,America/Los_Angeles,1
 73079,73079,"NE 40th St & 159th Ave NE",Northeast 40th Street and One Hundred Fifty Ninth Avenue Northeast,"",47.6461372,-122.127586,19,,0,,America/Los_Angeles,1
-73080,73080,"150th Ave SE & SE Eastgate Way",One Hundred Fiftieth Avenue Southeast and Southeast Eastgate Way,"",47.5811119,-122.14193,19,,0,,America/Los_Angeles,1
 73089,73089,"NE 40th St & 163rd Ave NE",Northeast 40th Street and One Hundred Sixty third Avenue Northeast,"",47.6459923,-122.122467,19,,0,,America/Los_Angeles,1
 73092,73092,"NE 40th St & NE Bel-Red Rd",Northeast 40th Street and Northeast Bel-Red Road,"",47.6460152,-122.114677,19,,0,,America/Los_Angeles,1
 73095,73095,"NE Redmond Way & Willows Rd NE",Northeast Redmond Way and Willows Road Northeast,"",47.6750832,-122.137177,19,,0,,America/Los_Angeles,1
@@ -5097,11 +5107,11 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 74420,74420,"108th Ave NE & NE 53rd St",One Hundred Eighth Avenue Northeast and Northeast 53rd Street,"",47.6557426,-122.196342,19,,0,,America/Los_Angeles,1
 74430,74430,"108th Ave NE & NE 47th Pl",One Hundred Eighth Avenue Northeast and Northeast 47th Place,"",47.6522331,-122.196365,19,,0,,America/Los_Angeles,1
 74437,74437,"NE 38th Pl & Lake Washington Blvd NE",Northeast 38th Place and Lake Washington Boulevard Northeast,"",47.6456451,-122.2006,19,,0,,America/Los_Angeles,1
-74439,74439,"120th Ave NE & NE Spring Blvd",120th Avenue Northeast and Northeast Spring Boulevard,"",47.6235046,-122.179794,19,,0,,America/Los_Angeles,1
+74439,74439,"120th Ave NE & NE Spring Blvd - Bay 2",120th Avenue Northeast and Northeast Spring Boulevard,"",47.6235046,-122.179794,19,,0,,America/Los_Angeles,1
 74440,74440,"108th Ave NE & NE 45th St",One Hundred Eighth Avenue Northeast and Northeast 45th Street,"",47.6499176,-122.196365,19,,0,,America/Los_Angeles,1
 74441,74441,"108th Ave NE & NE 39th St",One Hundred Eighth Avenue Northeast and Northeast 39th Street,"",47.6457138,-122.195068,19,,0,,America/Los_Angeles,1
 74442,74442,"108th Ave NE & NE 38th Pl",One Hundred Eighth Avenue Northeast and Northeast 38th Place,"",47.6442795,-122.194321,19,,0,,America/Los_Angeles,1
-74443,74443,"120th Ave NE & NE Spring Blvd",120th Avenue Northeast and Northeast Spring Boulevard,"",47.6239853,-122.179588,19,,0,,America/Los_Angeles,1
+74443,74443,"120th Ave NE & NE Spring Blvd - Bay 1",120th Avenue Northeast and Northeast Spring Boulevard,"",47.6239853,-122.179588,19,,0,,America/Los_Angeles,1
 74446,74446,"Northup Way & NE 30th St",Northup Way and Northeast 30th Street,"",47.6377144,-122.191383,19,,0,,America/Los_Angeles,1
 74447,74447,"Northup Way & NE 30th St",Northup Way and Northeast 30th Street,"",47.6371841,-122.191193,19,,0,,America/Los_Angeles,1
 74448,74448,"Northup Way & NE 33rd Pl",Northup Way and Northeast 33rd Place,"",47.6408424,-122.194656,19,,0,,America/Los_Angeles,1
@@ -5697,7 +5707,9 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 81249,81249,"5th Ave NE & NE 165th St",5th Avenue Northeast and Northeast One Hundred Sixty Fifth Street,"",47.7489738,-122.32383,18,,0,,America/Los_Angeles,1
 81252,81252,"5th Ave NE & NE 155th St",5th Avenue Northeast and Northeast One Hundred Fifty Fifth Street,"",47.741066,-122.323792,18,,0,,America/Los_Angeles,1
 81254,81254,"5th Ave NE & NE 152nd St",5th Avenue Northeast and Northeast One Hundred Fifty Second Street,"",47.7387314,-122.323723,18,,0,,America/Los_Angeles,1
+81293,81293,"1st Ave NE & N 143rd St",1st Avenue Northeast and North 143rd Street,"",47.7315216,-122.328773,1,,0,,America/Los_Angeles,0
 81294,81294,"1st Ave NE & NE 140th St",1st Avenue Northeast and Northeast One Hundred Fortieth Street,"",47.730999,-122.328773,1,,0,,America/Los_Angeles,2
+81295,81295,"1st Ave NE & N 145th St",1st Avenue Northeast and North 145th Street,"",47.7332687,-122.328773,1,,0,,America/Los_Angeles,0
 81299,81299,"Shoreline South/148th Station - Bay 1",Shoreline South slash One Hundred Forty Eighth Station - Bay One,"",47.7367439,-122.325256,18,,0,,America/Los_Angeles,0
 81301,81301,"Shoreline South/148th Station - Bay 2",Shoreline South slash One Hundred Forty Eighth Station - Bay Two,"",47.7361488,-122.325119,18,,0,,America/Los_Angeles,0
 81302,81302,"5th Ave NE & NE 152nd St",5th Avenue Northeast and Northeast One Hundred Fifty Second Street,"",47.7390633,-122.323532,18,,0,,America/Los_Angeles,1
@@ -5912,8 +5924,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 8270,8270,"Rainier Ave S & S Brandon St",Rainier Avenue South and South Brandon Street,"",47.5535469,-122.279793,1,,0,,America/Los_Angeles,1
 82700,82700,"I-405 & Juanita Woodinville Way NE",Eye Four Oh Five and Juanita Woodinville Way Northeast,"",47.7412949,-122.187675,19,,0,,America/Los_Angeles,1
 82718,82718,"I-405 & SE 8th St",Eye Four Oh Five and Southeast Eighth Street,"",47.6034737,-122.184975,19,,0,,America/Los_Angeles,1
-82730,82730,"Main St & 108th Ave SE",Main Street and One Hundred Eighth Avenue Southeast,"",47.6100349,-122.19545,19,,0,,America/Los_Angeles,1
-82749,82749,"112th Ave SE & SE 4th St",One Hundred Twelfth Avenue Southeast and Southeast Fourth Street,"",47.6068611,-122.190872,19,,0,,America/Los_Angeles,1
+82749,82749,"112th Ave SE & SE 4th St - Bay 1",One Hundred Twelfth Avenue Southeast and Southeast Fourth Street,"",47.6068611,-122.190872,19,,0,,America/Los_Angeles,1
 82760,82760,"112th Ave SE & SE 4th St",One Hundred Twelfth Avenue Southeast and Southeast Fourth Street,"",47.6043015,-122.190834,19,,0,,America/Los_Angeles,1
 82772,82772,"Ballinger Way NE & 19th Ave NE",Ballinger Way Northeast and 19th Avenue Northeast,"",47.7740555,-122.308807,18,,0,,America/Los_Angeles,1
 82775,82775,"Ballinger Way NE & 23rd Ave NE",Ballinger Way Northeast and 23rd Avenue Northeast,"",47.7724228,-122.306374,18,,0,,America/Los_Angeles,1
@@ -5923,7 +5934,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 82780,82780,"I-405 & Lake Washington Blvd SE",Eye Four Oh Five and Lake Washington Boulevard Southeast,"",47.5571404,-122.189278,19,,0,,America/Los_Angeles,1
 82788,82788,"Coal Creek Pkwy SE & SE 89th Pl",Coal Creek Parkway Southeast and Southeast 89th Place,"",47.5240936,-122.162445,19,,0,,America/Los_Angeles,1
 82789,82789,"Coal Creek Pkwy SE & SE 84th Way",Coal Creek Parkway Southeast and Southeast 84th Way,"",47.5288315,-122.163307,19,,0,,America/Los_Angeles,1
-82790,82790,"112th Ave SE & SE 4th St",One Hundred Twelfth Avenue Southeast and Southeast Fourth Street,"",47.6068497,-122.190674,19,,0,,America/Los_Angeles,1
+82790,82790,"112th Ave SE & SE 4th St - Bay 2",One Hundred Twelfth Avenue Southeast and Southeast Fourth Street,"",47.6068497,-122.190674,19,,0,,America/Los_Angeles,1
 82791,82791,"Coal Creek Pkwy SE & SE 91st St",Coal Creek Parkway Southeast and Southeast 91st Street,"",47.5203743,-122.159126,19,,0,,America/Los_Angeles,1
 82792,82792,"Coal Creek Pkwy SE & SE 76th St",Coal Creek Parkway Southeast and Southeast 76th Street,"",47.5342903,-122.164268,19,,0,,America/Los_Angeles,1
 82793,82793,"Coal Creek Pkwy SE & SE 89th Pl",Coal Creek Parkway Southeast and Southeast 89th Place,"",47.5244064,-122.162338,19,,0,,America/Los_Angeles,1
@@ -6336,6 +6347,7 @@ stop_id,stop_code,stop_name,tts_stop_name,stop_desc,stop_lat,stop_lon,zone_id,st
 99483,99483,"SE 272nd St & 228th Ave SE",Southeast Two Hundred Seventy Second Street and 228th Avenue Southeast,"",47.3580704,-122.035843,40,,0,,America/Los_Angeles,1
 99497,99497,"Maple Valley Hwy & Cedar River Park Dr",Maple Valley Highway and Cedar River Park Drive,"",47.4813652,-122.192856,24,,0,,America/Los_Angeles,1
 9950,9950,"Sand Point Way NE & NE 58th St",Sand Point Way Northeast and Northeast 58th Street,"",47.6705856,-122.270515,1,,0,,America/Los_Angeles,1
+99500,99500,"W Mcgraw St & 31st Ave W",West Mcgraw Street and 31st Avenue West,"",47.6396255,-122.397446,1,,0,,America/Los_Angeles,1
 997,997,"6th Ave & Union St",6th Avenue and Union Street,"",47.6100922,-122.333382,21,,0,,America/Los_Angeles,1
 9970,9970,"Sand Point Way NE & Ivanhoe Pl NE",Sand Point Way Northeast and Ivanhoe Place Northeast,"",47.6683846,-122.274597,1,,0,,America/Los_Angeles,1
 9972,9972,"Sand Point Way NE & Princeton Ave NE",Sand Point Way Northeast and Princeton Avenue Northeast,"",47.668457,-122.276131,1,,0,,America/Los_Angeles,1

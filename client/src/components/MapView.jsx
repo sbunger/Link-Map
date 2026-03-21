@@ -437,17 +437,22 @@ export default function MapView({
                     const latlng = L.latLng(v.lat, v.lon);
 
                     const marker = L.marker(latlng, {
-                        icon: (v.type === 0) ? linkIcon : busIcon,
+                        icon: (v.type == 0) ? linkIcon : busIcon,
                         pane: 'vehiclePane',
                         opacity: 0.85,
-                        interactive: false
+                        interactive: true
                     });
 
-                    if (v.type === 0) {
+                    if (v.type == 0) {
                         newRailLayer.addLayer(marker);
                     } else {
                         newBusLayer.addLayer(marker);
                     }
+
+                    marker.on("click", (e) => {
+    L.DomEvent.stopPropagation(e); // prevents map click firing
+    console.log("Vehicle type:", v.type);
+});
                 });
 
                 layers.current.busLayer.clearLayers();
