@@ -17,6 +17,10 @@ html, body {
     background-color:#ffffff;
 }
 
+.leaflet-tile-pane {
+    filter: grayscale(100%);
+}
+
 .map.dark {
     background-color:#000000;
 }

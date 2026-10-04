@@ -149,7 +149,7 @@ export default function MapView({
 
     //dark or light mode
     useEffect(() => {
-        const map =mapInstance.current;
+        const map = mapInstance.current;
         if (!map) return;
 
         map.eachLayer(layer => {
@@ -158,13 +158,16 @@ export default function MapView({
             }
         });
 
-        const tileUrl = darkMode
-            ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-            : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+    const tileUrl = darkMode
+        ? "https://basemap.queeniemella.cc/tiles/countries/{z}/{x}/{y}.png"
+        : "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
-        L.tileLayer(tileUrl, {
-            attribution: "&copy; CARTO"
-        }).addTo(map);
+    L.tileLayer(tileUrl, {
+        maxZoom: 20,
+        attribution: darkMode
+            ? '&copy; queeniemella &copy; OpenStreetMap contributors'
+            : '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
     }, [darkMode]);
 

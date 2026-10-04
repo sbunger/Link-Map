@@ -73,7 +73,11 @@ route_id,direction_id,stop_id,alternate_stop_name
 2LINE,0,E23-T2,132nd Ave NE & NE Spring Blvd
 2LINE,1,E25-T1,152nd Ave NE & NE Shen St
 2LINE,0,E25-T2,152nd Ave NE & NE Shen St
-2LINE,0,E27-T1,Redmond Technology Station - Bay 1
 2LINE,1,E27-T1,Redmond Technology Station - Bay 1
 2LINE,0,E27-T2,Redmond Technology Station - Bay 1
-2LINE,1,E27-T2,Redmond Technology Station - Bay 1
+2LINE,0,E29-T2,Marymoor Village Station Bay 1
+2LINE,1,E29-T1,Marymoor Village Station Bay 1
+2LINE,0,E31-T2,Downtown Redmond Station Bay 4
+2LINE,1,E31-T1,Downtown Redmond Station Bay 4
+2LINE,1,E31-T2,Downtown Redmond Station Bay 4
+2LINE,0,E31-T1,Downtown Redmond Station Bay 4
